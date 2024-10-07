@@ -1,24 +1,81 @@
-# README
+# readme  
+  
+BlinkPhotoJockey  
+  
+■ サービス概要  
+写真を音楽と一緒に投稿するアプリです。  
+Radio DJのように、あの瞬間の気持ちを視覚と聴覚で共有できるアプリです。  
+  
+■ このサービスへの思い・作りたい理由  
+  
+「この景色はあの人と一緒に眺めてたな、」  
+「そう言えばあの人はあの曲をずっと聞いてたな」とセンチメンタルになる時。  
+  
+出先で突然好きな曲が流れてきた時のワクワク感、  
+「今日はいいことが起こりそう、」とポジティブになる時。  
+  
+人のそういう感性に興味を持っています。  
+歌うのも歌を聴くのも大好きです。  
+文字も大事ですが、写真の方がより伝わりやすいと思います。  
+手間暇をかけて完成した作品も、ふとした瞬間を写真にした景色も、  
+その時の感情はきっとその人が知っている曲と繋がっています。  
+  
+SNSで直接に話しかけるのも、むやみにコメント返すのも嫌われるかもしれないです。  
+文字で伝えてもキリがない時もあるのでコメントではなく、  
+絵文字だけでそっと共感してくれたらいいなと思います。  
+  
+■ ユーザー層について  
+音楽と写真に興味がある10~30代の方。  
+音楽活動や写真関係の仕事をされて、自分の作品を共有したい方。  
+SNSを利用されているが、あまり投稿しないシャイな方。  
+  
+■ サービスの利用イメージ  
+・ユーザーが写真をアップロードしてタイトルを入力し、曲を選択して投稿します。  
+・投稿を見た他のユーザーは、写真とともに曲を聴くことができます。  
+・シンプルで直感的なデザインで、他のユーザーの投稿を閲覧でき、気に入った投稿には絵文字を付けられます。  
+  
+■ ユーザーの獲得について  
+Xでの発信を通じて、ユーザーの皆様がXでシェアしていただくことでアプリを宣伝します。  
+  
+■ サービスの差別化ポイント・推しポイント  
+・ユーザーはコメントを書くプレッシャーから解放され、絵文字で簡単に反応できる。  
+・感情や反応を視覚的に伝える。  
+  
+■ 機能候補  
+現状作ろうと思っている機能、案段階の機能をしっかりと固まっていなくても構わないのでMVPリリース時に作っていたいもの、  
+本リリースまでに作っていたいものをそれぞれ分けて教えてください。  
+  
+■ 機能の実装方針予定  
+  
+バックエンド：  
+Ruby on Rails  
+  
+フロントエンド：  
+JavaScript  
+HTML/CSS  
+  
+一般的なCRUD以外の実装予定の機能についてそれぞれどのようなイメージ(使用するAPIや)で実装する予定なのか現状考えているもので良いので教えて下さい。  
+  
+Render.com　(インフラ)  
+CarrierWave　(画像アップロード)  
+config　(設定管理)  
+iTunes Search API / Spotify API　(どちらかを音源に)  
+draper　(要素統合しやすい)  
+sorcery　（ユーザー認証）  
+letter_opener_web　(会員認証メール確認)  
+cssbundling-rails　（TailwindCSSの導入）  
+rails-i18n　（エラーメッセージの日本語対応）  
+ransack　（検索機能）  
+kaminari　（ページネーション）  
+bootstrap5-kaminari-views　(kaminariのデザイン統一)  
+turbo-rails　(ページ遷移高速化)  
+gretel	(パンくずリスト)  
+enum_help　(enumの定義値を簡単にi18n化)  
+social-share-button　(SNSシェアボタン)  
+<br>
+<br>
+<br>
+[ER図](https://i.gyazo.com/fc8a6cb0de9673c9a4523370260c9a7e.png)  
+<br>
+[画面遷移図](https://www.figma.com/design/TzTv7FDIYN7R1reTDoCX4H/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=fztLZ8hkjQOLdiHO-1)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
