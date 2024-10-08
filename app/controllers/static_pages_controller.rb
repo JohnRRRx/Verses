@@ -6,5 +6,4 @@ class StaticPagesController < ApplicationController
 
   def terms; end
 
-  def map; end
 end
