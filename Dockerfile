@@ -44,6 +44,8 @@ COPY . .
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get install -y nodejs
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 
