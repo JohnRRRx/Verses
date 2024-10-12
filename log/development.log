@@ -52183,3 +52183,15 @@ Processing by UserSessionsController#new as TURBO_STREAM
 Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
 
 
+Started GET "/users/new" for ::1 at 2024-10-12 15:52:29 +0900
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.3ms | GC: 0.0ms)
+  Rendered layouts/_flash_messages.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered shared/_before_login_header.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | GC: 0.0ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
