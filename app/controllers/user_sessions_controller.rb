@@ -7,14 +7,15 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_to root_path
+      redirect_to root_path, notice: t('defaults.flash_message.login_success')
     else
-      render :new
+      flash.now[:error] = t('defaults.flash_message.login_failure')
+      render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
     logout
-    redirect_to root_path, status: :see_other
+    redirect_to root_path, status: :see_other, notice: t('defaults.flash_message.logout_success')
   end
 end

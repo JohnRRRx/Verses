@@ -1,7 +1,7 @@
 <div class="container flex items-center justify-center">
   <div class="row">
     <div class="col-md-10 col-lg-8 mx-auto">
-      <h1>新規登録</h1>
+      <h1><%= t('user_sessions.new.sign_up') %></h1>
       <%= form_with model: @user do |f| %>
         <div class="mb-3">
           <%= f.label :name, class: "form-label" %>
@@ -23,10 +23,10 @@
           <br>
           <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
-        <%= f.submit "登録", class: "btn btn-primary" %>
+        <%= f.submit t('helpers.submit.create'), class: "btn btn-primary" %>
       <% end %>
       <div class='text-center'>
-        <%= link_to 'ログインページへ', login_path %>
+        <%= link_to t('users.new.to_login_page'), login_path %>
       </div>
     </div>
   </div>

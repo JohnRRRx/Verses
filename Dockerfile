@@ -66,6 +66,7 @@ RUN groupadd --system --gid 1000 rails && \
 USER 1000:1000
 
 # Entrypoint prepares the database.
+RUN rails db:create db:migrate
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
