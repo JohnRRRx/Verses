@@ -1,0 +1,40 @@
+ja:
+  helpers:
+    submit:
+      create: 登録
+      submit: 保存
+      update: 更新
+    label:
+      email: メールアドレス
+      password: パスワード
+  defaults:
+    flash_message:
+      sign_up_success: 登録完了しました
+      sign_up_failure: 登録に失敗しました
+      login_success: ログインしました
+      login_failure: ログインに失敗しました
+      logout_success: ログアウトしました
+      require_login: ログインが必要です
+  user_sessions:
+    new:
+      title: ログイン
+      login: ログイン
+      sign_up: 新規登録
+      password_forget: パスワードをお忘れの方はこちら
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ
+  header:
+    login: ログイン
+    logout: ログアウト
+    post: 投稿
+    index: 投稿一覧
+    new_post: 新規投稿
+    bookmark: ブックマーク
+    profile: プロフィール
+  footer:
+    privacy_policy: プライバシーポリシー
+    terms: 利用規約
+    contact: お問い合わせ
+    copyright: Copyright © 2024 BlinkPhotoJockey All Rights Reserved.
