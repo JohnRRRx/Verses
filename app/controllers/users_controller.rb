@@ -7,9 +7,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path
+      redirect_to login_path, notice: t('defaults.flash_message.sign_up_success')
     else
-      render :new
+      flash.now[:error] = t('defaults.flash_message.sign_up_failure')
+      render :new , status: :unprocessable_entity
     end
   end
 
