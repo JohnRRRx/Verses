@@ -15,6 +15,8 @@ ja:
       login_failure: ログインに失敗しました
       logout_success: ログアウトしました
       require_login: ログインが必要です
+      created: 投稿を作成しました
+      not_created: 投稿を作成出来ませんでした
   user_sessions:
     new:
       title: ログイン
@@ -33,6 +35,7 @@ ja:
     new_post: 新規投稿
     bookmark: ブックマーク
     profile: プロフィール
+    post_index: 投稿一覧
   footer:
     privacy_policy: プライバシーポリシー
     terms: 利用規約

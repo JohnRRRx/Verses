@@ -10,6 +10,8 @@
         <ul class="flex flex-col p-4 md:p-0 mt-4 font-semibold md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
           <li>
             <div>
+            <%= link_to t('header.post_index'), posts_path,  class: "nav-link icon-link  text-white mr-6" %>
+            <%= link_to t('header.new_post'), new_post_path,  class: "nav-link icon-link  text-white mr-6" %>
             <%= link_to t('header.profile'), '#',  class: "nav-link icon-link  text-white mr-6" %>
             <%= link_to t('header.logout'), logout_path,  class: "nav-link icon-link  text-white", data: { turbo_method: :delete } %>
             </div>

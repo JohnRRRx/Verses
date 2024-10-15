@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <h1><%= t('header.new_post') %></h1>
+      <%= form_with model: @post, class: "new_post" do |f| %>
+        <div class="mb-3">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :photo %>
+          <%= f.file_field :photo, class: "form-control", accept: 'image/*' %>
+          <%= f.hidden_field :photo_cache %>
+        </div>
+        <%= f.submit nil, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
