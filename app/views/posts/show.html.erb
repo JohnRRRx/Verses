@@ -13,25 +13,19 @@
                 <li class="list-inline-item"><%= "by #{@post.user.name}" %></li>
                 <li class="list-inline-item"><%= l @post.created_at, format: :long %></li>
               </ul>
-              <div class='d-flex justify-content-end'>
-                <%= link_to "#", id: "button-edit-#{@post.id}" do %>
-                  <i class='bi bi-pencil-fill'></i>
-                <% end %>
-                <%= link_to "#", id: "button-delete-#{@post.id}", class: "ms-2" do %>
-                  <i class="bi bi-trash-fill"></i>
-                <% end %>
-              </div>
+              <% if current_user && current_user.own?(@post) %>
+                  <div class='d-flex justify-content-end'>
+              <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}"  , class: "main" do %>
+                  <button class="button"><%= t('posts.edit')%></button>
+              <% end %>
+              <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.flash_message.delete_confirm') } do %>
+                <button class="button"><%= t('posts.delete')%></button>
+              <% end %>
+                </div>
+              <% end %>
               </div>
             </div>
           </div>
         </article>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2">
-        <table class="table">
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
