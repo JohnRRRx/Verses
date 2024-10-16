@@ -17,6 +17,10 @@ ja:
       require_login: ログインが必要です
       created: 投稿を作成しました
       not_created: 投稿を作成出来ませんでした
+      updated: "投稿を更新しました"
+      not_updated: "投稿を更新出来ませんでした"
+      deleted: "投稿を削除しました"
+      delete_confirm: "削除しますか"
   user_sessions:
     new:
       title: ログイン
@@ -27,6 +31,10 @@ ja:
     new:
       title: ユーザー登録
       to_login_page: ログインページへ
+  posts:
+    new: 新規投稿
+    edit: 編集
+    delete: 削除
   header:
     login: ログイン
     logout: ログアウト
