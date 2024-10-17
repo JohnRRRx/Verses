@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-require 'itunes_search_api'
 
   def index
     @posts = Post.includes(:user)
@@ -41,18 +40,6 @@ require 'itunes_search_api'
     post = current_user.posts.find(params[:id])
     post.destroy!
     redirect_to posts_path, notice: t('defaults.flash_message.deleted'), status: :see_other
-  end
-
-  def search
-    @searchs = ITunesSearchAPI.search(
-      :term => params[:term],
-      :country => 'jp',
-      :media => 'music',
-      :lang => 'ja_jp',
-      :limit => '4'
-      ).each do |item|
-        p item
-    end
   end
 
   private
