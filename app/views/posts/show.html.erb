@@ -13,6 +13,9 @@
                 <li class="list-inline-item"><%= "by #{@post.user.name}" %></li>
                 <li class="list-inline-item"><%= l @post.created_at, format: :long %></li>
               </ul>
+              <% if @post.song_id.present? %>
+              <iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="80" style="width:100%; max-width:300px; overflow:hidden; background:transparent;" src="https://open.spotify.com/embed/track/<%= @post.song_id %>" ></iframe>
+              <% end %>
               <% if current_user && current_user.own?(@post) %>
                   <div class='d-flex justify-content-end'>
               <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}"  , class: "main" do %>
