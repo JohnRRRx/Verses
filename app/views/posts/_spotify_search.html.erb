@@ -1,0 +1,48 @@
+<div class="mb-3">
+  <%= label_tag :song_search, "曲" %>
+  <%= text_field_tag :song_search, nil, class: "form-control", placeholder: "キーワード" %>
+  <%= button_tag "検索", type: "button", id: "search-button", class: "btn btn-secondary mt-2" %>
+</div>
+
+<div id="search-results" class="mt-3"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchButton = document.getElementById('search-button');
+  const songSearch = document.getElementById('song_search');
+  const searchResults = document.getElementById('search-results');
+
+  searchButton.addEventListener('click', function() {
+    const query = songSearch.value;
+    fetch(`/posts/search?query=${encodeURIComponent(query)}`)
+      .then(response => response.json())
+      .then(data => {
+        searchResults.innerHTML = '';
+        data.forEach(track => {
+          const div = document.createElement('div');
+          div.className = 'mb-2';
+          div.innerHTML = `
+            <button type="button" class="btn btn-outline-primary btn-sm select-song"
+                    data-id="${track.id}"
+                    data-name="${track.name}"
+                    data-artist="${track.artist}"
+                    data-album="${track.album}">
+              ${track.name} - ${track.artist}
+            </button>
+          `;
+          searchResults.appendChild(div);
+        });
+
+        document.querySelectorAll('.select-song').forEach(button => {
+          button.addEventListener('click', function() {
+            document.getElementById('post_song_id').value = this.dataset.id;
+            document.getElementById('post_song_name').value = this.dataset.name;
+            document.getElementById('post_artist_name').value = this.dataset.artist;
+            document.getElementById('post_album_name').value = this.dataset.album;
+            searchResults.innerHTML = `選択された曲: ${this.dataset.name} - ${this.dataset.artist}`;
+          });
+        });
+      });
+  });
+});
+</script>

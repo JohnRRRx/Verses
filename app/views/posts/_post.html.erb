@@ -7,7 +7,7 @@
           <h4 class="card-title">
             <%= link_to post.title, post_path(post) %>
           </h4>
-            <% if current_user.own?(post) %>
+            <% if current_user&.own?(post) %>
           <div class='ms-auto'>
             <%= link_to edit_post_path(post), id: "button-edit-#{post.id}" do %>
               <i class="bi bi-pencil-fill"></i>

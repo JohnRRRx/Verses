@@ -9,7 +9,7 @@
       </form>
     </div>
   </div> -->
-  <!-- 掲示板一覧 -->
+
     <div class="grid grid-cols-3 gap-4">
         <%= @posts.present? ? render(@posts) : content_tag(:div, "投稿がありません", class: "mb-3") %>
     </div>

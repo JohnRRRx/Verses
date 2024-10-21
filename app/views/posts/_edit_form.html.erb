@@ -1,12 +1,21 @@
-  <%= form_with model: @post do |f| %>
-        <div class="mb-3">
-          <%= f.label :title %>
-          <%= f.text_field :title, class: "form-control" %>
-        </div>
-        <div class="mb-3">
-          <%= f.label :photo %>
-          <%= f.file_field :photo, class: "form-control", accept: 'image/*' %>
-          <%= f.hidden_field :photo_cache %>
-        </div>
-        <%= f.submit nil, class: "btn btn-primary" %>
-      <% end %>
+<%= form_with model: @post, local: true, data: { turbo: false } do |f| %>
+    <div class="mb-3">
+        <%= f.label :title %>
+        <%= f.text_field :title, required: true, maxlength: 255, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+        <%= f.label :photo %>
+        <%= f.file_field :photo, required: true, class: "form-control", accept: 'image/*' %>
+        <%= f.hidden_field :photo_cache %>
+    </div>
+
+    <%= render 'spotify_search' %>
+
+    <%= f.hidden_field :song_id %>
+    <%= f.hidden_field :song_name %>
+    <%= f.hidden_field :artist_name %>
+    <%= f.hidden_field :album_name %>
+
+    <%= f.submit @post.new_record? ? '投稿' : '更新', class: 'btn btn-primary' %>
+<% end %>

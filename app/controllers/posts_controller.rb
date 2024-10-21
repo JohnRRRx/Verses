@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-
+  skip_before_action :require_login, only: %i[index show]
   def index
-    @posts = Post.includes(:user)
+    @posts = Post.includes(:user).order('RANDOM()').limit(6)
   end
 
   def new
@@ -36,6 +36,20 @@ class PostsController < ApplicationController
     end
   end
 
+  def search
+    query = params[:query]
+    tracks = RSpotify::Track.search(query)
+    render json: tracks.map { |track| 
+      { 
+        id: track.id, 
+        name: track.name, 
+        artist: track.artists.first.name, 
+        album: track.album.name,
+        preview_url: track.preview_url
+      } 
+    }
+  end
+
   def destroy
     post = current_user.posts.find(params[:id])
     post.destroy!
@@ -45,7 +59,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :photo, :photo_cache)
+    params.require(:post).permit(:title, :photo, :photo_cache, :song_id, :song_name, :artist_name, :album_name, :audio)
   end
 end
-

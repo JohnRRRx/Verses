@@ -57,6 +57,7 @@ gem "rails-i18n"
 gem "cssbundling-rails"
 gem 'rspotify'
 gem 'dotenv-rails'
+gem 'hotwire-rails'
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]

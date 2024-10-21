@@ -4,3 +4,8 @@
 /log/development.log
 /node_modules
 /tmp/cache/
+.env
+.DS_Store
+app/.DS_Store
+/tmp/pids/server.pid
+public/uploads/post/photo/*
