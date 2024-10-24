@@ -1,34 +1,40 @@
-<div class="container pt-5">
-  <div class="row mb-3">
-    <div class="col-lg-8 offset-lg-2">
-      <h3 style="display: inline;"><%= @post.title %></h3>
-      <article class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-3">
-              <%= image_tag @post.photo_url, width: "420", height: "280", class: "card-img-top img-fluid" %>
-            </div>
-            <div class="col-md-9">
-              <ul class="list-inline">
-                <li class="list-inline-item"><%= "by #{@post.user.name}" %></li>
-                <li class="list-inline-item"><%= l @post.created_at, format: :long %></li>
+<div class="container mx-auto pt-5">
+  <div class="mb-3">
+    <div class="max-w-4xl mx-auto">
+      <article class="bg-white shadow-md rounded-lg overflow-hidden">
+        <div class="p-4 flex">
+          <div class="w-1/2 pr-4">
+            <%= image_tag @post.photo_url, width: "420", height: "280", class: "w-full h-auto object-cover rounded-md mb-4" %>
+            <% if @post.song_id.present? %>
+            <iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="80" class="w-full" src="https://open.spotify.com/embed/track/<%= @post.song_id %>"></iframe>
+            <% end %>
+          </div>
+
+          <div class="w-1/2 flex flex-col justify-between">
+
+            <h3 class="text-xl font-bold mb-6 card-title"><%= simple_format(@post.title) %></h3>
+
+            <div class="flex flex-col space-y-4">
+              <ul class="text-gray-600">
+                <li><%= "by #{@post.user.name}" %></li>
+                <li><%= l @post.created_at, format: :long %></li>
               </ul>
-              <% if @post.song_id.present? %>
-              <iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="80" style="width:100%; max-width:300px; overflow:hidden; background:transparent;" src="https://open.spotify.com/embed/track/<%= @post.song_id %>" ></iframe>
-              <% end %>
               <% if current_user && current_user.own?(@post) %>
-                  <div class='d-flex justify-content-end'>
-              <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}"  , class: "main" do %>
-                  <button class="button"><%= t('posts.edit')%></button>
+              <div class="flex justify-end mt-4">
+                <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}" do %>
+                  <button class="button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md transition duration-300 ease-in-out">
+                    <%= t('posts.edit') %>
+                  </button>
+                <% end %>
+                <%= button_to t('posts.delete'), post_path(@post), method: :delete, id: "button-delete-#{@post.id}", class: "button bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md transition duration-300 ease-in-out ml-2", data: { confirm: t('defaults.flash_message.delete_confirm') } %>
+              </div>
               <% end %>
-              <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.flash_message.delete_confirm') } do %>
-                <button class="button"><%= t('posts.delete')%></button>
-              <% end %>
-                </div>
-              <% end %>
+              <div class="bg-gray-100 p-4 rounded-md">
               </div>
             </div>
           </div>
-        </article>
-      </div>
+        </div>
+      </article>
     </div>
+  </div>
+</div>

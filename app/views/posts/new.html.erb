@@ -1,8 +1,6 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 offset-lg-2">
-      <h1><%= t('header.new_post') %></h1>
-      <%= render 'edit_form', post: @post %>
-    </div>
+<div class="container mx-auto">
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-2xl font-bold mb-4"><%= t('header.new_post') %></h1>
+    <%= render 'edit_form', post: @post %>
   </div>
 </div>

@@ -1,33 +1,27 @@
-<div class="container flex items-center justify-center">
-  <div class="row">
-    <div class="col-md-10 col-lg-8 mx-auto">
-      <h1><%= t('user_sessions.new.sign_up') %></h1>
-      <%= form_with model: @user do |f| %>
-        <div class="mb-3">
-          <%= f.label :name, class: "form-label" %>
-          <br>
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
-        <div class="mb-3">
-          <%= f.label :email, class: "form-label" %>
-          <br>
-          <%= f.email_field :email, class: "form-control" %>
-        </div>
-        <div class="mb-3">
-          <%= f.label :password, class: "form-label" %>
-          <br>
-          <%= f.password_field :password, class: "form-control" %>
-        </div>
-        <div class="mb-3">
-          <%= f.label :password_confirmation, class: "form-label" %>
-          <br>
-          <%= f.password_field :password_confirmation, class: "form-control" %>
-        </div>
-        <%= f.submit t('helpers.submit.create'), class: "btn btn-primary" %>
-      <% end %>
-      <div class='text-center'>
-        <%= link_to t('users.new.to_login_page'), login_path %>
+<div class="flex items-center justify-center">
+  <div class="max-w-lg mx-auto">
+    <h1 class="text-2xl font-semibold"><%= t('user_sessions.new.sign_up') %></h1>
+    <%= form_with model: @user do |f| %>
+      <div class="mb-4">
+        <%= f.label :name, class: "block mb-1" %>
+        <%= f.text_field :name, class: "border border-gray-300 rounded-md w-full p-2" %>
       </div>
+      <div class="mb-4">
+        <%= f.label :email, class: "block mb-1" %>
+        <%= f.email_field :email, class: "border border-gray-300 rounded-md w-full p-2" %>
+      </div>
+      <div class="mb-4">
+        <%= f.label :password, class: "block mb-1" %>
+        <%= f.password_field :password, class: "border border-gray-300 rounded-md w-full p-2" %>
+      </div>
+      <div class="mb-4">
+        <%= f.label :password_confirmation, class: "block mb-1" %>
+        <%= f.password_field :password_confirmation, class: "border border-gray-300 rounded-md w-full p-2" %>
+      </div>
+      <%= f.submit t('helpers.submit.create'), class: "bg-blue-500 text-white rounded-md py-2 px-4" %>
+    <% end %>
+    <div class='text-center'>
+      <%= link_to t('users.new.to_login_page'), login_path %>
     </div>
   </div>
 </div>
