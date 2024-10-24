@@ -1,3 +1,3 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
-import './spotify_search'
+import './spotify_search';
