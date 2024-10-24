@@ -35,6 +35,11 @@ ja:
     new: 新規投稿
     edit: 編集
     delete: 削除
+  likes:
+    create:
+      success: ブックマークしました
+    destroy:
+      success: ブックマークを外しました
   header:
     login: ログイン
     logout: ログアウト
@@ -44,6 +49,7 @@ ja:
     bookmark: ブックマーク
     profile: プロフィール
     post_index: 投稿一覧
+    like_index: 🔖
   footer:
     privacy_policy: プライバシーポリシー
     terms: 利用規約

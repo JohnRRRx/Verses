@@ -50,6 +50,10 @@ class PostsController < ApplicationController
     }
   end
 
+  def likes
+    @like_posts = current_user.likes.map(&:post)
+  end
+
   def destroy
     post = current_user.posts.find(params[:id])
     post.destroy!

@@ -1,0 +1,18 @@
+<div class="container mx-auto pt-3">
+  <div class="flex justify-center">
+    <div class="w-full lg:w-10/12">
+      <!-- 掲示板一覧 -->
+      <div class="flex flex-col">
+        <div class="w-full">
+          <div class="flex flex-col">
+            <% if @like_posts.present? %>
+              <%= render @like_posts %>
+            <% else %>
+              <p class="text-gray-600"><%= t('.no_result') %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

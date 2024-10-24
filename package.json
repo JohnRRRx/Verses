@@ -16,7 +16,8 @@
   "keywords": [],
   "dependencies": {
     "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.47"
+    "postcss": "^8.4.47",
+    "@hotwired/turbo-rails": "^8.0.0-beta.2"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.13"

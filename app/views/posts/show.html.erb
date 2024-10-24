@@ -26,7 +26,11 @@
                     <%= t('posts.edit') %>
                   </button>
                 <% end %>
-                <%= button_to t('posts.delete'), post_path(@post), method: :delete, id: "button-delete-#{@post.id}", class: "button bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md transition duration-300 ease-in-out ml-2", data: { confirm: t('defaults.flash_message.delete_confirm') } %>
+                <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
+                  <button class="button bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md transition duration-300 ease-in-out">
+                    <%= t('posts.delete') %>
+                  </button>
+                <% end %>
               </div>
               <% end %>
               <div class="bg-gray-100 p-4 rounded-md">
