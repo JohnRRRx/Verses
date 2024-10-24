@@ -1,21 +1,21 @@
 <%= form_with model: @post, local: true, data: { turbo: false } do |f| %>
-    <div class="mb-3">
-        <%= f.label :title %>
-        <%= f.text_field :title, required: true, maxlength: 255, class: "form-control" %>
-    </div>
+  <div class="mb-4">
+    <%= f.label :title, class: "block text-sm font-medium text-gray-700" %>
+    <%= f.text_area :title, required: true, class: "border rounded-md px-3 py-2 w-full h-32" %>
+  </div>
 
-    <div class="mb-3">
-        <%= f.label :photo %>
-        <%= f.file_field :photo, required: true, class: "form-control", accept: 'image/*' %>
-        <%= f.hidden_field :photo_cache %>
-    </div>
+  <div class="mb-4">
+    <%= f.label :photo, class: "block text-sm font-medium text-gray-700" %>
+    <%= f.file_field :photo, required: true, class: "border rounded-md px-3 py-2 w-full", accept: 'image/*' %>
+    <%= f.hidden_field :photo_cache %>
+  </div>
 
-    <%= render 'spotify_search' %>
+  <%= render 'spotify_search' %>
 
-    <%= f.hidden_field :song_id %>
-    <%= f.hidden_field :song_name %>
-    <%= f.hidden_field :artist_name %>
-    <%= f.hidden_field :album_name %>
+  <%= f.hidden_field :song_id %>
+  <%= f.hidden_field :song_name %>
+  <%= f.hidden_field :artist_name %>
+  <%= f.hidden_field :album_name %>
 
-    <%= f.submit @post.new_record? ? '投稿' : '更新', class: 'btn btn-primary' %>
+  <%= f.submit @post.new_record? ? '投稿' : '更新', class: 'button' %>
 <% end %>

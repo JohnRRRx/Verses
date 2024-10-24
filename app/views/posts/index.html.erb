@@ -1,25 +1,7 @@
-<div class="container pt-3">
-  <div class="row">
-    <div class="col-lg-10 offset-lg-1">
-      <!-- 検索フォーム
-      <form>
-        <div class="input-group mb-3"><input class="form-control" placeholder="検索ワード" type="search"/>
-          <div class="input-group-append"><input type="submit" value="検索" class="btn btn-primary"/></div>
-        </div>
-      </form>
-    </div>
-  </div> -->
-
-    <div class="grid grid-cols-3 gap-4">
-        <%= @posts.present? ? render(@posts) : content_tag(:div, "投稿がありません", class: "mb-3") %>
-    </div>
-        <% if current_user && current_user.own?(@post) %>
-          <div class='d-flex justify-content-end'>
-        <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}"  , class: "main" do %>
-          <button class="button"><%= t('posts.edit')%></button>
-        <% end %>
-        <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.flash_message.delete_confirm') } do %>
-          <button class="button"><%= t('posts.delete')%></button>
-        <% end %>
-        </div>
-        <% end %>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+  <% if @posts.any? %>
+    <%= render @posts %>
+  <% else %>
+    <div class="mb-3 text-gray-600">投稿がありません</div>
+  <% end %>
+</div>

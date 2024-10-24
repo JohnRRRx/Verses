@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   def index
-    @posts = Post.includes(:user).order('RANDOM()').limit(6)
+    @posts = Post.includes(:user)
   end
 
   def new
@@ -39,14 +39,14 @@ class PostsController < ApplicationController
   def search
     query = params[:query]
     tracks = RSpotify::Track.search(query)
-    render json: tracks.map { |track| 
-      { 
-        id: track.id, 
-        name: track.name, 
-        artist: track.artists.first.name, 
+    render json: tracks.map { |track|
+      {
+        id: track.id,
+        name: track.name,
+        artist: track.artists.first.name,
         album: track.album.name,
         preview_url: track.preview_url
-      } 
+      }
     }
   end
 
