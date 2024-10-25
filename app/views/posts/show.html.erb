@@ -10,15 +10,22 @@
             <% end %>
           </div>
 
-          <div class="w-1/2 flex flex-col justify-between">
-
-            <h3 class="text-xl font-bold mb-6 card-title"><%= simple_format(@post.title) %></h3>
-
+          <div class="w-1/2 flex flex-col justify-between relative">
+            <h3 class="text-xl font-bold mb-6 "><%= simple_format(@post.title) %></h3>
             <div class="flex flex-col space-y-4">
               <ul class="text-gray-600">
                 <li><%= "by #{@post.user.name}" %></li>
                 <li><%= l @post.created_at, format: :long %></li>
               </ul>
+
+                <div class="absolute top-2 right-2" id="like-button-content-<%= @post.id %>">
+                <% if current_user && current_user.like?(@post) %>
+                <%= render 'unlike', { post: @post } %>
+                <% elsif current_user %>
+                <%= render 'like', { post: @post } %>
+                <% end %>
+                </div>
+
               <% if current_user && current_user.own?(@post) %>
               <div class="flex justify-end mt-4">
                 <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}" do %>
