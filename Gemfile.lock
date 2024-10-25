@@ -462,6 +462,7 @@ DEPENDENCIES
   active_hash
   bootsnap
   brakeman
+  byebug
   capybara
   carrierwave
   config
