@@ -20,7 +20,7 @@ ja:
       updated: "投稿を更新しました"
       not_updated: "投稿を更新出来ませんでした"
       deleted: "投稿を削除しました"
-      delete_confirm: "削除しますか"
+      confirm: "削除しますか"
   user_sessions:
     new:
       title: ログイン
