@@ -3,12 +3,12 @@
     <%= render 'shared/error_messages', object: f.object %>
     <div class="mb-4">
       <%= f.label :title, class: "block text-sm font-medium text-gray-700" %>
-      <%= f.text_area :title, required: true, class: "border rounded-md px-3 py-2 w-full h-32" %>
+      <%= f.text_area :title, class: "border rounded-md px-3 py-2 w-full h-32" %>
     </div>
 
     <div class="mb-4">
       <%= f.label :photo, class: "block text-sm font-medium text-gray-700" %>
-      <%= f.file_field :photo, required: true, class: "border rounded-md px-3 py-2 w-full", accept: 'image/*' %>
+      <%= f.file_field :photo, class: "border rounded-md px-3 py-2 w-full", accept: 'image/*' %>
       <%= f.hidden_field :photo_cache %>
     </div>
 
