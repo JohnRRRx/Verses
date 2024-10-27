@@ -13,7 +13,6 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, notice: t('defaults.flash_message.created')
     else
-      flash.now[:error] = t('defaults.flash_message.not_created')
       render :new, status: :unprocessable_entity
     end
   end
@@ -45,7 +44,7 @@ class PostsController < ApplicationController
         name: track.name,
         artist: track.artists.first.name,
         album: track.album.name,
-        preview_url: track.preview_url
+        image_url: track.album.images.first['url']
       }
     }
   end
