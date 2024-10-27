@@ -18,7 +18,7 @@ ja:
       created: 投稿を作成しました
       not_created: 投稿を作成出来ませんでした
       updated: "投稿を更新しました"
-      not_updated: "投稿を更新出来ませんでした"
+      update_failure: "投稿を更新出来ませんでした"
       deleted: "投稿を削除しました"
       confirm: "削除しますか"
   user_sessions:
