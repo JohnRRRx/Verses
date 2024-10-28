@@ -40,8 +40,16 @@
                 <% end %>
               </div>
               <% end %>
-              <div class="bg-gray-100 p-4 rounded-md">
+            <% if @post.tag_list.any? %>
+              <div class="mt-4">
+              <h4 class="text-sm font-semibold mb-2"></h4>
+              <div class="flex flex-wrap gap-2">
+            <% @post.tag_list.each do |tag| %>
+            <%= link_to tag, posts_path(tag: tag), class: "bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full" %>
+            <% end %>
               </div>
+              </div>
+            <% end %>
             </div>
           </div>
         </div>
