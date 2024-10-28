@@ -5,4 +5,5 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
   mount_uploader :photo, PostPhotoUploader
+  acts_as_taggable_on :tags
 end

@@ -19,6 +19,8 @@
     <%= f.hidden_field :artist_name %>
     <%= f.hidden_field :album_name %>
 
+    <%= render 'tag_form', form: f, post: @post %>
+
     <div class="mt-6 mb-20">
       <%= f.submit @post.new_record? ? '投稿' : '更新', class: 'button' %>
     </div>
