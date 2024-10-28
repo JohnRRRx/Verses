@@ -56,7 +56,6 @@ gem "ransack"
 gem "rails-i18n"
 gem "cssbundling-rails"
 gem 'rspotify'
-gem 'dotenv-rails'
 gem 'acts-as-taggable-on'
 
 group :development do
