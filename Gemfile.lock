@@ -466,7 +466,6 @@ DEPENDENCIES
   acts-as-taggable-on
   bootsnap
   brakeman
-  byebug
   capybara
   carrierwave
   config
