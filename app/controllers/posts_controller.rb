@@ -1,7 +1,10 @@
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   def index
-    @posts = Post.includes(:user)
+    @posts = Post.includes(:user, :tags)
+    if params[:tag]
+      @posts = @posts.tagged_with(params[:tag])
+    end
   end
 
   def new
@@ -62,6 +65,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :photo, :photo_cache, :song_id, :song_name, :artist_name, :album_name, :audio)
+    params.require(:post).permit(:title, :photo, :photo_cache, :song_id, :song_name, :artist_name, :album_name, :audio, :tag_list)
   end
 end
