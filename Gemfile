@@ -57,6 +57,7 @@ gem "rails-i18n"
 gem "cssbundling-rails"
 gem 'rspotify'
 gem 'acts-as-taggable-on'
+gem 'sassc-rails'
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
