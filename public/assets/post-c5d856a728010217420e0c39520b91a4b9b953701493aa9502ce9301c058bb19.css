@@ -1,0 +1,37 @@
+@charset "UTF-8";
+/* line 1, app/assets/stylesheets/post.scss */
+.posts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  /* 変更: auto-fillからauto-fitに、300pxから400pxに */
+  gap: 2rem;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* line 11, app/assets/stylesheets/post.scss */
+.post-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  /* 変更: 400pxから100%に */
+  max-width: 400px;
+  /* 追加: 最大幅を設定 */
+  height: 350px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 他のスタイルは変更なし */
+/* メディアクエリを追加 */
+@media (max-width: 450px) {
+  /* line 27, app/assets/stylesheets/post.scss */
+  .posts-container {
+    grid-template-columns: 1fr;
+    /* 小さな画面では1列に */
+  }
+}

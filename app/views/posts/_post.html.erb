@@ -1,22 +1,21 @@
-<div class="post-card relative mt-6 mb-20">
+<div class="post-card relative">
   <div class="content-area">
     <%= link_to post_path(post) do %>
       <%= image_tag post.photo_url, class: "post-image" %>
     <% end %>
   </div>
 
-  <div class="absolute top-2 right-2">
-    <% if current_user && current_user.like?(post) %>
-      <%= render 'unlike', { post: post } %>
-    <% elsif current_user %>
-      <%= render 'like', { post: post } %>
+  <div class="absolute bottom-3 right-3 flex items-center space-x-2">
+    <% if current_user %>
+      <% if current_user.own?(post) %>
+        <%= link_to 'Edit', edit_post_path(post), class: "text-gray-400 hover:text-blue-700 text-sm" %>
+        <%= link_to 'Delete', post_path(post), data: {turbo_method: :delete, turbo_confirm: t('defaults.flash_message.confirm') }, class: "text-gray-400 hover:text-red-700 text-sm" %>
+      <% end %>
+      <% if current_user.like?(post) %>
+        <%= render 'unlike', { post: post } %>
+      <% else %>
+        <%= render 'like', { post: post } %>
+      <% end %>
     <% end %>
   </div>
-
-  <% if current_user && current_user.own?(post) %>
-    <div class="absolute bottom-2 left-2 flex space-x-2 mb-20">
-      <%= link_to 'Edit', edit_post_path(post), class: "text-gray-400 hover:text-blue-700 text-sm" %>
-      <%= link_to 'Delete', post_path(post), data: {turbo_method: :delete, turbo_confirm: t('defaults.flash_message.confirm') }, class: "text-gray-400 hover:text-red-700 text-sm" %>
-    </div>
-  <% end %>
 </div>
