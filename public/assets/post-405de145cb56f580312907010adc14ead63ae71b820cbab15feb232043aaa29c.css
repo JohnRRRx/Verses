@@ -1,0 +1,38 @@
+@charset "UTF-8";
+/* line 1, app/assets/stylesheets/post.scss */
+.posts-container {
+  display: grid;
+  /* 左右の最小間隔を確保するため、カードの幅(400px)に左右の間隔(40px)を加えた値を設定 */
+  grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+  gap: 2rem;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+/* line 13, app/assets/stylesheets/post.scss */
+.post-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+/* スマートフォン向けの調整 */
+@media screen and (max-width: 480px) {
+  /* line 26, app/assets/stylesheets/post.scss */
+  .posts-container {
+    grid-template-columns: 1fr;
+  }
+  /* line 30, app/assets/stylesheets/post.scss */
+  .post-card {
+    width: 100%;
+    max-width: 400px;
+  }
+}
