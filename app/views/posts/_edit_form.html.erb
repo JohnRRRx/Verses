@@ -22,7 +22,9 @@
     <%= render 'tag_form', form: f, post: @post %>
 
     <div class="mt-6 mb-20">
-      <%= f.submit @post.new_record? ? '投稿' : '更新', class: 'button' %>
+      <%= f.button type: "submit", class: 'neon-button' do %>
+        <span>ON AIR</span>
+      <% end %>
     </div>
   <% end %>
 </div>

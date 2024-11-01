@@ -1,21 +1,37 @@
-<div class="post-card relative">
-  <div class="content-area">
+<div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+  <div class="relative">
     <%= link_to post_path(post) do %>
-      <%= image_tag post.photo_url, class: "post-image" %>
+      <%= image_tag post.photo_url, alt: "Post Image", class: "h-72 w-72 object-contain rounded-t-xl" %>
     <% end %>
   </div>
 
-  <div class="absolute bottom-3 right-3 flex items-center space-x-2">
-    <% if current_user %>
-      <% if current_user.own?(post) %>
-        <%= link_to 'Edit', edit_post_path(post), class: "text-gray-400 hover:text-blue-700 text-sm" %>
-        <%= link_to 'Delete', post_path(post), data: {turbo_method: :delete, turbo_confirm: t('defaults.flash_message.confirm') }, class: "text-gray-400 hover:text-red-700 text-sm" %>
-      <% end %>
-      <% if current_user.like?(post) %>
-        <%= render 'unlike', { post: post } %>
-      <% else %>
-        <%= render 'like', { post: post } %>
-      <% end %>
-    <% end %>
+  <div class="px-4 py-3 w-72">
+  <div class="flex items-center text-xs">
+    <span class="uppercase font-medium text-gray-400"><%= post.user.name %></span>
+    <%= render 'time', post: post %>
+  </div>
+
+    <div class="flex items-center mt-4">
+      <div class="flex space-x-2">
+        <% if current_user && current_user.own?(post) %>
+          <%= link_to edit_post_path(post), class: "text-gray-400 hover:text-green-600 text-[110%] w-8 h-8 flex items-center justify-center" do %>
+            <i class="fa-solid fa-hammer"></i>
+          <% end %>
+          <%= link_to post_path(post), data: { turbo_method: :delete, turbo_confirm: t('defaults.flash_message.confirm') }, class: "text-gray-400 hover:text-red-700 text-[110%] w-8 h-8 flex items-center justify-center" do %>
+            <i class="fa-solid fa-skull"></i>
+          <% end %>
+        <% end %>
+      </div>
+      
+      <div class="ml-auto">
+        <% if current_user %>
+          <% if current_user.like?(post) %>
+            <%= render 'unlike', { post: post } %>
+          <% else %>
+            <%= render 'like', { post: post } %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

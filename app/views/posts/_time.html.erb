@@ -1,0 +1,15 @@
+<span class="ml-2  text-gray-400">
+<%= 
+  time = Time.now - post.created_at
+  case
+  when time < 60
+    "#{time.to_i}秒"
+  when time < 3600
+    "#{(time/60).to_i}分"
+  when time < 86400
+    "#{(time/3600).to_i}時間"
+  else
+    I18n.locale == :ja ? post.created_at.strftime("%-m月%-d日") : post.created_at.strftime("%b %d")
+  end
+%>
+</span>

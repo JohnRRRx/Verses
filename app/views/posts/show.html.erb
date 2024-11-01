@@ -27,16 +27,12 @@
                 </div>
 
               <% if current_user && current_user.own?(@post) %>
-              <div class="flex justify-end mt-4">
-                <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}" do %>
-                  <button class="button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md transition duration-300 ease-in-out">
-                    <%= t('posts.edit') %>
-                  </button>
+              <div class="flex justify-end mt-4 space-x-2">
+                <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}" ,class: "text-gray-400 hover:text-green-600 text-[130%] w-8 h-8 flex items-center justify-center " do %>
+                <i class="fa-solid fa-hammer"></i>
                 <% end %>
-                <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.flash_message.confirm') } do %>
-                  <button class="button bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md transition duration-300 ease-in-out">
-                    <%= t('posts.delete') %>
-                  </button>
+                <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.flash_message.confirm') }, class: "text-gray-400 hover:text-red-700 text-[130%] w-8 h-8 flex items-center justify-center " do %>
+                <i class="fa-solid fa-skull"></i>
                 <% end %>
               </div>
               <% end %>
