@@ -1,55 +1,69 @@
-<div class="container mx-auto pt-5">
-  <div class="mb-3">
-    <div class="max-w-4xl mx-auto">
-      <article class="bg-white shadow-md rounded-lg overflow-hidden">
-        <div class="p-4 flex">
-          <div class="w-1/2 pr-4">
-            <%= image_tag @post.photo_url, width: "420", height: "280", class: "w-full h-auto object-cover rounded-md mb-4" %>
-            <% if @post.song_id.present? %>
-            <iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="80" class="w-full" src="https://open.spotify.com/embed/track/<%= @post.song_id %>"></iframe>
-            <% end %>
+<body style="background-color: #babfd1;">
+<div class="container mx-auto px-4 py-8 min-h-screen">
+  <div class="h-[550px] w-[1000px] bg-white rounded-2xl shadow-xl p-8">
+    <div class="flex flex-col space-y-4">
+      <div class="flex space-x-8">
+        <!-- 左側コンテンツ -->
+        <div class="w-[420px] flex flex-col space-y-4">
+          <div class="h-[400px] w-[420px] rounded-lg overflow-hidden">
+            <%= image_tag @post.photo_url, class: "w-full h-full object-contain" %>
+          </div>
+          <% if @post.song_id.present? %>
+            <iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="80" class="w-full rounded-lg" src="https://open.spotify.com/embed/track/<%= @post.song_id %>"></iframe>
+          <% end %>
+        </div>
+
+        <!-- 右側コンテンツ -->
+        <div class="flex-1 flex flex-col justify-between relative">
+          <div>
+            <!-- いいねボタン -->
+            <div class="absolute top-0 right-0" id="like-button-content-<%= @post.id %>">
+              <% if current_user && current_user.like?(@post) %>
+                <%= render 'unlike', { post: @post } %>
+              <% elsif current_user %>
+                <%= render 'like', { post: @post } %>
+              <% end %>
+            </div>
+
+            <!-- タイトル -->
+            <div class="mt-8 pr-12">
+              <h3 class="text-xl font-bold"><%= simple_format(@post.title) %></h3>
+            </div>
           </div>
 
-          <div class="w-1/2 flex flex-col justify-between relative">
-            <h3 class="text-xl font-bold mb-6 "><%= simple_format(@post.title) %></h3>
-            <div class="flex flex-col space-y-4">
-              <ul class="text-gray-600">
-                <li><%= "by #{@post.user.name}" %></li>
-                <li><%= l @post.created_at, format: :long %></li>
-              </ul>
-
-                <div class="absolute top-2 right-2" id="like-button-content-<%= @post.id %>">
-                <% if current_user && current_user.like?(@post) %>
-                <%= render 'unlike', { post: @post } %>
-                <% elsif current_user %>
-                <%= render 'like', { post: @post } %>
+          <!-- 下部情報 -->
+          <div class="space-y-4">
+            <!-- タグ -->
+            <% if @post.tag_list.any? %>
+              <div class="flex flex-wrap gap-2">
+                <% @post.tag_list.each do |tag| %>
+                  <%= link_to tag, posts_path(tag: tag), class: "bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full" %>
                 <% end %>
-                </div>
+              </div>
+            <% end %>
+
+            <!-- ユーザー情報と編集・削除ボタン -->
+            <div class="flex justify-between items-center">
+              <div class="flex items-center space-x-2">
+              <p class="uppercase font-medium text-gray-400"><%= @post.user.name %></p>
+              <%= render 'time', post: @post %>
+              </div>
 
               <% if current_user && current_user.own?(@post) %>
-              <div class="flex justify-end mt-4 space-x-2">
-                <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}" ,class: "text-gray-400 hover:text-green-600 text-[130%] w-8 h-8 flex items-center justify-center " do %>
-                <i class="fa-solid fa-hammer"></i>
-                <% end %>
-                <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.flash_message.confirm') }, class: "text-gray-400 hover:text-red-700 text-[130%] w-8 h-8 flex items-center justify-center " do %>
-                <i class="fa-solid fa-skull"></i>
-                <% end %>
-              </div>
+                <div class="flex space-x-2">
+                  <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}", class: "text-gray-400 hover:text-blue-500 text-[130%] w-8 h-8 flex items-center justify-center" do %>
+                    <i class="fa-solid fa-hammer"></i>
+                  <% end %>
+                  <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.flash_message.confirm') }, class: "text-gray-400 hover:text-red-700 text-[130%] w-8 h-8 flex items-center justify-center" do %>
+                    <i class="fa-solid fa-skull"></i>
+                  <% end %>
+                </div>
               <% end %>
-            <% if @post.tag_list.any? %>
-              <div class="mt-4">
-              <h4 class="text-sm font-semibold mb-2"></h4>
-              <div class="flex flex-wrap gap-2">
-            <% @post.tag_list.each do |tag| %>
-            <%= link_to tag, posts_path(tag: tag), class: "bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full" %>
-            <% end %>
-              </div>
-              </div>
-            <% end %>
             </div>
           </div>
         </div>
-      </article>
+      </div>
     </div>
   </div>
 </div>
+</body>

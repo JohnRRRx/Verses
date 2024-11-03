@@ -3,7 +3,7 @@
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   def index
-    @posts = Post.includes(:user, :tags)
+    @posts = Post.includes(:user, :tags).order(created_at: :desc)
     return unless params[:tag]
 
     @posts = @posts.tagged_with(params[:tag])
@@ -49,13 +49,16 @@ class PostsController < ApplicationController
         name: track.name,
         artist: track.artists.first.name,
         album: track.album.name,
+        audio: track.external_urls['spotify'],
         image_url: track.album.images.first['url']
       }
     }
   end
 
   def likes
-    @like_posts = current_user.likes.map(&:post)
+    @like_posts = Post.joins(:likes)
+    .where(likes: { user_id: current_user.id })
+    .order(created_at: :desc)
   end
 
   def destroy
