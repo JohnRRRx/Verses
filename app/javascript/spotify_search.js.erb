@@ -5,6 +5,8 @@ class SpotifySearchHandler {
     this.searchResults = document.getElementById('search-results');
     this.mainForm = document.getElementById('post-form');
     this.songError = document.getElementById('song-error');
+    this.cache = new Map();
+    this.searchTimer = null;
     this.initialize();
   }
 
@@ -101,18 +103,29 @@ class SpotifySearchHandler {
   }
 
   handleSearch() {
-    const query = this.searchInput.value.trim();
-    if (!query) return;
+    clearTimeout(this.searchTimer);
+    this.searchTimer = setTimeout(() => {
+      const query = this.searchInput.value.trim();
+      if (!query) return;
 
-    this.searchResults.innerHTML = '<div class="text-center text-gray-500">検索中...</div>';
+      if (this.cache.has(query)) {
+        this.displayResults(this.cache.get(query));
+        return;
+      }
 
-    fetch(`/posts/search?query=${encodeURIComponent(query)}`)
-      .then(response => response.ok ? response.json() : Promise.reject('Search failed'))
-      .then(data => this.displayResults(data))
-      .catch(error => {
-        console.error('Search error:', error);
-        this.searchResults.innerHTML = '<div class="text-center text-red-500">検索中にエラーが発生しました</div>';
-      });
+      this.searchResults.innerHTML = '<div class="text-center text-gray-500">検索中...</div>';
+
+      fetch(`/posts/search?query=${encodeURIComponent(query)}`)
+        .then(response => response.ok ? response.json() : Promise.reject('Search failed'))
+        .then(data => {
+          this.cache.set(query, data);
+          this.displayResults(data);
+        })
+        .catch(error => {
+          console.error('Search error:', error);
+          this.searchResults.innerHTML = '<div class="text-center text-red-500">検索中にエラーが発生しました</div>';
+        });
+    }, 300); // 300ミリ秒のデバウンス
   }
 
   displayResults(data) {

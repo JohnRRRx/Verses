@@ -14,7 +14,7 @@
     <div class="flex items-center mt-4">
       <div class="flex space-x-2">
         <% if current_user && current_user.own?(post) %>
-          <%= link_to edit_post_path(post), class: "text-gray-400 hover:text-green-600 text-[110%] w-8 h-8 flex items-center justify-center" do %>
+          <%= link_to edit_post_path(post), class: "text-gray-400 hover:text-blue-500 text-[110%] w-8 h-8 flex items-center justify-center" do %>
             <i class="fa-solid fa-hammer"></i>
           <% end %>
           <%= link_to post_path(post), data: { turbo_method: :delete, turbo_confirm: t('defaults.flash_message.confirm') }, class: "text-gray-400 hover:text-red-700 text-[110%] w-8 h-8 flex items-center justify-center" do %>
@@ -23,6 +23,8 @@
         <% end %>
       </div>
       
+      <% if post.audio.present? %> <div class="track"> <p>🎶 <%= link_to "この投稿に合わせた音楽を聴く", post.audio, target: "_blank", class: "text-blue-500" %></p> </div> <% end %>
+
       <div class="ml-auto">
         <% if current_user %>
           <% if current_user.like?(post) %>
