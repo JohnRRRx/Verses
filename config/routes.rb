@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
   end
   resources :likes, only: %i[create destroy]
+  resource :profile, only: %i[show edit update]
   get 'music/search', to: 'musics#search'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
