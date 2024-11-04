@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   before_action :require_login
   add_flash_types :success, :failure
@@ -5,6 +7,6 @@ class ApplicationController < ActionController::Base
   private
 
   def not_authenticated
-    redirect_to login_path, error: t("defaults.flash_message.require_login")
+    redirect_to login_path, error: t('defaults.flash_message.require_login')
   end
 end

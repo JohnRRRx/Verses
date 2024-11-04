@@ -1,0 +1,31 @@
+/* line 1, app/assets/stylesheets/tape.scss */
+.post-card {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  background-image: url("data:image/svg+xml,%3Csvg version='1.2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 697 447' width='697' height='447'%3E...%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+}
+
+/* line 12, app/assets/stylesheets/tape.scss */
+.content-area {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* line 24, app/assets/stylesheets/tape.scss */
+.post-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}

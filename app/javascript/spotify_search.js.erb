@@ -5,6 +5,8 @@ class SpotifySearchHandler {
     this.searchResults = document.getElementById('search-results');
     this.mainForm = document.getElementById('post-form');
     this.songError = document.getElementById('song-error');
+    this.cache = new Map();
+    this.searchTimer = null;
     this.initialize();
   }
 
@@ -66,10 +68,12 @@ class SpotifySearchHandler {
         align-items: center;
         gap: 0.75rem;
         border-radius: 0.5rem;
-        transition: background-color 0.2s ease;
         cursor: pointer;
         width: 100%;
         text-align: left;
+        background-color: transparent;
+        transform: translateZ(0);
+        will-change: background-color;
       }
       .search-result-item:hover {
         background-color: #eff6ff;
@@ -101,18 +105,29 @@ class SpotifySearchHandler {
   }
 
   handleSearch() {
-    const query = this.searchInput.value.trim();
-    if (!query) return;
+    clearTimeout(this.searchTimer);
+    this.searchTimer = setTimeout(() => {
+      const query = this.searchInput.value.trim();
+      if (!query) return;
 
-    this.searchResults.innerHTML = '<div class="text-center text-gray-500">検索中...</div>';
+      if (this.cache.has(query)) {
+        this.displayResults(this.cache.get(query));
+        return;
+      }
 
-    fetch(`/posts/search?query=${encodeURIComponent(query)}`)
-      .then(response => response.ok ? response.json() : Promise.reject('Search failed'))
-      .then(data => this.displayResults(data))
-      .catch(error => {
-        console.error('Search error:', error);
-        this.searchResults.innerHTML = '<div class="text-center text-red-500">検索中にエラーが発生しました</div>';
-      });
+      this.searchResults.innerHTML = '<div class="text-center text-gray-500">検索中...</div>';
+
+      fetch(`/posts/search?query=${encodeURIComponent(query)}`)
+        .then(response => response.ok ? response.json() : Promise.reject('Search failed'))
+        .then(data => {
+          this.cache.set(query, data);
+          this.displayResults(data);
+        })
+        .catch(error => {
+          console.error('Search error:', error);
+          this.searchResults.innerHTML = '<div class="text-center text-red-500">検索中にエラーが発生しました</div>';
+        });
+    }, 300); // 300ミリ秒のデバウンス
   }
 
   displayResults(data) {
@@ -184,6 +199,24 @@ function initializeSpotifySearch() {
   new SpotifySearchHandler();
 }
 
-document.addEventListener('DOMContentLoaded', initializeSpotifySearch);
-document.addEventListener('turbo:load', initializeSpotifySearch);
-document.addEventListener('turbo:render', initializeSpotifySearch);
+(function() {
+  function initSearch() {
+    if (typeof window.initializeSpotifySearch === 'function') {
+      window.initializeSpotifySearch();
+    } else if (document.getElementById('song_search')) {
+      console.warn('initializeSpotifySearch function not found. Retrying...');
+      setTimeout(initSearch, 100);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearch);
+  } else {
+    initSearch();
+  }
+
+  document.addEventListener('turbo:load', initSearch);
+  document.addEventListener('turbo:render', initSearch);
+})();
+
+window.initializeSpotifySearch = initializeSpotifySearch;
