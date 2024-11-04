@@ -13,7 +13,9 @@
   },
   "author": "",
   "license": "ISC",
-  "keywords": [],
+  "keywords": [
+
+  ],
   "dependencies": {
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
@@ -21,5 +23,6 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.4.13"
-  }
+  },
+  "packageManager": "yarn@1.22.22"
 }
