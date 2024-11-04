@@ -1,13 +1,15 @@
-<body style="background-color: #babfd1;">
-<div class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5" id="like-button-for-post"> <!-- idを付けてAjax化用 -->
-  <% if @like_posts.any? %>
+<div class="container mx-auto px-4 py-8 gap-x-14 gap-y-20 ">
+  <% if @like_posts.blank? %>
+    <div class="col-span-full flex items-center justify-center w-full h-full mb-3 text-gray-600">
+      <%= t('likes.none')%>
+    </div>
+  <% end %>
+  
+  <div class="flex-grow w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 my-10" id="like-button-for-post">
     <% @like_posts.each do |post| %>
       <div id="post-<%= post.id %>">
         <%= render post %>
       </div>
     <% end %>
-  <% else %>
-    <div class="col-span-full flex items-center justify-center h-full mb-3 text-gray-600" style="width: 100%;"><%= t('likes.none')%></div>
-  <% end %>
+  </div>
 </div>
-</body>

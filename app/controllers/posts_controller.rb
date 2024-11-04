@@ -49,7 +49,6 @@ class PostsController < ApplicationController
         name: track.name,
         artist: track.artists.first.name,
         album: track.album.name,
-        audio: track.external_urls['spotify'],
         image_url: track.album.images.first['url']
       }
     }
