@@ -1,0 +1,33 @@
+/* line 1, app/assets/stylesheets/tape.scss */
+.post-card {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  background-image: url("data:image/svg+xml,%3Csvg version='1.2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 697 447' width='697' height='447'%3E%3Cstyle%3E.a%7Bfill:none;stroke:%23000;stroke-linecap:round;stroke-width:4.4%7D.b%7Bfill:none;stroke:%23000;stroke-width:3.4%7D.c%7Bfill:none;stroke:%23000;stroke-linecap:round;stroke-width:4.1%7D.d%7Bfill:none;stroke:%23000;stroke-linecap:round;stroke-width:3.8%7D%3C/style%3E%3Cpath d='m127.2 386.5l-3.2-2.8-2.9 2.8-1.9-1.9 3.1-2.8-2.9-3 1.7-1.5 2.9 3 3.7-3.3 1.6 1.7-3.7 3.3 3.2 3c0 0-1.6 1.5-1.6 1.5z'/%3E%3Cpath fill-rule='evenodd' class='a' d='m124.2 391.7c-5.2 0-9.5-4.3-9.5-9.5 0-5.3 4.3-9.5 9.5-9.5 5.3 0 9.5 4.2 9.5 9.5 0 5.2-4.2 9.5-9.5 9.5z'/%3E%3Cpath d='m573.4 385.1l-3.2-2.9-2.9 2.9-1.9-1.9 3.1-2.8-2.8-3.1 1.6-1.4 2.9 2.9 3.8-3.3 1.5 1.7-3.6 3.3 3 3-1.5 1.5z'/%3E%3Cpath fill-rule='evenodd' class='a' d='m570.5 390.2c-5.2 0-9.5-4.3-9.5-9.5 0-5.3 4.3-9.5 9.5-9.5 5.3 0 9.5 4.2 9.5 9.5 0 5.2-4.2 9.5-9.5 9.5z'/%3E%3Cpath d='m129.8 57l-3.1-2.8-3 2.8-1.8-1.9 3.1-2.7-2.9-3.1 1.7-1.5 2.9 3 3.7-3.3 1.5 1.7-3.6 3.3 3.1 3c0 0-1.6 1.5-1.6 1.5z'/%3E%3Cpath fill-rule='evenodd' class='a' d='m127.1 62.1c-5.2 0-9.5-4.3-9.5-9.5 0-5.3 4.3-9.5 9.5-9.5 5.3 0 9.5 4.2 9.5 9.5 0 5.2-4.2 9.5-9.5 9.5z'/%3E%3Cpath d='m572.4 57.4l-3.1-2.9-3 2.9-1.9-2 3.1-2.7-2.8-3.1 1.6-1.4 3 2.9 3.7-3.3 1.5 1.7-3.6 3.3 3 3-1.5 1.6q0-0.1 0 0z'/%3E%3Cpath fill-rule='evenodd' class='a' d='m569.8 63.1c-5.6 0-10-4.5-10-10 0-5.6 4.4-10 10-10 5.5 0 10 4.4 10 10 0 5.5-4.5 10-10 10z'/%3E%3Cpath fill-rule='evenodd' class='b' d='m500.1 397.4c0 0-10-40.4-17.1-47.1-4.4-4.1-266.9-2.2-271.3-0.4-6.9 2.8-18.9 47.5-18.9 47.5 0 0 307.3 0 307.3 0z'/%3E%3Cpath fill-rule='evenodd' class='c' d='m553.5 65.2h-413.9c-3.1 0-5.6 3.6-5.6 7.9v251.8c0 4.4 2.5 7.9 5.6 7.9h413.9c3.1 0 5.6-3.5 5.6-7.9v-251.8c0-4.3-2.5-7.9-5.6-7.9z'/%3E%3Cpath fill-rule='evenodd' class='d' d='m567.6 34.8h-442.8c-10.4 0-18.9 10-18.9 22.4v318.4c0 12.4 8.5 22.5 19 22.5h442.7c10.5 0 19-10.1 19-22.5v-318.4c0-12.4-8.5-22.4-19-22.4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+}
+
+/* line 11, app/assets/stylesheets/tape.scss */
+.content-area {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 40px;
+  width: 200px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* line 25, app/assets/stylesheets/tape.scss */
+.post-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}

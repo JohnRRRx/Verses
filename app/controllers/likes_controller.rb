@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LikesController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
@@ -7,5 +9,10 @@ class LikesController < ApplicationController
   def destroy
     @post = current_user.likes.find(params[:id]).post
     current_user.unlike(@post)
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to likes_path }
+    end
   end
 end

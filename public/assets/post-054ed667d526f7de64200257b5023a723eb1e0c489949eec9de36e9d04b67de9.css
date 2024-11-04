@@ -1,0 +1,47 @@
+/* line 1, app/assets/stylesheets/post.scss */
+.posts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 3rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* line 11, app/assets/stylesheets/post.scss */
+.post-card {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  background-color: #f0f0f0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* line 21, app/assets/stylesheets/post.scss */
+.content-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+/* line 33, app/assets/stylesheets/post.scss */
+.post-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* line 40, app/assets/stylesheets/post.scss */
+.post-image:hover {
+  transform: scale(1.05);
+}

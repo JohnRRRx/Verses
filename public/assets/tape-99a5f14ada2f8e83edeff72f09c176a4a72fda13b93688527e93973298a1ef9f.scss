@@ -1,0 +1,37 @@
+.posts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .post-card {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    background-image: image-url('tape.png');
+    background-size: 100% 100%;
+    background-position: center;
+    margin: 0 auto;
+  }
+  
+  .content-area {
+    position: absolute;
+    top: 45px;    /* フレーム上部の余白 */
+    left: 45px;   /* フレーム左の余白 */
+    right: 45px;  /* フレーム右の余白 */
+    bottom: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }

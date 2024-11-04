@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
   def new
@@ -10,7 +12,7 @@ class UsersController < ApplicationController
       redirect_to login_path, notice: t('defaults.flash_message.sign_up_success')
     else
       flash.now[:error] = t('defaults.flash_message.sign_up_failure')
-      render :new , status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 

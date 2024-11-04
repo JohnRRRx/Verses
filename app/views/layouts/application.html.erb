@@ -21,41 +21,22 @@
     <%# その他のアセット %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "neon", "data-turbo-track": "reload" %>
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body class="flex flex-col min-h-screen bg-[#babfd1]">
     <% if logged_in? %>
       <%= render 'shared/header' %>
     <% else %>
       <%= render 'shared/before_login_header' %>
     <% end %>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="flex-grow flex flex-col pt-24">
       <%= yield %>
     </main>
     <%= render 'shared/footer' %>
-
     <%= javascript_tag do %>
-  (function() {
-    function initSearch() {
-      if (typeof window.initializeSpotifySearch === 'function') {
-        window.initializeSpotifySearch();
-      } else if (document.getElementById('song_search')) {
-        // Spotify検索要素が存在する場合のみ再試行
-        console.warn('initializeSpotifySearch function not found. Retrying...');
-        setTimeout(initSearch, 100);
-      }
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initSearch);
-    } else {
-      initSearch();
-    }
-
-    document.addEventListener('turbo:load', initSearch);
-    document.addEventListener('turbo:render', initSearch);
-  })();
   <% end %>
   </body>
 </html>

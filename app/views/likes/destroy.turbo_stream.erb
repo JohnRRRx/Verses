@@ -1,9 +1,12 @@
-  <%= turbo_stream.replace "unlike-button-for-post-" do %>
-    <p class="text-gray-600"><%= t('likes.nothing') %></p>
-  <% end %>
-
   <%= turbo_stream.replace "unlike-button-for-post-#{@post.id}" do %>
     <%= render 'posts/like', post: @post %>
   <% end %>
 
   <%= turbo_stream.remove "post-#{@post.id}" %>
+  <% if current_user.likes.count.zero? %>
+  <%= turbo_stream.replace "no-likes-message" do %>
+    <div id="no-likes-message" class="col-span-full flex items-center justify-center w-full h-full mb-3 text-gray-600">
+      <%= t('likes.none') %>
+    </div>
+  <% end %>
+<% end %>

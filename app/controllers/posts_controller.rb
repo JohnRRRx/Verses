@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   def index
-    @posts = Post.includes(:user, :tags)
-    if params[:tag]
-      @posts = @posts.tagged_with(params[:tag])
-    end
+    @posts = Post.includes(:user, :tags).order(created_at: :desc)
+    return unless params[:tag]
+
+    @posts = @posts.tagged_with(params[:tag])
   end
 
   def new
@@ -53,7 +55,9 @@ class PostsController < ApplicationController
   end
 
   def likes
-    @like_posts = current_user.likes.map(&:post)
+    @like_posts = Post.joins(:likes)
+    .where(likes: { user_id: current_user.id })
+    .order(created_at: :desc)
   end
 
   def destroy
@@ -65,6 +69,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :photo, :photo_cache, :song_id, :song_name, :artist_name, :album_name, :audio, :tag_list)
+    params.require(:post).permit(:title, :photo, :photo_cache, :song_id, :song_name, :artist_name, :album_name, :audio,
+                                 :tag_list)
   end
 end
