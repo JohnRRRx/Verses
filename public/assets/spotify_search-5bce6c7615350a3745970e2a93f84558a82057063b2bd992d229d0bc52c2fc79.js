@@ -219,4 +219,5 @@ function initializeSpotifySearch() {
   document.addEventListener('turbo:render', initSearch);
 })();
 
+// グローバルスコープに公開
 window.initializeSpotifySearch = initializeSpotifySearch;
