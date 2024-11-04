@@ -1,11 +1,10 @@
-<body style="background-color: #babfd1;">
-<div class="container mx-auto px-4 py-8 min-h-screen">
-  <div class="h-[550px] w-[1000px] bg-white rounded-2xl shadow-xl p-8">
+<div class="flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-[1000px]">
     <div class="flex flex-col space-y-4">
-      <div class="flex space-x-8">
+      <div class="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0"> <!-- レスポンシブ対応 -->
         <!-- 左側コンテンツ -->
-        <div class="w-[420px] flex flex-col space-y-4">
-          <div class="h-[400px] w-[420px] rounded-lg overflow-hidden">
+        <div class="w-full md:w-[420px] flex flex-col space-y-4">
+          <div class="h-[400px] w-full md:w-[420px] rounded-lg overflow-hidden">
             <%= image_tag @post.photo_url, class: "w-full h-full object-contain" %>
           </div>
           <% if @post.song_id.present? %>
@@ -26,8 +25,8 @@
             </div>
 
             <!-- タイトル -->
-            <div class="mt-8 pr-12">
-              <h3 class="text-xl font-bold"><%= simple_format(@post.title) %></h3>
+            <div class="pr-12 max-h-[300px] overflow-y-auto">
+              <h3 class="text-base font-bold"><%= simple_format(@post.title) %></h3>
             </div>
           </div>
 
