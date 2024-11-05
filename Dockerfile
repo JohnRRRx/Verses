@@ -24,6 +24,11 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git pkg-config libpq-dev && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
+# Node.jsとYarnのインストール
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get update && apt-get install -y nodejs && \
+    npm install -g yarn
+
 # アプリケーションのGemをインストール
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
 COPY Gemfile Gemfile.lock ./
@@ -37,10 +42,18 @@ COPY . .
 # ブートスナップ用のコードをプリコンパイルして起動時間を短縮
 RUN bundle exec bootsnap precompile app/ lib/
 
-# 本番環境用にアセットをプリコンパイル（RAILS_MASTER_KEYは不要）
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
-    apt-get install -y nodejs
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+# Node.jsの依存関係をインストールしてアセットをビルド
+RUN yarn install
+RUN yarn build:css
+
+# アセットのプリコンパイル用の環境変数を設定
+ENV SECRET_KEY_BASE=dummy-key-for-precompile \
+    RAILS_SKIP_SPOTIFY_AUTH=true \
+    SPOTIFY_CLIENT_ID=dummy-client-id \
+    SPOTIFY_SECRET_ID=dummy-secret-id
+
+# 本番環境用にアセットをプリコンパイル
+RUN ./bin/rails assets:precompile
 
 # 最終的なアプリケーションイメージのためのステージ
 FROM base
@@ -55,8 +68,6 @@ RUN groupadd --system --gid 1000 rails && \
     chown -R rails:rails db log storage tmp
 USER 1000:1000
 
-# エントリポイントでデータベースを準備する
-RUN rails db:create db:migrate
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # デフォルトでサーバーを起動（実行時に上書き可能）
