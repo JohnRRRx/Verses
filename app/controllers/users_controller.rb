@@ -9,9 +9,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to login_path, notice: t('defaults.flash_message.sign_up_success')
+      redirect_to login_path, notice: t('message.sign_up_success')
     else
-      flash.now[:error] = t('defaults.flash_message.sign_up_failure')
+      flash.now[:error] = t('message.sign_up_failure')
       render :new, status: :unprocessable_entity
     end
   end
@@ -19,6 +19,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :icon)
   end
 end

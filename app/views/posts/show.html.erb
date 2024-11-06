@@ -44,6 +44,7 @@
             <!-- ユーザー情報と編集・削除ボタン -->
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
+              <%= image_tag(current_user.icon_url.to_s, class: 'rounded-full w-8 h-8 mr-1 ') if current_user.icon_url.present? %>
               <p class="uppercase font-medium text-gray-400"><%= @post.user.name %></p>
               <%= render 'time', post: @post %>
               </div>
@@ -53,7 +54,7 @@
                   <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}", class: "text-gray-400 hover:text-blue-500 text-[130%] w-8 h-8 flex items-center justify-center" do %>
                     <i class="fa-solid fa-hammer"></i>
                   <% end %>
-                  <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.flash_message.confirm') }, class: "text-gray-400 hover:text-red-700 text-[130%] w-8 h-8 flex items-center justify-center" do %>
+                  <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: t('message.confirm') }, class: "text-gray-400 hover:text-red-700 text-[130%] w-8 h-8 flex items-center justify-center" do %>
                     <i class="fa-solid fa-skull"></i>
                   <% end %>
                 </div>

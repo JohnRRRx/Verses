@@ -1,6 +1,4 @@
 <div class="min-h-screen flex flex-col items-center pt-6 pb-24 px-4">
-
-
   <div class="w-[800px] border-2 border-white rounded-2xl shadow-xl p-8">
     <h1 class="text-3xl font-bold text-center mb-4"><%= @post.new_record? ? t('.title') : t('posts.edit.title') %></h1><!--ページタイトル-->
     <%= form_with model: @post, local: true, data: { turbo: false } do |f| %>
