@@ -7,6 +7,7 @@
 
   <div class="px-4 py-3 w-72 bg-gray-100 rounded-b-xl">
   <div class="flex items-center text-xs">
+    <%= image_tag(current_user.icon_url.to_s, class: 'rounded-full w-8 h-8 mr-1 ') if current_user.icon_url.present? %>
     <span class="uppercase font-medium text-gray-400"><%= post.user.name %></span>
     <%= render 'time', post: post %>
   </div>
@@ -17,7 +18,7 @@
           <%= link_to edit_post_path(post), class: "text-gray-400 hover:text-blue-500 text-[110%] w-8 h-8 flex items-center justify-center" do %>
             <i class="fa-solid fa-hammer"></i>
           <% end %>
-          <%= link_to post_path(post), data: { turbo_method: :delete, turbo_confirm: t('defaults.flash_message.confirm') }, class: "text-gray-400 hover:text-red-700 text-[110%] w-8 h-8 flex items-center justify-center" do %>
+          <%= link_to post_path(post), data: { turbo_method: :delete, turbo_confirm: t('message.confirm') }, class: "text-gray-400 hover:text-red-700 text-[110%] w-8 h-8 flex items-center justify-center" do %>
             <i class="fa-solid fa-skull"></i>
           <% end %>
         <% end %>
