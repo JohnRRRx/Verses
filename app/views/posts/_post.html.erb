@@ -18,7 +18,7 @@
           <%= link_to edit_post_path(post), class: "text-gray-400 hover:text-blue-500 text-[110%] w-8 h-8 flex items-center justify-center" do %>
             <i class="fa-solid fa-hammer"></i>
           <% end %>
-          <%= link_to post_path(post), data: { turbo_method: :delete, turbo_confirm: t('message.confirm') }, class: "text-gray-400 hover:text-red-700 text-[110%] w-8 h-8 flex items-center justify-center" do %>
+          <%= link_to post_path(post, tag: params[:tag]), data: { turbo_method: :delete, turbo_confirm: t('message.confirm') }, class: "text-gray-400 hover:text-red-700 text-[110%] w-8 h-8 flex items-center justify-center" do %>
             <i class="fa-solid fa-skull"></i>
           <% end %>
         <% end %>
