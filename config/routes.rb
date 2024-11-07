@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get :search
       get :likes
+      get :mine
     end
   end
   resources :likes, only: %i[create destroy]
