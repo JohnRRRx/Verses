@@ -1,5 +1,6 @@
 require 'rspotify'
 
-if Rails.env.production? && ENV['RAILS_SKIP_SPOTIFY_AUTH'] != 'true'
+unless defined?(@spotify_authenticated)
   RSpotify.authenticate(ENV['SPOTIFY_CLIENT_ID'], ENV['SPOTIFY_SECRET_ID'])
+  @spotify_authenticated = true
 end
