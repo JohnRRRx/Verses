@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Post < ApplicationRecord
   validates :title, presence: { message: 'を選択してください' }
   validates :photo, presence: { message: 'を選択してください' }, on: :create
