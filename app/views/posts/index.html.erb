@@ -1,14 +1,20 @@
-<div class="container mx-auto px-4 py-8 gap-x-14 gap-y-20 ">
+<div class="container mx-auto px-4 py-8 gap-x-14 gap-y-20">
   <% if @current_tag %>
     <h2 class="text-2xl font-bold mb-6"></h2>
   <% end %>
   
-  <%# グリッドレイアウト %>
   <% if @posts.blank? %>
-  <div class="col-span-full flex items-center justify-center w-full h-full mb-3 text-gray-600"><%= t('posts.none') %>
-  </div>
+    <div class="col-span-full flex items-center justify-center w-full h-full mb-3 text-gray-600">
+      <%= t('posts.none') %>
+    </div>
+  <% else %>
+    <div id="posts" class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
+      <%= render partial: 'pages', locals: { posts: @posts } %>
+    </div>
+    
+    <%= turbo_frame_tag "pagination", 
+        src: posts_path(format: :turbo_stream, page: @posts.next_page, tag: params[:tag]), 
+        loading: :lazy if @posts.next_page 
+    %>
   <% end %>
-  <div class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
-    <%= render partial: 'post', collection: @posts %>
-  </div>
 </div>
