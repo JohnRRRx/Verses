@@ -61,7 +61,14 @@ class PostsController < ApplicationController
   def destroy
     post = current_user.posts.find(params[:id])
     post.destroy!
-    redirect_to posts_path, notice: t('message.deleted'), status: :see_other
+  
+    if params[:tag] && request.referer&.include?("tag=#{params[:tag]}")
+      redirect_to posts_path(tag: params[:tag]), notice: t('message.deleted'), status: :see_other
+    elsif request.referer&.include?(likes_path)
+      redirect_to likes_path, notice: t('message.deleted'), status: :see_other
+    else
+      redirect_to posts_path, notice: t('message.deleted'), status: :see_other
+    end
   end
 
   private
