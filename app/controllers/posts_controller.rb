@@ -1,16 +1,10 @@
-# frozen_string_literal: true
-
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
 
   def index
-    @posts = Post.includes(:user, :tags).order(created_at: :desc).page(params[:page]).per(6)
-    @posts = @posts.tagged_with(params[:tag]) if params[:tag]
-  
-    respond_to do |format|
-      format.html
-      format.turbo_stream
-    end
+    @posts = Post.includes(:user, :tags).order(created_at: :desc)
+    return unless params[:tag]
+    @posts = @posts.tagged_with(params[:tag])
   end
 
   def new
