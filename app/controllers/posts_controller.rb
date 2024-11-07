@@ -2,6 +2,9 @@
 
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
+  require 'rspotify'
+  RSpotify.authenticate(ENV['SPOTIFY_CLIENT_ID'], ENV['SPOTIFY_SECRET_ID'])
+
   def index
     @posts = Post.includes(:user, :tags).order(created_at: :desc)
     return unless params[:tag]
