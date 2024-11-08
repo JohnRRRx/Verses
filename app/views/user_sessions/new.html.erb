@@ -19,6 +19,8 @@
         </div>
       </div>
     <% end %>
+
+    <%= link_to 'Login with Google', auth_at_provider_path(provider: :google) %>
     
     <div class='text-center mt-6 space-y-2'>
       <%= link_to t('user_sessions.new.sign_up'), new_user_path, class: "block text-white hover:underline" %>
