@@ -6,9 +6,6 @@ Rails.application.config.sorcery.configure do |config|
   config.google.callback_url = "http://localhost:3000/oauth/callback?provider=google"
   config.google.user_info_mapping = { email: "email", name: "name" }
 
-
-
-
   config.user_config do |user|
   user.stretches = 1 if Rails.env.test?
   user.authentications_class = Authentication
