@@ -3,8 +3,7 @@ Rails.application.config.sorcery.configure do |config|
   config.external_providers = [:google]
   config.google.key = ENV['GOOGLE_CLIENT_ID']
   config.google.secret = ENV['GOOGLE_CLIENT_SECRET']
-  config.google.callback_url = "http://localhost:3000/oauth/callback?provider=google"
-  config.google.callback_url = ENV['PRODUCT_ENV']
+  config.google.callback_url = "https://slimy-ilsa-nonamejusttest-74953f89.koyeb.app/oauth/callback?provider=google"
   config.google.user_info_mapping = { email: "email", name: "name" }
 
   config.user_config do |user|
