@@ -1,16 +1,13 @@
-# fly.toml app configuration file generated for blinkphotojockey on 2024-11-05T05:33:06+09:00
+# fly.toml app configuration file generated for blinkphotojockey-thrumming-smoke-773 on 2024-11-11T03:08:15+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'blinkphotojockey'
+app = 'blinkphotojockey-thrumming-smoke-773'
 primary_region = 'nrt'
 console_command = '/rails/bin/rails console'
 
 [build]
-
-[deploy]
-  release_command = "./bin/rails db:prepare"
 
 [http_service]
   internal_port = 3000
@@ -39,7 +36,3 @@ console_command = '/rails/bin/rails console'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
-
-[[statics]]
-  guest_path = '/rails/public'
-  url_prefix = '/'

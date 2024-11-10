@@ -9,7 +9,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
+    "deploy": "prisma migrate deploy && npm start",
+    "postinstall": "prisma generate"
   },
   "author": "",
   "license": "ISC",
@@ -24,5 +26,9 @@
   "devDependencies": {
     "tailwindcss": "^3.4.13"
   },
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "yarn@1.22.22",
+  "engines": {
+    "node": ">=18.x",
+    "yarn": "1.22.x"
+  }
 }
