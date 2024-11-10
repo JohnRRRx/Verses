@@ -8,4 +8,4 @@
 .DS_Store
 app/.DS_Store
 /tmp/pids/server.pid
-public/uploads/post/photo/*
+public/uploads/
