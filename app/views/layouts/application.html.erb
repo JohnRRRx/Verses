@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <%= favicon_link_tag('favicon') %>
     <title><%= content_for(:title) || "Blink Photo Jockey" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -11,11 +12,11 @@
     <%= yield :head %>
 
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    # <link rel="icon" href="/icon.png" type="image/png">
+    # <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    # <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Turbo関連のタグを先に配置 %>
+    <!-- Turbo関連のタグを先に配置 -->
     <%= javascript_include_tag "turbo", type: "module" %>
 
     <%# その他のアセット %>
