@@ -45,7 +45,7 @@
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
               <%= image_tag(@post.user.icon_url.to_s, class: 'rounded-full w-8 h-8 mr-1 ') if @post.user.icon_url.present? %>
-              <p class="uppercase font-medium text-gray-400"><%= @post.user.name %></p>
+              <p class="font-medium text-gray-400"><%= @post.user.name %></p>
               <%= render 'time', post: @post %>
               </div>
 

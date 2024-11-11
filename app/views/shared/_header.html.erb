@@ -6,17 +6,52 @@
         <span class="self-center text-2xl font-semibold whitespace-nowrap text-white"><%= t('Title') %></span>
       <% end %>
 
-      <div class="items-center justify-between w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-        <ul class="flex flex-col p-4 md:p-0 mt-4 font-semibold md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
+      <div class="items-center justify-between w-full md:w-auto md:order-1" id="navbar-sticky">
+        <ul class="flex flex-row items-center space-x-4 p-4 md:p-0 mt-4 font-semibold md:mt-0">
           <li>
-            <div>
-            <%= link_to t('header.post_index'), posts_path,  class: "nav-link icon-link  text-white mr-6" %>
-            <%= link_to t('header.new_post'), new_post_path,  class: "nav-link icon-link  text-white mr-6" %>
-            <%= link_to t('header.like_index'), likes_posts_path, class: "nav-link icon-link  text-white mr-6" %>
-            <%= link_to t('header.my_posts'), mine_posts_path,  class: "nav-link icon-link  text-white mr-6" %>
-            <%= link_to t('header.profile'), profile_path,  class: "nav-link icon-link  text-white mr-6" %>
-            <%= link_to t('header.logout'), logout_path, data: { turbo_method: :delete }, class: "nav-link icon-link text-white bg-transparent border-0 p-0 hover:text-gray-300 cursor-pointer", form_class: "inline-block"%>
-            </div>
+            <%= link_to posts_path, class: "nav-link icon-link text-white mr-6 flex items-center space-x-2" do %>
+            <img src="<%= asset_path('index.png') %>" class="w-5 h-5" />
+            <span><%= t('header.post_index') %></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_post_path, class: "nav-link icon-link text-white mr-6 flex items-center space-x-2" do %>
+            <img src="<%= asset_path('new.png') %>" class="w-5 h-5" />
+            <span><%= t('header.new_post') %></span>
+            <% end %>
+          </li>
+          <li>
+            <details class="relative inline-block">
+              <summary class="cursor-pointer flex items-center p-2 bg-gray-900 font-semibold text-white rounded-md">
+                メニュー
+              </summary>
+              <div class="absolute top-full mt-6 right-0 w-auto min-w-full whitespace-nowrap bg-gray-900 text-white rounded-md shadow-md p-2 z-10 transition-opacity duration-300">
+                <ul class="flex flex-col">
+                  <li>
+                    <%= link_to likes_posts_path, class: "nav-link icon-link text-white mr-6 flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
+                      <img src="<%= asset_path('like.png') %>" class="ml-2 w-5 h-5" /><span><%= t('header.like_index') %></span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to mine_posts_path, class: "nav-link icon-link text-white flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
+                      <img src="<%= asset_path('mypost.png') %>" class="ml-2 w-5 h-5" /><span class="ml-6"><%= t('header.my_posts') %></span>
+                    <% end %>
+                  </li>
+
+                  <li>
+                    <%= link_to profile_path, class: "nav-link icon-link text-white mr-6 flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
+                      <img src="<%= asset_path('profile.png') %>" class="ml-1 w-6 h-6" /><span><%= t('header.profile') %></span>
+                    <% end %>
+                  </li>
+
+                  <li>
+                    <%= link_to logout_path, data: { turbo_method: :delete }, class: "nav-link icon-link text-white mr-6 flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
+                      <img src="<%= asset_path('logout.png') %>" class="ml-2 w-5 h-5" /></i> <span><%= t('header.logout') %></span>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            </details>
           </li>
         </ul>
       </div>
