@@ -5,16 +5,22 @@
         <span class="text-2xl font-semibold text-white"><%= t('Title') %></span>
       <% end %>
 
-      <div class="flex items-center justify-between w-full md:flex md:w-auto" id="navbar-sticky">
-        <ul class="flex flex-col p-4 md:p-0 mt-4 font-semibold md:flex-row md:space-x-8 md:mt-0">
-          <li>
-            <div>
-              <%= link_to t('header.index'), posts_path, class: "text-white mr-6" %>
-              <%= link_to t('header.login'), login_path, class: "text-white" %>
-            </div>
-          </li>
-        </ul>
-      </div>
+<div class="flex items-center justify-between w-full md:flex md:w-auto" id="navbar-sticky">
+  <ul class="flex flex-row items-center space-x-6 p-4 md:p-0 mt-4 font-semibold md:mt-0">
+    <li>
+      <%= link_to posts_path, class: "nav-link icon-link text-white flex items-center space-x-2 mr-6" do %>
+        <img src="<%= asset_path('index.png') %>" class="w-5 h-5">
+        <span><%= t('header.index') %></span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to login_path, class: "nav-link icon-link text-white flex items-center space-x-2" do %>
+        <img src="<%= asset_path('login.png') %>" class="w-6 h-5">
+        <span><%= t('header.login') %></span>
+      <% end %>
+    </li>
+  </ul>
+</div>
     </div>
   </nav>
 </header>
