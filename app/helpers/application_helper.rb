@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def flash_background_color(type)
+  def flash_color(type)
     case type.to_sym
     when :notice then 'bg-emerald-300/50'
     when :error then 'bg-red-400/40'
