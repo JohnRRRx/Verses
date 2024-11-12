@@ -127,7 +127,7 @@ class SpotifySearchHandler {
           console.error('Search error:', error);
           this.searchResults.innerHTML = '<div class="text-center text-red-500">検索中にエラーが発生しました</div>';
         });
-    }, 300); # 300ミリ秒のデバウンス
+    }, 300); //300ミリ秒のデバウンス
   }
 
   displayResults(data) {

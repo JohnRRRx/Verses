@@ -25,7 +25,7 @@
               <summary class="cursor-pointer flex items-center p-2 bg-gray-900 font-semibold text-white rounded-md">
               <i class="fa-solid fa-bars"></i>
               </summary>
-              <div class="absolute top-full mt-6 right-0 w-auto min-w-full whitespace-nowrap bg-gray-900 text-white rounded-md shadow-md p-2 z-10 transition-opacity duration-300">
+              <div class="absolute top-full mt-6 right-0 w-auto min-w-full whitespace-nowrap bg-gray-900 text-white rounded-md shadow-md p-2 z-10 transition-opacity duration-300  pr-4">
                 <ul class="flex flex-col">
                   <li>
                     <%= link_to likes_posts_path, class: "nav-link icon-link text-white mr-6 flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
@@ -39,14 +39,14 @@
                   </li>
 
                   <li>
-                    <%= link_to profile_path, class: "nav-link icon-link text-white mr-6 flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
+                    <%= link_to profile_path, class: "nav-link icon-link text-white mr-5 flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
                       <img src="<%= asset_path('profile.png') %>" class="ml-1 w-6 h-6" /><span><%= t('header.profile') %></span>
                     <% end %>
                   </li>
 
                   <li>
                     <%= link_to logout_path, data: { turbo_method: :delete }, class: "nav-link icon-link text-white mr-6 flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
-                      <img src="<%= asset_path('logout.png') %>" class="ml-2 w-5 h-5" /></i> <span><%= t('header.logout') %></span>
+                      <img src="<%= asset_path('logout.png') %>" class="ml-1 w-6 h-5" /></i> <span><%= t('header.logout') %></span>
                     <% end %>
                   </li>
                 </ul>
