@@ -1,0 +1,17 @@
+/* line 1, app/assets/stylesheets/back.scss */
+.top-image {
+  background-image: url(/assets/top-b9017e128b8d862d5e104479f591477096591555737df5b81694ddc66339d978.jpeg);
+  background-size: cover;
+}
+
+/* line 6, app/assets/stylesheets/back.scss */
+.index-image {
+  background-image: url(/assets/index-aa8954c41d0f9cc09d05098fde44e324385629f8fb6e7f088bdd5aefc8b29cfa.jpeg);
+  background-size: cover;
+}
+
+/* line 11, app/assets/stylesheets/back.scss */
+.new-image {
+  background-image: url(/assets/new-f41b13add9d40c45905804feda648741e7ba3b186c68bba5673963f1105a9722.jpg);
+  background-size: cover;
+}

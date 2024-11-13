@@ -1,0 +1,11 @@
+.top-image{
+ background-image: url(top.jpg);
+ background-size:cover;
+}
+
+.new-image{
+ background-image: url(new.jpg);
+ background-size:cover;
+ background-attachment: fixed;
+ background-position: center;
+}
