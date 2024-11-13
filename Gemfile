@@ -60,6 +60,7 @@ gem 'sassc-rails'
 gem 'sorcery'
 gem 'kaminari'
 
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'letter_opener_web'
