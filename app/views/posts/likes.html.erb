@@ -1,9 +1,9 @@
-<div class="container mx-auto px-4 pt-16 gap-x-14 gap-y-20 ">
-  <div id="no-likes-message" class="col-span-full flex items-center justify-center w-full h-full mb-3 text-gray-600" style="<%= @like_posts.blank? ? '' : 'display: none;' %>">
+<div class="container mx-auto px-4 my-10 min-h-[calc(100vh-4rem)] relative">
+  <div id="no-likes-message" class="absolute inset-0 flex items-center justify-center text-gray-600" style="<%= @like_posts.blank? ? '' : 'display: none;' %>">
     <%= t('likes.none') %>
   </div>
   
-  <div class="flex-grow w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 my-10" id="like-button-for-post">
+  <div class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-16 mb-5" id="like-button-for-post">
     <% @like_posts.each do |post| %>
       <div id="post-<%= post.id %>">
         <%= render post %>

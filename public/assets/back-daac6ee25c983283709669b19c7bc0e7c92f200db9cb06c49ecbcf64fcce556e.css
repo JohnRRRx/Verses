@@ -1,0 +1,11 @@
+/* line 1, app/assets/stylesheets/back.scss */
+.top-image {
+  background-image: url(/assets/top-b9017e128b8d862d5e104479f591477096591555737df5b81694ddc66339d978.jpeg);
+  background-size: cover;
+}
+
+/* line 6, app/assets/stylesheets/back.scss */
+.new-image {
+  background-image: url(/assets/new-f8c7fd73f78cb9e2114683c349f0a4de9508574830b0a85e43287ead55fdd55c.jpg);
+  background-size: cover;
+}

@@ -1,9 +1,9 @@
-<div class="flex items-center justify-center p-4">
+<div class="flex items-center justify-center pt-28 px-4 pb-24">
   <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-[1000px]">
     <div class="flex flex-col space-y-4">
       <div class="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0"> <!-- レスポンシブ対応 -->
         <!-- 左側コンテンツ -->
-        <div class="w-full md:w-[420px] flex flex-col space-y-4">
+        <div class="w-full md:w-[420px] flex flex-col space-y-4 flex-shrink-0">
           <div class="h-[400px] w-full md:w-[420px] rounded-lg overflow-hidden">
             <%= image_tag @post.photo_url, class: "w-full h-full object-contain" %>
           </div>
@@ -31,10 +31,10 @@
           </div>
 
           <!-- 下部情報 -->
-          <div class="space-y-4">
+          <div class="space-y-4 mt-4">
             <!-- タグ -->
             <% if @post.tag_list.any? %>
-              <div class="flex flex-wrap gap-2">
+              <div class="flex flex-wrap gap-2 min-h-fit">
                 <% @post.tag_list.each do |tag| %>
                   <%= link_to tag, posts_path(tag: tag), class: "bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full" %>
                 <% end %>
@@ -42,7 +42,7 @@
             <% end %>
 
             <!-- ユーザー情報と編集・削除ボタン -->
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center mt-2">
               <div class="flex items-center space-x-2">
               <%= image_tag(@post.user.icon_url.to_s, class: 'rounded-full w-8 h-8 mr-1 ') if @post.user.icon_url.present? %>
               <p class="font-medium text-gray-400"><%= @post.user.name %></p>
