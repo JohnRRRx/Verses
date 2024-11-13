@@ -5,7 +5,7 @@
   <%= turbo_stream.remove "post-#{@post.id}" %>
   <% if current_user.likes.count.zero? %>
   <%= turbo_stream.replace "no-likes-message" do %>
-    <div id="no-likes-message" class="col-span-full flex items-center justify-center w-full h-full mb-3 text-gray-600">
+    <div id="no-likes-message" class="absolute inset-0 flex items-center justify-center text-gray-600">
       <%= t('likes.none') %>
     </div>
   <% end %>

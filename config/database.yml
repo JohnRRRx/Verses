@@ -4,7 +4,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   encoding: unicode
-  username: postgres
+  username: unya
   password: <%= ENV['SS_DATABASE_PASSWORD'] %>
   host: <%= ENV['DB_HOST'] %>
 

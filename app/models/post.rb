@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
-  validates :title, presence: { message: 'を選択してください' }
-  validates :photo, presence: { message: 'を選択してください' }, on: :create
-  validates :song_id, presence: { message: 'を選択してください' }
+  validates :title, presence: true
+  validates :photo, presence: true, on: :create
+  validates :song_id, presence: true
   belongs_to :user
   has_many :likes, dependent: :destroy
   mount_uploader :photo, PostPhotoUploader
