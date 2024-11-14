@@ -57,6 +57,7 @@ ja:
     contact: お問い合わせ
     copyright: Copyright © 2024 BlinkPhotoJockey All Rights Reserved.
   resets:
+    subtitle: 【PicTrack】パスワード再発行のご案内
     new:
       title: パスワードリセット申請
       submit: 送信
