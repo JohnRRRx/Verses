@@ -1,0 +1,22 @@
+<div class="flex-grow container mx-auto px-4 pt-28 pb-24 flex items-center justify-center min-h-screen">
+  <div class="w-[450px] border-2 border-white rounded-2xl p-8 shadow-xl">
+      <h1 class="text-2xl font-semibold mb-6 text-center"><%= t('resets.edit.title') %></h1>
+<%= form_with model: @user, url: password_reset_path(@token) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+	<%= f.label :email, class: "block mb-2 text-sm font-semibold text-gray-900" %>
+    <%= @user.email %>
+
+    <div class="pt-2">
+    <%= f.label :password, class: "block mb-2 text-sm font-semibold text-gray-900" %>
+    <%= f.password_field :password, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" %>
+    </div>
+
+    <div class="pt-2">
+    <%= f.label :password_confirmation, class: "block mb-2 text-sm font-semibold text-gray-900" %>
+    <%= f.password_field :password_confirmation, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2" %>
+    </div>
+
+    <div class="pt-2">
+    <%= f.submit t('resets.new.submit'), class: "w-full text-white bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5" %>
+    </div>
+    <% end %>

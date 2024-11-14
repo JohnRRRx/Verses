@@ -15,11 +15,11 @@ ja:
       logout_success: ログアウトしました
       require_login: ログインが必要です
       created: 投稿を作成しました
-      not_created: 投稿を作成出来ませんでした
-      updated: "投稿を更新しました"
-      update_failure: "投稿を更新出来ませんでした"
-      deleted: "投稿を削除しました"
-      confirm: "削除しますか"
+      not_created: 投稿を作成できませんでした
+      updated: 投稿を更新しました
+      update_failure: 投稿を更新できませんでした
+      deleted: 投稿を削除しました
+      confirm: 削除しますか
   user_sessions:
     new:
       title: ログイン
@@ -33,8 +33,8 @@ ja:
   profiles:
     edit: プロフィール編集
     icon: アイコン
-    updated: "プロフィールを更新しました"
-    update_failure: "プロフィールを更新出来ませんでした"
+    updated: プロフィールを更新しました
+    update_failure: プロフィールを更新できませんでした
   posts:
     new: 新規投稿
     edit: 編集
@@ -56,3 +56,15 @@ ja:
     terms: 利用規約
     contact: お問い合わせ
     copyright: Copyright © 2024 BlinkPhotoJockey All Rights Reserved.
+  resets:
+    subtitle: 【PicTrack】パスワード再発行のご案内
+    new:
+      title: パスワードリセット申請
+      submit: 送信
+    edit:
+      title: パスワードリセット
+    create:
+      done: パスワードリセットメールを送信しました
+    update:
+      done: パスワードを変更しました
+      failure: パスワードを更新できませんでした

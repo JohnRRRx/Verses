@@ -1,0 +1,13 @@
+<div class="flex-grow container mx-auto px-4 pt-28 pb-24 flex items-center justify-center min-h-screen">
+  <div class="w-[450px] border-2 border-white rounded-2xl p-8 shadow-xl">
+      <h1 class="text-2xl font-semibold mb-6 text-center"><%= t('resets.new.title') %></h1>
+
+<%= form_with url: password_resets_path do |f| %>
+    <div>
+        <%= f.label :email, class: "block mb-2 text-sm font-semibold text-gray-900" %>
+        <%= f.email_field :email, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+    </div>
+    <div class="pt-2">
+        <%= f.submit t('resets.new.submit'), class: "w-full text-white bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5" %>
+    </div>
+<% end %>

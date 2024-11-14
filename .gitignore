@@ -9,3 +9,6 @@
 app/.DS_Store
 /tmp/pids/server.pid
 public/uploads/
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
