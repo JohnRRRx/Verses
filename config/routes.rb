@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  get "password_resets/create"
+  get "password_resets/edit"
+  get "password_resets/update"
   get "oauths/oauth"
   get "oauths/callback"
   root 'static_pages#top'
@@ -12,6 +16,7 @@ Rails.application.routes.draw do
   end
   resources :likes, only: %i[create destroy]
   resource :profile, only: %i[show edit update]
+  resources :password_resets, only: %i[new create edit update]
   get 'music/search', to: 'musics#search'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
