@@ -1,4 +1,4 @@
-Rails.application.config.sorcery.submodules = [:external]
+Rails.application.config.sorcery.submodules = [:external, :reset_password]
 Rails.application.config.sorcery.configure do |config|
   config.external_providers = [:google]
   config.google.key = ENV['GOOGLE_CLIENT_ID']
@@ -7,6 +7,7 @@ Rails.application.config.sorcery.configure do |config|
   config.google.user_info_mapping = { email: "email", name: "name" }
 
   config.user_config do |user|
+    user.reset_password_mailer = UserMailer
   user.stretches = 1 if Rails.env.test?
   user.authentications_class = Authentication
   end
