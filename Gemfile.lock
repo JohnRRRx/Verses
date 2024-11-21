@@ -451,6 +451,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
+    unicode-emoji (4.0.4)
     uri (0.13.1)
     useragent (0.16.10)
     version_gem (1.1.4)
@@ -519,6 +520,7 @@ DEPENDENCIES
   tailwindcss-rails (~> 2.7)
   turbo-rails
   tzinfo-data
+  unicode-emoji
   web-console
 
 BUNDLED WITH
