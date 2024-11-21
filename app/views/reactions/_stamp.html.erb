@@ -2,7 +2,7 @@
   <div class="flex flex-wrap gap-1 mb-2">
     <% post.reactions.group(:emoji).count.each do |emoji, count| %>
       <% user_emoji = current_user && post.reactions.find_by(user: current_user, emoji: emoji) %>
-      <%= button_to user_emoji ? reactions_posts_path(post, user_emoji) : reactions_posts_path(post),
+      <%= button_to user_emoji ? post_reaction_path(post, user_emoji) : post_reactions_path(post),
         method: user_emoji ? :delete : :post,
         params: { emoji: { emoji: emoji } },
         class: "inline-flex items-center px-2 py-0.5 rounded border border-gray-200 #{user_emoji ? 'bg-blue-50 hover:bg-blue-100' : 'bg-gray-50 hover:bg-gray-100'} text-sm",
