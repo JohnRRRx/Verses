@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
   has_many :authentications, :dependent => :destroy
+  has_many :reactions, dependent: :destroy
   accepts_nested_attributes_for :authentications
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

@@ -1,0 +1,16 @@
+<div id="post_<%= post.id %>_reactions" class="mt-2">
+  <div class="flex flex-wrap gap-1 mb-2">
+    <% post.reactions.group(:emoji).count.each do |emoji, count| %>
+      <% user_emoji = current_user && post.reactions.find_by(user: current_user, emoji: emoji) %>
+      <%= button_to user_emoji ? reactions_posts_path(post, user_emoji) : reactions_posts_path(post),
+        method: user_emoji ? :delete : :post,
+        params: { emoji: { emoji: emoji } },
+        class: "inline-flex items-center px-2 py-0.5 rounded border border-gray-200 #{user_emoji ? 'bg-blue-50 hover:bg-blue-100' : 'bg-gray-50 hover:bg-gray-100'} text-sm",
+        form: { data: { turbo: true } },
+        disabled: !current_user do %>
+        <span class="mr-1"><%= emoji %></span>
+        <span class="<%= user_emoji ? 'text-blue-600' : 'text-gray-600' %>"><%= count %></span>
+      <% end %>
+    <% end %>
+  </div>
+</div>
