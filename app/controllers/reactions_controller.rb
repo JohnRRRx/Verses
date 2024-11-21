@@ -1,9 +1,5 @@
 class ReactionsController < ApplicationController
 
-  def index
-    @emojis = []
-  end
-
   def create
     @post = Post.find(params[:post_id])
     @reaction = @post.reactions.create(reaction_params.merge(user: current_user))

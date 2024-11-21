@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @emojis = ReactionsController.new.index
+    @emoji_categories = EMOJIS
   end
 
   def edit
