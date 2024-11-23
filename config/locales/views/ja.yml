@@ -31,7 +31,6 @@ ja:
       title: ユーザー登録
       to_login_page: ログインページへ
   profiles:
-    edit: プロフィール編集
     icon: アイコン
     updated: プロフィールを更新しました
     update_failure: プロフィールを更新できませんでした
