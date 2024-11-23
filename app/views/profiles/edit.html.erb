@@ -1,6 +1,6 @@
-<div class="flex-grow container mx-auto px-4 py-6 flex items-center justify-center">
+<div class="flex-grow container mx-auto px-4 py-6 pt-20 flex items-center justify-center">
   <div class="w-auto md:w-[450px] max-w-full border-2 border-white rounded-2xl p-8 shadow-xl">
-    <h1 class="text-2xl font-semibold mb-6 text-center text-gray-700"><%= t('profiles.edit') %></h1>
+    <h1 class="text-2xl font-semibold mb-6 text-center text-gray-700"></h1>
     <%= form_with model: @user, url: profile_path, method: :put do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
         <div class="mb-4">
@@ -12,7 +12,7 @@
             </div>
           <!-- アップローダー -->
             <div class='flex items-center justify-center mt-3 mb-3'>
-            <%= f.file_field :icon, class: 'mt-1 block max-w-xs text-sm text-gray-500
+            <%= f.file_field :icon, class: 'mt-1 block max-w-full text-sm text-gray-500
             file:mr-4 file:py-2 file:px-4
             file:rounded-full file:border-0
             file:text-sm file:font-semibold
