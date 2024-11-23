@@ -39,6 +39,10 @@ class SpotifySearchHandler {
       border-radius: 0.5rem;
       background-color: white;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      max-width: 100%; // コンテナの最大幅を親要素に合わせる
+      overflow: hidden; // オーバーフローを隠す
+      width: 85%;
+      box-sizing: border-box;
     `;
     this.addStyles();
   }
