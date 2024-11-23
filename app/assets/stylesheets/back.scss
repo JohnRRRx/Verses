@@ -10,3 +10,11 @@
  background-position: center;
 }
 
+/* Chrome、Safari */
+summary::-webkit-details-marker {
+    display: none;
+  }
+/* Chrome、Safari以外 */
+summary {
+display: block;
+}
