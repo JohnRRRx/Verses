@@ -5,16 +5,16 @@
     </div>
     <div class="flex justify-center mb-4">
           <%= image_tag(current_user.icon_url.to_s, class: 'rounded-full w-48 h-48 object-cover') if current_user.icon_url.present? %>
-            </div><table class="w-full">
+            </div><table class="w-full max-w-full">
       <tbody>
           <tr class="border-b text-gray-700">
-          <th class="py-2 px-4 text-left text-nowrap max-w-full"><%= User.human_attribute_name(:name) %></th>
-          <td class="py-2 px-4 max-w-full"><%= current_user.name %></td>
+          <th class="py-2 px-4 text-left text-nowrap max-w-full text-auto-size"><%= User.human_attribute_name(:name) %></th>
+          <td class="py-2 px-4 max-w-full text-auto-size"><%= current_user.name %></td>
           </tr>
 
         <tr class="border-b text-gray-700">
-          <th class="py-2 px-4 text-left text-nowrap max-w-full"><%= User.human_attribute_name(:email) %></th>
-          <td class="py-2 px-4 max-w-full"><%= current_user.email %></td>
+          <th class="py-2 px-4 text-left text-nowrap max-w-full text-auto-size"><%= User.human_attribute_name(:email) %></th>
+          <td class="py-2 px-4 max-w-full text-auto-size"><%= current_user.email %></td>
         </tr>
       </tbody>
     </table>
