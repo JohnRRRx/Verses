@@ -8,12 +8,12 @@
             </div><table class="w-full">
       <tbody>
           <tr class="border-b text-gray-700">
-          <th class="py-2 px-4 text-left"><%= User.human_attribute_name(:name) %></th>
+          <th class="py-2 px-4 text-left text-nowrap"><%= User.human_attribute_name(:name) %></th>
           <td class="py-2 px-4"><%= current_user.name %></td>
           </tr>
 
         <tr class="border-b text-gray-700">
-          <th class="py-2 px-4 text-left"><%= User.human_attribute_name(:email) %></th>
+          <th class="py-2 px-4 text-left text-nowrap"><%= User.human_attribute_name(:email) %></th>
           <td class="py-2 px-4"><%= current_user.email %></td>
         </tr>
       </tbody>
