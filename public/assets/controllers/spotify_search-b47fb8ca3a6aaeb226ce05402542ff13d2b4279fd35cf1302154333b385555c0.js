@@ -14,21 +14,36 @@ class SpotifySearchHandler {
     if (this.searchInput && this.searchResults) {
       this.setupEventListeners();
       this.searchResults.classList.add('search-results');
-      
-      // モバイルでの入力時のズーム防止
-      this.searchInput.addEventListener('focus', () => {
-        // 入力フィールドがビューポートの上部に来るようにスクロール
-        setTimeout(() => {
-          this.searchInput.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-      });
+    }
+  }
 
-      // 検索結果表示時のスクロール処理の改善
-      this.searchResults.addEventListener('touchstart', (e) => {
-        if (e.target.closest('.search-result-item')) {
-          e.preventDefault(); // タップのちらつき防止
-        }
-      }, { passive: false });
+  setupEventListeners() {
+    this.searchInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        this.handleSearch();
+      }
+    });
+    this.searchButton?.addEventListener('click', e => {
+      e.preventDefault();
+      this.handleSearch();
+    });
+    this.mainForm?.addEventListener('submit', this.handleSubmit.bind(this));
+  }
+
+  handleSubmit(e) {
+    const songIdField = document.getElementById('post_song_id');
+    if (!songIdField?.value) {
+      e.preventDefault();
+      this.showError('曲を選択してください');
+    }
+  }
+
+  showError(message) {
+    if (this.songError) {
+      this.songError.textContent = message;
+      this.songError.style.display = 'block';
+      this.songError.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }
 
@@ -36,23 +51,14 @@ class SpotifySearchHandler {
     clearTimeout(this.searchTimer);
     this.searchTimer = setTimeout(() => {
       const query = this.searchInput.value.trim();
-      if (!query) {
-        this.searchResults.innerHTML = '';
-        return;
-      }
+      if (!query) return;
 
       if (this.cache.has(query)) {
         this.displayResults(this.cache.get(query));
         return;
       }
 
-      // 検索中表示の位置調整
       this.searchResults.innerHTML = '<div class="search-message search-loading">検索中...</div>';
-      
-      // 検索開始時にスクロール位置を調整
-      if (window.innerWidth <= 768) {
-        this.searchResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
 
       fetch(`/posts/search?query=${encodeURIComponent(query)}`)
         .then(response => response.ok ? response.json() : Promise.reject('Search failed'))
