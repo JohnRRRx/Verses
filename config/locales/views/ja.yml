@@ -42,6 +42,7 @@ ja:
   likes:
     none: いいねした投稿がありません。
   header:
+    title: Verses
     login: ログイン
     logout: ログアウト
     post: 投稿
@@ -54,9 +55,9 @@ ja:
     privacy_policy: プライバシーポリシー
     terms: 利用規約
     contact: お問い合わせ
-    copyright: Copyright © 2024 BlinkPhotoJockey All Rights Reserved.
+    copyright: Copyright © 2024 Verses All Rights Reserved.
   resets:
-    subtitle: 【PicTrack】パスワード再発行のご案内
+    subtitle: 【Verses】パスワード再発行のご案内
     new:
       title: パスワードリセット申請
       submit: 送信
