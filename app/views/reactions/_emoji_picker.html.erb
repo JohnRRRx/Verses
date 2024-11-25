@@ -1,0 +1,26 @@
+<div class="relative inline-block" data-controller="emoji">
+  <input type="checkbox" id="emoji-toggle" class="hidden peer" data-emoji-target="toggle">
+  <label for="emoji-toggle" class="cursor-pointer inline-block px-2 py-1 text-gray-600 hover:bg-gray-100 rounded-md">
+    <i class="fa-regular fa-face-smile"></i>
+  </label>
+
+  <div class="absolute hidden peer-checked:block z-50 bg-white rounded-lg shadow-lg border border-gray-200 w-72 max-h-64 overflow-y-auto">
+    <%= turbo_frame_tag "emoji-list" do %>
+      <% @emoji_categories.each do |category, emojis| %><!-- カテゴリごとにループ -->
+        <div class="emoji-category">
+          <h2 class="font-semibold text-gray-700 text-sm my-2 px-2"><%= category %></h2>
+          <div class="emoji-picker px-2">
+            <% emojis.each do |emoji| %>
+              <%= form_with(url: post_reactions_path(@post), class: "inline-block", data: { turbo_frame: "reactions_#{@post.id}", controller: "emoji" }) do |f| %>
+                <%= f.hidden_field "emoji[emoji]", value: emoji %>
+                <%= f.submit emoji, class: "emoji-button text-2xl p-1 hover:bg-gray-200 rounded-full" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <label for="emoji-toggle" class="fixed inset-0 hidden peer-checked:block cursor-default"></label>
+</div>

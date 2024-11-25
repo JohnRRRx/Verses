@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   root 'static_pages#top'
   resources :users, only: %i[new create]
   resources :posts, only: %i[index new create show edit update destroy] do
+    resources :reactions, only: [:index, :create, :destroy]
     collection do
       get :search
       get :likes
       get :mine
+      get :reactions
     end
   end
   resources :likes, only: %i[create destroy]

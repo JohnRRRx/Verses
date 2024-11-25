@@ -13,3 +13,11 @@ ja:
         photo: '写真'
         song_id: '曲'
         tag_list: 'タグ'
+    errors:
+      models:
+        post:
+          attributes:
+            photo:
+              blank: "を選択してください"
+            song_id:
+              blank: "を選択してください"

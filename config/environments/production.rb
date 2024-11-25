@@ -8,6 +8,9 @@ Rails.application.configure do
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
   config.action_mailer.default_url_options = Settings.default_url_options.to_h
+  config.action_cable.url = "wss://slimy-ilsa-nonamejusttest-74953f89.koyeb.app/cable"
+  config.action_cable.allowed_request_origins = [ 'https://slimy-ilsa-nonamejusttest-74953f89.koyeb.app/' ]
+
 
   config.public_file_server.enabled = true
 
