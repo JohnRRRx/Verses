@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* line 1, app/assets/stylesheets/back.scss */
+.top-image {
+  background-image: url(/assets/top-b9017e128b8d862d5e104479f591477096591555737df5b81694ddc66339d978.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Chrome、Safari */
+/* line 11, app/assets/stylesheets/back.scss */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Chrome、Safari以外 */
+/* line 15, app/assets/stylesheets/back.scss */
+summary {
+  display: block;
+}
