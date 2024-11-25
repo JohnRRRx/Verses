@@ -22,6 +22,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @emoji_categories = EMOJIS
   end
 
   def edit
@@ -33,7 +34,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: t('message.updated')
     else
-      flash.now[:error] = t('message.not_updated')
+      flash.now[:error] = t('message.update_failure')
       render :edit, status: :unprocessable_entity
     end
   end

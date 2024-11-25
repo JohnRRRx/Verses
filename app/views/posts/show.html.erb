@@ -30,6 +30,11 @@
             </div>
           </div>
 
+          <%= render 'reactions/stamp', { post: @post } %>
+          <%= render 'reactions/emoji_picker', emojis: @emojis, post: @post if current_user %>
+
+
+
           <!-- 下部情報 -->
           <div class="space-y-4 mt-4">
             <!-- タグ -->

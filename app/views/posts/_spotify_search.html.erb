@@ -4,7 +4,7 @@
       <%= label_tag :song_search, "曲を検索", class: "block text-sm font-semibold text-gray-700" %>
       <div class="flex gap-2">
         <%= text_field_tag :song_search, nil,
-          class: "flex-1 border rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500",
+          class: "max-w-full flex-1 border rounded-lg px-4 py-2 text-base focus:ring-2 focus:ring-blue-500 focus:border-blue-500",
           placeholder: "曲名やアーティスト名で検索してみましょう" %>
         <%= button_tag type: "button",
           id: "search-button",

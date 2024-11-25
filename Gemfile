@@ -59,7 +59,8 @@ gem 'rspotify'
 gem 'sassc-rails'
 gem 'sorcery'
 gem 'kaminari'
-
+gem 'unicode-emoji'
+gem 'redis'
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]

@@ -1,7 +1,7 @@
 {
-  "name": "blinkphotojockey",
+  "name": "Verses",
   "version": "1.0.0",
-  "description": "BlinkPhotoJockey",
+  "description": "Verses",
   "main": "index.js",
   "directories": {
     "lib": "lib",
