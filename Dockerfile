@@ -8,7 +8,7 @@ WORKDIR /rails
 # 基本パッケージのインストール
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
-    curl libjemalloc2 libvips libpq-dev && \
+    curl libjemalloc2 libvips libpq-dev imagemagick && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # 本番環境用の環境変数を設定
@@ -57,7 +57,7 @@ ENV SECRET_KEY_BASE=dummy-key-for-precompile \
     PRECOMPILE=true
 
 # 本番環境用にアセットをプリコンパイル
-RUN ./bin/rails assets:precompile
+RUN ./bin/rails assets:precompile --trace
 
 # 最終的なアプリケーションイメージのためのステージ
 FROM base
