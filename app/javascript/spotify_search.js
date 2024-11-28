@@ -13,6 +13,22 @@ class SpotifySearchHandler {
   initialize() {
     if (this.searchInput && this.searchResults) {
       this.setupEventListeners();
+      this.searchResults.classList.add('search-results');
+
+      // モバイルでの入力時のズーム防止
+      this.searchInput.addEventListener('focus', () => {
+        // 入力フィールドがビューポートの上部に来るようにスクロール
+        setTimeout(() => {
+          this.searchInput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      });
+
+      // 検索結果表示時のスクロール処理の改善
+      this.searchResults.addEventListener('touchstart', (e) => {
+        if (e.target.closest('.search-result-item')) {
+          e.preventDefault(); // タップのちらつき防止
+        }
+      }, { passive: false });
     }
   }
 
@@ -50,14 +66,23 @@ class SpotifySearchHandler {
     clearTimeout(this.searchTimer);
     this.searchTimer = setTimeout(() => {
       const query = this.searchInput.value.trim();
-      if (!query) return;
+      if (!query) {
+        this.searchResults.innerHTML = '';
+        return;
+      }
 
       if (this.cache.has(query)) {
         this.displayResults(this.cache.get(query));
         return;
       }
 
-      this.searchResults.innerHTML = '<div class="text-center text-gray-500">検索中...</div>';
+      // 検索中表示の位置調整
+      this.searchResults.innerHTML = '<div class="search-message search-loading">検索中...</div>';
+      
+      // 検索開始時にスクロール位置を調整
+      if (window.innerWidth <= 768) {
+        this.searchResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
 
       fetch(`/posts/search?query=${encodeURIComponent(query)}`)
         .then(response => response.ok ? response.json() : Promise.reject('Search failed'))
@@ -67,14 +92,14 @@ class SpotifySearchHandler {
         })
         .catch(error => {
           console.error('Search error:', error);
-          this.searchResults.innerHTML = '<div class="text-center text-red-500">検索中にエラーが発生しました</div>';
+          this.searchResults.innerHTML = '<div class="search-message search-error">検索中にエラーが発生しました</div>';
         });
-    }, 300); //300ミリ秒のデバウンス
+    }, 300);
   }
 
   displayResults(data) {
     if (!data || data.length === 0) {
-      this.searchResults.innerHTML = '<div class="text-center text-gray-500">検索結果が見つかりませんでした</div>';
+      this.searchResults.innerHTML = '<div class="search-message search-not-found">検索結果が見つかりませんでした</div>';
       return;
     }
 
@@ -93,10 +118,10 @@ class SpotifySearchHandler {
     return `
       <button type="button" class="search-result-item">
         <img src="${this.getAlbumImageUrl(track)}" alt="${track.album || 'Album'} cover" class="album-image">
-        <div class="flex-grow min-w-0">
-          <div class="font-semibold text-gray-900 truncate">${track.name}</div>
-          <div class="text-sm text-gray-500 truncate">${track.artist}</div>
-          <div class="text-xs text-gray-400 truncate">${track.album || ''}</div>
+        <div class="track-info">
+          <div class="track-title">${track.name}</div>
+          <div class="track-artist">${track.artist}</div>
+          <div class="track-album">${track.album || ''}</div>
         </div>
       </button>
     `;
@@ -126,11 +151,11 @@ class SpotifySearchHandler {
     }
 
     this.searchResults.innerHTML = `
-      <div class="p-4 bg-green-50 text-green-700 rounded-lg flex items-center gap-3">
+      <div class="selected-track">
         <img src="${this.getAlbumImageUrl(track)}" alt="${track.album || 'Album'} cover" class="album-image">
-        <div>
-          <div class="font-semibold">選択された曲:</div>
-          <div class="text-sm">${track.name} - ${track.artist}</div>
+        <div class="track-info">
+          <div class="track-title">選択された曲:</div>
+          <div class="track-artist">${track.name} - ${track.artist}</div>
         </div>
       </div>
     `;
