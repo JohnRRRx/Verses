@@ -1,4 +1,5 @@
 /* app/assets/stylesheets/spotify_search.css */
+/* line 2, app/assets/stylesheets/spotify_search.scss */
 #search-results {
   margin-top: 1rem;
   margin-bottom: 5rem;
@@ -12,6 +13,7 @@
   box-sizing: border-box;
 }
 
+/* line 15, app/assets/stylesheets/spotify_search.scss */
 .search-results-scroll {
   max-height: 600px;
   overflow-y: auto;
@@ -19,19 +21,23 @@
   scrollbar-color: #cbd5e1 transparent;
 }
 
+/* line 22, app/assets/stylesheets/spotify_search.scss */
 .search-results-scroll::-webkit-scrollbar {
   width: 6px;
 }
 
+/* line 26, app/assets/stylesheets/spotify_search.scss */
 .search-results-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
 
+/* line 30, app/assets/stylesheets/spotify_search.scss */
 .search-results-scroll::-webkit-scrollbar-thumb {
   background-color: #cbd5e1;
   border-radius: 3px;
 }
 
+/* line 35, app/assets/stylesheets/spotify_search.scss */
 .search-result-item {
   padding: 0.75rem 1rem;
   display: flex;
@@ -46,10 +52,12 @@
   will-change: background-color;
 }
 
+/* line 49, app/assets/stylesheets/spotify_search.scss */
 .search-result-item:hover {
   background-color: #eff6ff;
 }
 
+/* line 53, app/assets/stylesheets/spotify_search.scss */
 .album-image {
   width: 48px;
   height: 48px;
