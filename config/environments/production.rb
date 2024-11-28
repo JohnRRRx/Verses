@@ -8,9 +8,8 @@ Rails.application.configure do
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
   config.action_mailer.default_url_options = Settings.default_url_options.to_h
-  config.action_cable.url = "wss://slimy-ilsa-nonamejusttest-74953f89.koyeb.app/cable"
-  config.action_cable.allowed_request_origins = [ 'https://slimy-ilsa-nonamejusttest-74953f89.koyeb.app/' ]
-
+  config.action_cable.url = "wss://verses-take.fly.dev/cable"
+  config.action_cable.allowed_request_origins = [ 'https://verses-take.fly.dev' ]
 
   config.public_file_server.enabled = true
 
@@ -35,7 +34,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'slimy-ilsa-nonamejusttest-74953f89.koyeb.app',
+    domain:               'verses-take.fly.dev',
     user_name:            ENV['GMAIL_USERNAME'],
     password:             ENV['GMAIL_PASSWORD'],
     authentication:       'plain',

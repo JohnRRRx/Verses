@@ -14,7 +14,7 @@ class SpotifySearchHandler {
     if (this.searchInput && this.searchResults) {
       this.setupEventListeners();
       this.searchResults.classList.add('search-results');
-      
+
       // モバイルでの入力時のズーム防止
       this.searchInput.addEventListener('focus', () => {
         // 入力フィールドがビューポートの上部に来るようにスクロール
@@ -29,6 +29,36 @@ class SpotifySearchHandler {
           e.preventDefault(); // タップのちらつき防止
         }
       }, { passive: false });
+    }
+  }
+
+  setupEventListeners() {
+    this.searchInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        this.handleSearch();
+      }
+    });
+    this.searchButton?.addEventListener('click', e => {
+      e.preventDefault();
+      this.handleSearch();
+    });
+    this.mainForm?.addEventListener('submit', this.handleSubmit.bind(this));
+  }
+
+  handleSubmit(e) {
+    const songIdField = document.getElementById('post_song_id');
+    if (!songIdField?.value) {
+      e.preventDefault();
+      this.showError('曲を選択してください');
+    }
+  }
+
+  showError(message) {
+    if (this.songError) {
+      this.songError.textContent = message;
+      this.songError.style.display = 'block';
+      this.songError.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }
 

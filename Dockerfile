@@ -1,27 +1,30 @@
 # Rubyバージョン指定
 ARG RUBY_VERSION=3.3.5
-FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
+FROM docker.io/library/ruby:$RUBY_VERSION-slim as base
 
 # Railsアプリケーションの作業ディレクトリを設定
 WORKDIR /rails
 
 # 基本パッケージのインストール
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips libpq-dev && \
+    apt-get install --no-install-recommends -y \
+    curl libjemalloc2 libvips libpq-dev imagemagick && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # 本番環境用の環境変数を設定
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+    BUNDLE_WITHOUT="development" \
+    REDIS_URL=${REDIS_URL}
 
 # ビルド用の一時的なステージ
-FROM base AS build
+FROM base as build
 
 # gemをビルドするために必要なパッケージをインストール
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git pkg-config libpq-dev && \
+    apt-get install --no-install-recommends -y \
+    build-essential git pkg-config libpq-dev python3 python-is-python3 node-gyp && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Node.jsとYarnのインストール
@@ -30,7 +33,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     npm install -g yarn
 
 # アプリケーションのGemをインストール
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
@@ -47,13 +49,15 @@ RUN yarn install
 RUN yarn build:css
 
 # アセットのプリコンパイル用の環境変数を設定
+ARG RAILS_MASTER_KEY
 ENV SECRET_KEY_BASE=dummy-key-for-precompile \
     RAILS_SKIP_SPOTIFY_AUTH=true \
     SPOTIFY_CLIENT_ID=dummy-client-id \
-    SPOTIFY_SECRET_ID=dummy-secret-id
+    SPOTIFY_SECRET_ID=dummy-secret-id \
+    PRECOMPILE=true
 
 # 本番環境用にアセットをプリコンパイル
-RUN ./bin/rails assets:precompile
+RUN ./bin/rails assets:precompile --trace
 
 # 最終的なアプリケーションイメージのためのステージ
 FROM base
