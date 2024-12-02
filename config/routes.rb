@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  root 'static_pages#top'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   get "password_resets/create"
   get "password_resets/edit"
   get "password_resets/update"
   get "oauths/oauth"
   get "oauths/callback"
-  root 'static_pages#top'
+  get 'terms', to: 'static_pages#terms'
+  get 'privacy_policy', to: 'static_pages#privacy_policy'
   resources :users, only: %i[new create]
   resources :posts, only: %i[index new create show edit update destroy] do
     resources :reactions, only: [:index, :create, :destroy]

@@ -68,3 +68,6 @@ ja:
     update:
       done: パスワードを変更しました
       failure: パスワードを更新できませんでした
+  static_pages:
+      terms: "利用規約"
+      privacy_policy: "プライバシーポリシー"
