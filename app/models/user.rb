@@ -29,4 +29,12 @@ class User < ApplicationRecord
   def like?(post)
     like_posts.include?(post)
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[name]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[posts]
+  end
 end

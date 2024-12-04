@@ -2,9 +2,9 @@ class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
 
   def index
-    @posts = Post.includes(:user, :tags).order(created_at: :desc)
-    return unless params[:tag]
-    @posts = @posts.tagged_with(params[:tag])
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).includes(:user, :tags).order(created_at: :desc)
+    @posts = @posts.tagged_with(params[:tag]) if params[:tag]
   end
 
   def new
