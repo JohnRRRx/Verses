@@ -4,7 +4,10 @@ class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).includes(:user, :tags).order(created_at: :desc)
-    @posts = @posts.tagged_with(params[:tag]) if params[:tag]
+  
+    if params[:tag].present?
+      @posts = @posts.tagged_with(params[:tag])
+    end
   end
 
   def new
