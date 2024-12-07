@@ -19,12 +19,12 @@
           <!-- Xシェアボタン -->
           <% if current_user %>
             <div class="absolute top-0 right-12  text-[130%]">
-              <%= link_to "https://x.com/share?url=#{post_url(@post)}&text=投稿しましたよ♫", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
+              <%= link_to "https://x.com/share?url=#{post_url(@post)}&text=投稿しましたよ♫%0a", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
               <i class="fa-brands fa-square-x-twitter"></i>
               <% end %>
             </div> 
           <% end %>
-          
+
           <!-- いいねボタン -->
             <div class="absolute top-0 right-0" id="like-button-content-<%= @post.id %>">
               <% if current_user && current_user.like?(@post) %>
