@@ -65,7 +65,7 @@
 
                 <!-- Xシェアボタン -->
                 <% if current_user %>
-                  <%= link_to "https://x.com/share?url=#{post_url(@post)}&text=投稿しましたよ♫%0a", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア", class: "text-[140%] flex items-center space-x-2" do %>
+                  <%= link_to "https://x.com/share?url=#{post_url(@post)}&text=一言添えますか♫%0a", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア", class: "text-[140%] flex items-center space-x-2" do %>
                     <i class="fa-brands fa-square-x-twitter"></i>
                   <% end %>
                 <% end %>
