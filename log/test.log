@@ -1,0 +1,296 @@
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[35m (75.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "ss_test"[0m
+  [1m[35m (139.6ms)[0m  [1m[35mCREATE DATABASE "ss_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (10.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "authentications" CASCADE[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "authentications" ("id" bigserial primary key, "user_id" integer NOT NULL, "provider" character varying NOT NULL, "uid" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_authentications_on_provider_and_uid" ON "authentications" ("provider", "uid")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_authentications_on_user_id" ON "authentications" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "emojis" CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "emojis" ("id" bigserial primary key, "post_id" bigint NOT NULL, "user_id" bigint NOT NULL, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_emojis_on_post_id" ON "emojis" ("post_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_emojis_on_user_id_and_post_id_and_name" ON "emojis" ("user_id", "post_id", "name")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_emojis_on_user_id" ON "emojis" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "user_id" bigint, "post_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_likes_on_post_id" ON "likes" ("post_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_likes_on_user_id_and_post_id" ON "likes" ("user_id", "post_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_likes_on_user_id" ON "likes" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "posts" CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "title" text NOT NULL, "photo" character varying NOT NULL, "song_id" character varying, "song_name" character varying, "artist_name" character varying, "album_name" character varying, "audio" character varying, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_posts_on_user_id" ON "posts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "taggings" CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "taggings" ("id" bigserial primary key, "tag_id" bigint, "taggable_type" character varying, "taggable_id" bigint, "tagger_type" character varying, "tagger_id" bigint, "context" character varying(128), "created_at" timestamp, "tenant" character varying(128))[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_context" ON "taggings" ("context")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "taggings_idx" ON "taggings" ("tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "taggings_taggable_context_idx" ON "taggings" ("taggable_id", "taggable_type", "context")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "taggings_idy" ON "taggings" ("taggable_id", "taggable_type", "tagger_id", "context")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_taggable_id" ON "taggings" ("taggable_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_taggable_type_and_taggable_id" ON "taggings" ("taggable_type", "taggable_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_taggable_type" ON "taggings" ("taggable_type")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_tagger_id_and_tagger_type" ON "taggings" ("tagger_id", "tagger_type")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_tagger_id" ON "taggings" ("tagger_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_tagger_type_and_tagger_id" ON "taggings" ("tagger_type", "tagger_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_tenant" ON "taggings" ("tenant")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tags" CASCADE[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "tags" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "taggings_count" integer DEFAULT 0)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_tags_on_name" ON "tags" ("name")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "crypted_password" character varying, "salt" character varying, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "icon" character varying, "reset_password_token" character varying, "reset_password_token_expires_at" timestamp(6), "reset_password_email_sent_at" timestamp(6), "access_count_to_reset_password_page" integer DEFAULT 0)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "emojis" ADD CONSTRAINT "fk_rails_5b5978f03e"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "emojis" ADD CONSTRAINT "fk_rails_b97f102815"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_87a8aac469"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_1e09b5dabf"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_5b5ddfd518"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "taggings" ADD CONSTRAINT "fk_rails_9fcd2e236b"
+FOREIGN KEY ("tag_id")
+  REFERENCES "tags" ("id")
+[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20241113080157)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20241110191331),
+(20241104041117),
+(20241028200625),
+(20241028200624),
+(20241028200623),
+(20241028200622),
+(20241028200621),
+(20241028200620),
+(20241028200619),
+(20241024055314),
+(20241023041848),
+(20241014123140),
+(20241008012148);[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'test', '2024-12-10 04:45:26.362275', '2024-12-10 04:45:26.362278') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '15e078b491eeb3867d0602171a92e4dfec76495d', '2024-12-10 04:45:26.363957', '2024-12-10 04:45:26.363959') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (36.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "ss_test"[0m
+  [1m[35m (109.4ms)[0m  [1m[35mCREATE DATABASE "ss_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (8.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "authentications" CASCADE[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "authentications" ("id" bigserial primary key, "user_id" integer NOT NULL, "provider" character varying NOT NULL, "uid" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_authentications_on_provider_and_uid" ON "authentications" ("provider", "uid")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_authentications_on_user_id" ON "authentications" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "user_id" bigint, "post_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_likes_on_post_id" ON "likes" ("post_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_likes_on_user_id_and_post_id" ON "likes" ("user_id", "post_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_likes_on_user_id" ON "likes" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "posts" CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "title" text NOT NULL, "photo" character varying NOT NULL, "song_id" character varying, "song_name" character varying, "artist_name" character varying, "album_name" character varying, "audio" character varying, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_posts_on_user_id" ON "posts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "reactions" CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "reactions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "post_id" bigint NOT NULL, "emoji" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_reactions_on_post_id" ON "reactions" ("post_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_reactions_on_user_id_and_post_id_and_emoji" ON "reactions" ("user_id", "post_id", "emoji")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_reactions_on_user_id" ON "reactions" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "taggings" CASCADE[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "taggings" ("id" bigserial primary key, "tag_id" bigint, "taggable_type" character varying, "taggable_id" bigint, "tagger_type" character varying, "tagger_id" bigint, "context" character varying(128), "created_at" timestamp, "tenant" character varying(128))[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_context" ON "taggings" ("context")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "taggings_idx" ON "taggings" ("tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "taggings_taggable_context_idx" ON "taggings" ("taggable_id", "taggable_type", "context")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "taggings_idy" ON "taggings" ("taggable_id", "taggable_type", "tagger_id", "context")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_taggable_id" ON "taggings" ("taggable_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_taggable_type_and_taggable_id" ON "taggings" ("taggable_type", "taggable_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_taggable_type" ON "taggings" ("taggable_type")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_tagger_id_and_tagger_type" ON "taggings" ("tagger_id", "tagger_type")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_tagger_id" ON "taggings" ("tagger_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_tagger_type_and_tagger_id" ON "taggings" ("tagger_type", "tagger_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_tenant" ON "taggings" ("tenant")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "tags" CASCADE[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "tags" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "taggings_count" integer DEFAULT 0)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_tags_on_name" ON "tags" ("name")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "crypted_password" character varying, "salt" character varying, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "icon" character varying, "reset_password_token" character varying, "reset_password_token_expires_at" timestamp(6), "reset_password_email_sent_at" timestamp(6), "access_count_to_reset_password_page" integer DEFAULT 0)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_87a8aac469"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_1e09b5dabf"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_5b5ddfd518"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "reactions" ADD CONSTRAINT "fk_rails_cb32010de7"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "reactions" ADD CONSTRAINT "fk_rails_9f02fc96a0"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "taggings" ADD CONSTRAINT "fk_rails_9fcd2e236b"
+FOREIGN KEY ("tag_id")
+  REFERENCES "tags" ("id")
+[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20241118061607)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20241113080157),
+(20241110191331),
+(20241104041117),
+(20241028200625),
+(20241028200624),
+(20241028200623),
+(20241028200622),
+(20241028200621),
+(20241028200620),
+(20241028200619),
+(20241024055314),
+(20241023041848),
+(20241014123140),
+(20241008012148);[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'test', '2024-12-10 04:48:28.662929', '2024-12-10 04:48:28.662931') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '252e4ef9258be5bf2745e7a32146017759c0e770', '2024-12-10 04:48:28.665298', '2024-12-10 04:48:28.665299') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (53.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "ss_test"[0m
+  [1m[35m (70.9ms)[0m  [1m[35mCREATE DATABASE "ss_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (8.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "authentications" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "authentications" ("id" bigserial primary key, "user_id" integer NOT NULL, "provider" character varying NOT NULL, "uid" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_authentications_on_provider_and_uid" ON "authentications" ("provider", "uid")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_authentications_on_user_id" ON "authentications" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "user_id" bigint, "post_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_likes_on_post_id" ON "likes" ("post_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_likes_on_user_id_and_post_id" ON "likes" ("user_id", "post_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_likes_on_user_id" ON "likes" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "posts" CASCADE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "title" text NOT NULL, "photo" character varying NOT NULL, "song_id" character varying, "song_name" character varying, "artist_name" character varying, "album_name" character varying, "audio" character varying, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_posts_on_user_id" ON "posts" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "reactions" CASCADE[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "reactions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "post_id" bigint NOT NULL, "emoji" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_reactions_on_post_id" ON "reactions" ("post_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_reactions_on_user_id_and_post_id_and_emoji" ON "reactions" ("user_id", "post_id", "emoji")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_reactions_on_user_id" ON "reactions" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "taggings" CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "taggings" ("id" bigserial primary key, "tag_id" bigint, "taggable_type" character varying, "taggable_id" bigint, "tagger_type" character varying, "tagger_id" bigint, "context" character varying(128), "created_at" timestamp, "tenant" character varying(128))[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_context" ON "taggings" ("context")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "taggings_idx" ON "taggings" ("tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "taggings_taggable_context_idx" ON "taggings" ("taggable_id", "taggable_type", "context")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "taggings_idy" ON "taggings" ("taggable_id", "taggable_type", "tagger_id", "context")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_taggable_id" ON "taggings" ("taggable_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_taggable_type_and_taggable_id" ON "taggings" ("taggable_type", "taggable_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_taggable_type" ON "taggings" ("taggable_type")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_tagger_id_and_tagger_type" ON "taggings" ("tagger_id", "tagger_type")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_tagger_id" ON "taggings" ("tagger_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_tagger_type_and_tagger_id" ON "taggings" ("tagger_type", "tagger_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_taggings_on_tenant" ON "taggings" ("tenant")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "tags" CASCADE[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "tags" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "taggings_count" integer DEFAULT 0)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_tags_on_name" ON "tags" ("name")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "tasks" CASCADE[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "crypted_password" character varying, "salt" character varying, "name" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "icon" character varying, "reset_password_token" character varying, "reset_password_token_expires_at" timestamp(6), "reset_password_email_sent_at" timestamp(6), "access_count_to_reset_password_page" integer DEFAULT 0)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_87a8aac469"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "likes" ADD CONSTRAINT "fk_rails_1e09b5dabf"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_5b5ddfd518"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "reactions" ADD CONSTRAINT "fk_rails_cb32010de7"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "reactions" ADD CONSTRAINT "fk_rails_9f02fc96a0"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "taggings" ADD CONSTRAINT "fk_rails_9fcd2e236b"
+FOREIGN KEY ("tag_id")
+  REFERENCES "tags" ("id")
+[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20241210045124)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20241118061607),
+(20241113080157),
+(20241110191331),
+(20241104041117),
+(20241028200625),
+(20241028200624),
+(20241028200623),
+(20241028200622),
+(20241028200621),
+(20241028200620),
+(20241028200619),
+(20241024055314),
+(20241023041848),
+(20241014123140),
+(20241008012148);[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'test', '2024-12-10 04:52:51.302303', '2024-12-10 04:52:51.302304') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', 'cd2863cba0a95c7acf7a428a3d7d8d84f5e7016a', '2024-12-10 04:52:51.303202', '2024-12-10 04:52:51.303203') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Saved a snapshot of [32mENV[0m

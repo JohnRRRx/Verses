@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_13_080157) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_10_045124) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,17 +22,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_13_080157) do
     t.datetime "updated_at", null: false
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
     t.index ["user_id"], name: "index_authentications_on_user_id"
-  end
-
-  create_table "emojis", force: :cascade do |t|
-    t.bigint "post_id", null: false
-    t.bigint "user_id", null: false
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_emojis_on_post_id"
-    t.index ["user_id", "post_id", "name"], name: "index_emojis_on_user_id_and_post_id_and_name", unique: true
-    t.index ["user_id"], name: "index_emojis_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -57,6 +46,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_13_080157) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "reactions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.string "emoji", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_reactions_on_post_id"
+    t.index ["user_id", "post_id", "emoji"], name: "index_reactions_on_user_id_and_post_id_and_emoji", unique: true
+    t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -90,6 +90,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_13_080157) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -106,10 +111,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_13_080157) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
-  add_foreign_key "emojis", "posts"
-  add_foreign_key "emojis", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "reactions", "posts"
+  add_foreign_key "reactions", "users"
   add_foreign_key "taggings", "tags"
 end
