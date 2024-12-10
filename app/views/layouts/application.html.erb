@@ -3,8 +3,8 @@
   <head>
   <%= favicon_link_tag('favicon') %>
     <title><%= content_for(:title) || "Verses" %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= javascript_importmap_tags %>
@@ -23,7 +23,6 @@
     <%# その他のアセット %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "neon", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag 'back', media: 'all' %>
     <%= stylesheet_link_tag 'spotify_search', 'data-turbo-track': 'reload'%>
 

@@ -1,4 +1,4 @@
-<div class="flex items-center justify-center pt-28 px-4 pb-24">
+<div class="flex items-center justify-center pt-28 px-4 pb-14">
   <div class="bg-white rounded-2xl shadow-xl p-6 w-full max-w-[1000px]">
     <div class="flex flex-col space-y-4">
       <div class="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0"> <!-- レスポンシブ対応 -->
@@ -15,15 +15,6 @@
         <!-- 右側コンテンツ -->
         <div class="flex-1 flex flex-col justify-between relative">
           <div>
-
-          <!-- Xシェアボタン -->
-          <% if current_user %>
-            <div class="absolute top-0 right-12  text-[130%]">
-              <%= link_to "https://x.com/share?url=#{post_url(@post)}&text=投稿しましたよ♫%0a", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
-              <i class="fa-brands fa-square-x-twitter"></i>
-              <% end %>
-            </div> 
-          <% end %>
 
           <!-- いいねボタン -->
             <div class="absolute top-0 right-0" id="like-button-content-<%= @post.id %>">
@@ -43,8 +34,6 @@
           <%= render 'reactions/stamp', { post: @post } %>
           <%= render 'reactions/emoji_picker', emojis: @emojis, post: @post if current_user %>
 
-
-
           <!-- 下部情報 -->
           <div class="space-y-4 mt-4">
             <!-- タグ -->
@@ -59,21 +48,28 @@
             <!-- ユーザー情報と編集・削除ボタン -->
             <div class="flex justify-between items-center mt-2">
               <div class="flex items-center space-x-2">
-              <%= image_tag(@post.user.icon_url.to_s, class: 'rounded-full w-8 h-8 mr-1 ') if @post.user.icon_url.present? %>
-              <p class="font-medium text-gray-400"><%= @post.user.name %></p>
-              <%= render 'time', post: @post %>
+                <%= image_tag(@post.user.icon_url.to_s, class: 'rounded-full w-8 h-8 mr-1 ') if @post.user.icon_url.present? %>
+                <p class="font-medium text-gray-400"><%= @post.user.name %></p>
+                <%= render 'time', post: @post %>
               </div>
 
-              <% if current_user && current_user.own?(@post) %>
-                <div class="flex space-x-2">
+              <div class="flex items-center space-x-2">
+                <% if current_user && current_user.own?(@post) %>
                   <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}", class: "text-gray-400 hover:text-blue-500 text-[130%] w-8 h-8 flex items-center justify-center" do %>
                     <i class="fa-solid fa-hammer"></i>
                   <% end %>
                   <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: t('message.confirm') }, class: "text-gray-400 hover:text-red-700 text-[130%] w-8 h-8 flex items-center justify-center" do %>
                     <i class="fa-solid fa-skull"></i>
                   <% end %>
-                </div>
-              <% end %>
+                <% end %>
+
+                <!-- Xシェアボタン -->
+                <% if current_user %>
+                  <%= link_to "https://x.com/share?url=#{post_url(@post)}&text=一言添えますか♫%0a", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア", class: "text-[140%] flex items-center space-x-2" do %>
+                    <i class="fa-brands fa-square-x-twitter"></i>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -81,4 +77,3 @@
     </div>
   </div>
 </div>
-</body>

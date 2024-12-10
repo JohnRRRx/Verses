@@ -5,24 +5,28 @@
         <span class="self-center text-2xl font-semibold text-white"><%= t('header.title') %></span>
       <% end %>
 
-<div class="flex items-center justify-between w-full md:flex md:w-auto" id="navbar-sticky">
-  <ul class="flex flex-row items-center space-x-6 p-4 md:p-0 mt-4 font-semibold md:mt-0 ml-auto">
-    <li>
-    <%= link_to posts_path, class: "nav-link icon-link text-white flex items-center space-x-2" do %>
-      <img src="<%= asset_path('index.png') %>" class="w-5 h-5">
-      <!-- PC用テキスト -->
-      <span class="hidden sm:inline"><%= t('header.index') %></span>
-    <% end %>
-    </li>
-    <li>
-      <%= link_to login_path, class: "nav-link icon-link text-white flex items-center space-x-2" do %>
-      <img src="<%= asset_path('login.png') %>" class="w-5 h-5">
-      <!-- PC用テキスト -->
-      <span class="hidden sm:inline"><%= t('header.login') %></span>
-      <% end %>
-    </li>
-  </ul>
-</div>
+      <div class="flex items-center justify-end w-full md:w-auto" id="navbar-sticky">
+        <ul class="flex flex-row items-center space-x-6 p-0 font-semibold ml-auto">
+          <li>
+            <%= link_to posts_path, class: "nav-link icon-link text-white flex items-center space-x-2 h-16" do %>
+              <div class="flex items-center h-full">
+                <img src="<%= asset_path('index.png') %>" class="w-6 h-6">
+                <!-- PC用テキスト -->
+                <span class="hidden sm:inline ml-2"><%= t('header.index') %></span>
+              </div>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to login_path, class: "nav-link icon-link text-white flex items-center space-x-2 h-16" do %>
+              <div class="flex items-center h-full">
+                <img src="<%= asset_path('login.png') %>" class="w-6 h-6">
+                <!-- PC用テキスト -->
+                <span class="hidden sm:inline ml-2"><%= t('header.login') %></span>
+              </div>
+            <% end %>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 </header>
