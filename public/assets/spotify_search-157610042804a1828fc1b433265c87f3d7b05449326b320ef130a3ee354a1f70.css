@@ -1,0 +1,85 @@
+/* line 1, app/assets/stylesheets/spotify_search.scss */
+#search-results {
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  max-width: 100%;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  webkit-appearance: none;
+}
+
+/* line 16, app/assets/stylesheets/spotify_search.scss */
+.search-results-scroll {
+  max-height: 600px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* line 25, app/assets/stylesheets/spotify_search.scss */
+.search-results-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* line 29, app/assets/stylesheets/spotify_search.scss */
+.search-results-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* line 33, app/assets/stylesheets/spotify_search.scss */
+.search-results-scroll::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 3px;
+}
+
+/* line 38, app/assets/stylesheets/spotify_search.scss */
+.search-result-item {
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  background-color: transparent;
+  transform: translateZ(0);
+  will-change: background-color;
+}
+
+/* line 52, app/assets/stylesheets/spotify_search.scss */
+.search-result-item:hover {
+  background-color: #eff6ff;
+}
+
+/* line 56, app/assets/stylesheets/spotify_search.scss */
+.album-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.375rem;
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  /* line 64, app/assets/stylesheets/spotify_search.scss */
+  .search-result-item {
+    padding: 0.5rem 0.75rem;
+  }
+  /* line 67, app/assets/stylesheets/spotify_search.scss */
+  .album-image {
+    width: 36px;
+    height: 36px;
+  }
+  /* line 70, app/assets/stylesheets/spotify_search.scss */
+  .search-results-scroll {
+    max-height: 400px;
+  }
+}
