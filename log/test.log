@@ -2884,3 +2884,650 @@ FOREIGN KEY ("tag_id")
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
   [1m[36mPost Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
   [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Saved a snapshot of [32mENV[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_5@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_5@example.com"], ["crypted_password", "$2a$04$C4f7/qSVUYb9MM9kc9/yquB9nxpoMQiO8.UIpavhQxK1riQLYc9TW"], ["salt", "3bx7-P3UcyTEdtKREKzB"], ["name", "user_5@example.com"], ["created_at", "2024-12-10 07:22:42.424916"], ["updated_at", "2024-12-10 07:22:42.424916"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mPost Create (1.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "Title 4"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 93], ["created_at", "2024-12-10 07:22:42.427274"], ["updated_at", "2024-12-10 07:22:42.427274"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('tag1') OR LOWER(name) = LOWER('tag2') OR LOWER(name) = LOWER('tag3'))[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag1"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag1"], ["created_at", "2024-12-10 07:22:42.432878"], ["updated_at", "2024-12-10 07:22:42.432878"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag2"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag2"], ["created_at", "2024-12-10 07:22:42.434095"], ["updated_at", "2024-12-10 07:22:42.434095"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag3"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag3"], ["created_at", "2024-12-10 07:22:42.434958"], ["updated_at", "2024-12-10 07:22:42.434958"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Load (2.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = $3 AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 93], ["taggable_type", "Post"], [nil, "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 110], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 110], ["taggable_type", "Post"], ["taggable_id", 93], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.6ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 110], ["taggable_type", "Post"], ["taggable_id", 93], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:22:42.444246"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 110]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 111], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 111], ["taggable_type", "Post"], ["taggable_id", 93], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.3ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 111], ["taggable_type", "Post"], ["taggable_id", 93], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:22:42.446940"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 111]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 112], ["taggable_type", "Post"], ["taggable_id", 93], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.3ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 112], ["taggable_type", "Post"], ["taggable_id", 93], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:22:42.449252"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 112]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mActsAsTaggableOn::Tag Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."context" = $3[0m  [["taggable_id", 93], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_6@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_6@example.com"], ["crypted_password", "$2a$04$2TYK5mq.Fd4vyzgLF1P6v.GJ1SjPMJzJCVQT4LYkjGXFr02HzvTyK"], ["salt", "ujkssLzJdGc-K6e7UMND"], ["name", "user_6@example.com"], ["created_at", "2024-12-10 07:22:42.477866"], ["updated_at", "2024-12-10 07:22:42.477866"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "Title 5"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 94], ["created_at", "2024-12-10 07:22:42.479036"], ["updated_at", "2024-12-10 07:22:42.479036"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('tag1'))[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag1"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag1"], ["created_at", "2024-12-10 07:22:42.481337"], ["updated_at", "2024-12-10 07:22:42.481337"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = $3 AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 94], ["taggable_type", "Post"], [nil, "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 113], ["taggable_type", "Post"], ["taggable_id", 94], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.4ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 113], ["taggable_type", "Post"], ["taggable_id", 94], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:22:42.484220"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 113]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_7@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_7@example.com"], ["crypted_password", "$2a$04$taURyT7Ujueg0IJgIdFrc.1jvC6LB9c.goF.kGL6uMs2/iYGV9FPK"], ["salt", "bWnx6t9AqgEgJmFva_-9"], ["name", "user_7@example.com"], ["created_at", "2024-12-10 07:22:42.509894"], ["updated_at", "2024-12-10 07:22:42.509894"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "Title 6"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 95], ["created_at", "2024-12-10 07:22:42.511972"], ["updated_at", "2024-12-10 07:22:42.511972"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('tag1'))[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag1"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag1"], ["created_at", "2024-12-10 07:22:42.514071"], ["updated_at", "2024-12-10 07:22:42.514071"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = $3 AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 95], ["taggable_type", "Post"], [nil, "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 114], ["taggable_type", "Post"], ["taggable_id", 95], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.4ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 114], ["taggable_type", "Post"], ["taggable_id", 95], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:22:42.517460"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 114]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_8@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_8@example.com"], ["crypted_password", "$2a$04$CPxX7HXf5dbvwPZ9ESwkvebU2mHLce6MDnpM3RruzmtHc9QneUKKq"], ["salt", "LQyQbtf2RKD8jCz7EGa_"], ["name", "user_8@example.com"], ["created_at", "2024-12-10 07:22:42.539903"], ["updated_at", "2024-12-10 07:22:42.539903"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "Title 7"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 96], ["created_at", "2024-12-10 07:22:42.541980"], ["updated_at", "2024-12-10 07:22:42.541980"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('tag2'))[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag2"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag2"], ["created_at", "2024-12-10 07:22:42.544694"], ["updated_at", "2024-12-10 07:22:42.544694"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = $3 AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 96], ["taggable_type", "Post"], [nil, "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 115], ["taggable_type", "Post"], ["taggable_id", 96], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.3ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 115], ["taggable_type", "Post"], ["taggable_id", 96], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:22:42.547283"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 115]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_9@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_9@example.com"], ["crypted_password", "$2a$04$9Z4WAO2jXyuFpKhFeufPjOGJVch6Sm62wlxhkw.49R0Ut3C8GJiLm"], ["salt", "__WuNybUm4hUPd5cUMFR"], ["name", "user_9@example.com"], ["created_at", "2024-12-10 07:22:42.568857"], ["updated_at", "2024-12-10 07:22:42.568857"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "Title 8"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 97], ["created_at", "2024-12-10 07:22:42.570595"], ["updated_at", "2024-12-10 07:22:42.570595"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('tag1') OR LOWER(name) = LOWER('tag2'))[0m
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = $3 AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 97], ["taggable_type", "Post"], [nil, "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 114], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 114], ["taggable_type", "Post"], ["taggable_id", 97], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.2ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 114], ["taggable_type", "Post"], ["taggable_id", 97], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:22:42.574225"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 114]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 115], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 115], ["taggable_type", "Post"], ["taggable_id", 97], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.2ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 115], ["taggable_type", "Post"], ["taggable_id", 97], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:22:42.576069"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 115]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "posts" INNER JOIN "taggings" "post_taggings_ef68b39" ON "post_taggings_ef68b39"."taggable_id" = "posts"."id" AND "post_taggings_ef68b39"."taggable_type" = 'Post' AND "post_taggings_ef68b39"."tag_id" IN (SELECT "tags"."id" FROM "tags" WHERE LOWER("tags"."name") ILIKE 'tag1' ESCAPE '!') WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 95], ["LIMIT", 1]]
+  [1m[36mPost Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "posts" INNER JOIN "taggings" "post_taggings_ef68b39" ON "post_taggings_ef68b39"."taggable_id" = "posts"."id" AND "post_taggings_ef68b39"."taggable_type" = 'Post' AND "post_taggings_ef68b39"."tag_id" IN (SELECT "tags"."id" FROM "tags" WHERE LOWER("tags"."name") ILIKE 'tag1' ESCAPE '!') WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 97], ["LIMIT", 1]]
+  [1m[36mPost Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "posts" INNER JOIN "taggings" "post_taggings_ef68b39" ON "post_taggings_ef68b39"."taggable_id" = "posts"."id" AND "post_taggings_ef68b39"."taggable_type" = 'Post' AND "post_taggings_ef68b39"."tag_id" IN (SELECT "tags"."id" FROM "tags" WHERE LOWER("tags"."name") ILIKE 'tag1' ESCAPE '!') WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 96], ["LIMIT", 1]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "taggings" "post_taggings_ef68b39" ON "post_taggings_ef68b39"."taggable_id" = "posts"."id" AND "post_taggings_ef68b39"."taggable_type" = 'Post' AND "post_taggings_ef68b39"."tag_id" IN (SELECT "tags"."id" FROM "tags" WHERE LOWER("tags"."name") ILIKE 'tag1' ESCAPE '!')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_10@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_10@example.com"], ["crypted_password", "$2a$04$Bya9Iaz322/y.refU0exeOrJ6q0YGuHGO0GuWj1dDcBxRd70F8NNm"], ["salt", "LQxQ1n9abm_K_tsDecY8"], ["name", "user_10@example.com"], ["created_at", "2024-12-10 07:22:42.605424"], ["updated_at", "2024-12-10 07:22:42.605424"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "Title 9"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 98], ["created_at", "2024-12-10 07:22:42.606315"], ["updated_at", "2024-12-10 07:22:42.606315"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('tag1') OR LOWER(name) = LOWER('tag2'))[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag1"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag1"], ["created_at", "2024-12-10 07:22:42.608374"], ["updated_at", "2024-12-10 07:22:42.608374"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag2"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.1ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag2"], ["created_at", "2024-12-10 07:22:42.609230"], ["updated_at", "2024-12-10 07:22:42.609230"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = $3 AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 98], ["taggable_type", "Post"], [nil, "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 116], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 116], ["taggable_type", "Post"], ["taggable_id", 98], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.3ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 116], ["taggable_type", "Post"], ["taggable_id", 98], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:22:42.611786"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 116]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 117], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 117], ["taggable_type", "Post"], ["taggable_id", 98], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.2ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 117], ["taggable_type", "Post"], ["taggable_id", 98], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:22:42.613738"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 117]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Update (0.3ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1 WHERE "posts"."id" = $2[0m  [["updated_at", "2024-12-10 07:22:42.615320"], ["id", 98]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('tag2'))[0m
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = $3 AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 98], ["taggable_type", "Post"], [nil, "tags"]]
+  [1m[36mActsAsTaggableOn::Tagging Load (0.3ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL AND "taggings"."context" = $3 AND "taggings"."tag_id" = $4[0m  [["taggable_id", 98], ["taggable_type", "Post"], ["context", "tags"], ["tag_id", 116]]
+  [1m[36mActsAsTaggableOn::Tagging Destroy (0.2ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = $1[0m  [["id", 144]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.3ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) - $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 116]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_11@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_11@example.com"], ["crypted_password", "$2a$04$FwftRn/Wa3V16872Zj6./u3BFjTuVfBjoj/PDpIdLrevEoyhGSdQ6"], ["salt", "ro9VNYPaPN8xw2YebAcE"], ["name", "user_11@example.com"], ["created_at", "2024-12-10 07:22:42.643434"], ["updated_at", "2024-12-10 07:22:42.643434"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "Title 10"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 99], ["created_at", "2024-12-10 07:22:42.644924"], ["updated_at", "2024-12-10 07:22:42.644924"]]
+  [1m[36mActsAsTaggableOn::Tagging Load (0.2ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2[0m  [["taggable_id", 99], ["taggable_type", "Post"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Update (0.5ms)[0m  [1m[33mUPDATE "posts" SET "title" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["title", "新しいタイトル"], ["updated_at", "2024-12-10 07:22:42.647653"], ["id", 99]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_12@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_12@example.com"], ["crypted_password", "$2a$04$Z2As76z6xtuV/3OewI450.lVE.8Ma7iZNOnS/oP2jCa68usJuzaNq"], ["salt", "eiLUG-_T89WrrDYJdCbP"], ["name", "user_12@example.com"], ["created_at", "2024-12-10 07:22:42.672233"], ["updated_at", "2024-12-10 07:22:42.672233"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "Title 11"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 100], ["created_at", "2024-12-10 07:22:42.673658"], ["updated_at", "2024-12-10 07:22:42.673658"]]
+  [1m[36mActsAsTaggableOn::Tagging Load (0.2ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2[0m  [["taggable_id", 100], ["taggable_type", "Post"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mLike Load (1.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 100]]
+  [1m[36mReaction Load (0.6ms)[0m  [1m[34mSELECT "reactions".* FROM "reactions" WHERE "reactions"."post_id" = $1[0m  [["post_id", 100]]
+  [1m[36mActsAsTaggableOn::Tagging Load (0.2ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."context" = $3[0m  [["taggable_id", 100], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mPost Destroy (0.5ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 100]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Saved a snapshot of [32mENV[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_5@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_5@example.com"], ["crypted_password", "$2a$04$9VY9EhVpkcxNow5MX47ScujaBe2YrFdhFANpeP7Dmp0V2X3jaAaiK"], ["salt", "SBbwFB5J2Tbdhk9HBBLX"], ["name", "user_5@example.com"], ["created_at", "2024-12-10 07:25:22.065934"], ["updated_at", "2024-12-10 07:25:22.065934"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "test_titlh"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 101], ["created_at", "2024-12-10 07:25:22.067778"], ["updated_at", "2024-12-10 07:25:22.067778"]]
+  [1m[36mActsAsTaggableOn::Tag Load (1.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('tag1') OR LOWER(name) = LOWER('tag2') OR LOWER(name) = LOWER('tag3'))[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag1"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag1"], ["created_at", "2024-12-10 07:25:22.073379"], ["updated_at", "2024-12-10 07:25:22.073379"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag2"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag2"], ["created_at", "2024-12-10 07:25:22.074562"], ["updated_at", "2024-12-10 07:25:22.074562"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag3"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag3"], ["created_at", "2024-12-10 07:25:22.075911"], ["updated_at", "2024-12-10 07:25:22.075911"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Load (2.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = $3 AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 101], ["taggable_type", "Post"], [nil, "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 118], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 118], ["taggable_type", "Post"], ["taggable_id", 101], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.5ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 118], ["taggable_type", "Post"], ["taggable_id", 101], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:25:22.084183"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 118]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 119], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 119], ["taggable_type", "Post"], ["taggable_id", 101], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.3ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 119], ["taggable_type", "Post"], ["taggable_id", 101], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:25:22.087540"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 119]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 120], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 120], ["taggable_type", "Post"], ["taggable_id", 101], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.3ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 120], ["taggable_type", "Post"], ["taggable_id", 101], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:25:22.089441"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 120]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mActsAsTaggableOn::Tag Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."context" = $3[0m  [["taggable_id", 101], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_6@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_6@example.com"], ["crypted_password", "$2a$04$qEXGqPUcax.NDu6lLCmuHehHmOG3g.O8nkzaCG.BskJVASl7K/iuq"], ["salt", "vdSmPGhKUXKBXb_SGrfv"], ["name", "user_6@example.com"], ["created_at", "2024-12-10 07:25:22.117060"], ["updated_at", "2024-12-10 07:25:22.117060"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "test_titli"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 102], ["created_at", "2024-12-10 07:25:22.118019"], ["updated_at", "2024-12-10 07:25:22.118019"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('tag1'))[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag1"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag1"], ["created_at", "2024-12-10 07:25:22.121858"], ["updated_at", "2024-12-10 07:25:22.121858"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = $3 AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 102], ["taggable_type", "Post"], [nil, "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 121], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 121], ["taggable_type", "Post"], ["taggable_id", 102], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.4ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 121], ["taggable_type", "Post"], ["taggable_id", 102], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:25:22.124721"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 121]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_7@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_7@example.com"], ["crypted_password", "$2a$04$WY0cs5B.ICQEAqcgONBI1.oNmHOHmWduiTxQL/poeclIoagsYG9H6"], ["salt", "HgQC3vWHi4kxXAXNetTr"], ["name", "user_7@example.com"], ["created_at", "2024-12-10 07:25:22.151398"], ["updated_at", "2024-12-10 07:25:22.151398"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "test_titlj"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 103], ["created_at", "2024-12-10 07:25:22.153583"], ["updated_at", "2024-12-10 07:25:22.153583"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('tag1'))[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag1"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag1"], ["created_at", "2024-12-10 07:25:22.156081"], ["updated_at", "2024-12-10 07:25:22.156081"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = $3 AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 103], ["taggable_type", "Post"], [nil, "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 122], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 122], ["taggable_type", "Post"], ["taggable_id", 103], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.3ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 122], ["taggable_type", "Post"], ["taggable_id", 103], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:25:22.158740"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 122]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_8@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_8@example.com"], ["crypted_password", "$2a$04$CCbZnKZDem9eVA6KyW3ymee5T.JtMwKsd4OKBkZrGbkpymJxuzksG"], ["salt", "XvJjeW4RxtW3gKerGvio"], ["name", "user_8@example.com"], ["created_at", "2024-12-10 07:25:22.180855"], ["updated_at", "2024-12-10 07:25:22.180855"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "test_titlk"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 104], ["created_at", "2024-12-10 07:25:22.183276"], ["updated_at", "2024-12-10 07:25:22.183276"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('tag2'))[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag2"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag2"], ["created_at", "2024-12-10 07:25:22.185562"], ["updated_at", "2024-12-10 07:25:22.185562"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = $3 AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 104], ["taggable_type", "Post"], [nil, "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 123], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 123], ["taggable_type", "Post"], ["taggable_id", 104], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.3ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 123], ["taggable_type", "Post"], ["taggable_id", 104], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:25:22.188471"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 123]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_9@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_9@example.com"], ["crypted_password", "$2a$04$d2pfXiwL92Q47cwoqVSeguqo/D0MlZg3OnA/vzYwMxA62WH6PBF1S"], ["salt", "BSmdUFHDZAUaGudcxU-Q"], ["name", "user_9@example.com"], ["created_at", "2024-12-10 07:25:22.209549"], ["updated_at", "2024-12-10 07:25:22.209549"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "test_titll"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 105], ["created_at", "2024-12-10 07:25:22.211362"], ["updated_at", "2024-12-10 07:25:22.211362"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('tag1') OR LOWER(name) = LOWER('tag2'))[0m
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = $3 AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 105], ["taggable_type", "Post"], [nil, "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 122], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 122], ["taggable_type", "Post"], ["taggable_id", 105], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.2ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 122], ["taggable_type", "Post"], ["taggable_id", 105], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:25:22.215401"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 122]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 123], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 123], ["taggable_type", "Post"], ["taggable_id", 105], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.2ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 123], ["taggable_type", "Post"], ["taggable_id", 105], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:25:22.217302"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 123]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "posts" INNER JOIN "taggings" "post_taggings_ef68b39" ON "post_taggings_ef68b39"."taggable_id" = "posts"."id" AND "post_taggings_ef68b39"."taggable_type" = 'Post' AND "post_taggings_ef68b39"."tag_id" IN (SELECT "tags"."id" FROM "tags" WHERE LOWER("tags"."name") ILIKE 'tag1' ESCAPE '!') WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  [1m[36mPost Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "posts" INNER JOIN "taggings" "post_taggings_ef68b39" ON "post_taggings_ef68b39"."taggable_id" = "posts"."id" AND "post_taggings_ef68b39"."taggable_type" = 'Post' AND "post_taggings_ef68b39"."tag_id" IN (SELECT "tags"."id" FROM "tags" WHERE LOWER("tags"."name") ILIKE 'tag1' ESCAPE '!') WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 105], ["LIMIT", 1]]
+  [1m[36mPost Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "posts" INNER JOIN "taggings" "post_taggings_ef68b39" ON "post_taggings_ef68b39"."taggable_id" = "posts"."id" AND "post_taggings_ef68b39"."taggable_type" = 'Post' AND "post_taggings_ef68b39"."tag_id" IN (SELECT "tags"."id" FROM "tags" WHERE LOWER("tags"."name") ILIKE 'tag1' ESCAPE '!') WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 104], ["LIMIT", 1]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "taggings" "post_taggings_ef68b39" ON "post_taggings_ef68b39"."taggable_id" = "posts"."id" AND "post_taggings_ef68b39"."taggable_type" = 'Post' AND "post_taggings_ef68b39"."tag_id" IN (SELECT "tags"."id" FROM "tags" WHERE LOWER("tags"."name") ILIKE 'tag1' ESCAPE '!')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_10@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_10@example.com"], ["crypted_password", "$2a$04$WXtajlY13hM/jdQ9NHrcu.DmBfcwZemrt79tSQw/7EnRpZ/UsAZNG"], ["salt", "YmjJnGDUy5BZAzuXo_i8"], ["name", "user_10@example.com"], ["created_at", "2024-12-10 07:25:22.246415"], ["updated_at", "2024-12-10 07:25:22.246415"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "test_titlm"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 106], ["created_at", "2024-12-10 07:25:22.247330"], ["updated_at", "2024-12-10 07:25:22.247330"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('tag1') OR LOWER(name) = LOWER('tag2'))[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag1"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag1"], ["created_at", "2024-12-10 07:25:22.249857"], ["updated_at", "2024-12-10 07:25:22.249857"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "tags" WHERE "tags"."name" = $1 LIMIT $2[0m  [["name", "tag2"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tag Create (0.2ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at", "taggings_count") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "tag2"], ["created_at", "2024-12-10 07:25:22.250900"], ["updated_at", "2024-12-10 07:25:22.250900"], ["taggings_count", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = $3 AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 106], ["taggable_type", "Post"], [nil, "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 124], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 124], ["taggable_type", "Post"], ["taggable_id", 106], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.3ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 124], ["taggable_type", "Post"], ["taggable_id", 106], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:25:22.253714"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.3ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 124]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT $2[0m  [["id", 125], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "taggings" WHERE "taggings"."tag_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."taggable_id" = $3 AND "taggings"."context" = $4 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL LIMIT $5[0m  [["tag_id", 125], ["taggable_type", "Post"], ["taggable_id", 106], ["context", "tags"], ["LIMIT", 1]]
+  [1m[36mActsAsTaggableOn::Tagging Create (0.3ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "taggable_type", "taggable_id", "tagger_type", "tagger_id", "context", "created_at", "tenant") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["tag_id", 125], ["taggable_type", "Post"], ["taggable_id", 106], ["tagger_type", nil], ["tagger_id", nil], ["context", "tags"], ["created_at", "2024-12-10 07:25:22.255909"], ["tenant", nil]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 125]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Update (0.4ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1 WHERE "posts"."id" = $2[0m  [["updated_at", "2024-12-10 07:25:22.257533"], ["id", 106]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('tag2'))[0m
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = $3 AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 106], ["taggable_type", "Post"], [nil, "tags"]]
+  [1m[36mActsAsTaggableOn::Tagging Load (0.2ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL AND "taggings"."context" = $3 AND "taggings"."tag_id" = $4[0m  [["taggable_id", 106], ["taggable_type", "Post"], ["context", "tags"], ["tag_id", 124]]
+  [1m[36mActsAsTaggableOn::Tagging Destroy (0.2ms)[0m  [1m[31mDELETE FROM "taggings" WHERE "taggings"."id" = $1[0m  [["id", 154]]
+  [1m[36mActsAsTaggableOn::Tag Update All (0.2ms)[0m  [1m[33mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) - $1 WHERE "tags"."id" = $2[0m  [["taggings_count", 1], ["id", 124]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_11@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_11@example.com"], ["crypted_password", "$2a$04$2TlwhIm15nwHCi8bU9lJl.XsmKbQKSf6NuC4pzrf8.iXtCkceI4XK"], ["salt", "rM4ktEY6xgxzyTyoBLKM"], ["name", "user_11@example.com"], ["created_at", "2024-12-10 07:25:22.284603"], ["updated_at", "2024-12-10 07:25:22.284603"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "test_titln"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 107], ["created_at", "2024-12-10 07:25:22.286035"], ["updated_at", "2024-12-10 07:25:22.286035"]]
+  [1m[36mActsAsTaggableOn::Tagging Load (0.3ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2[0m  [["taggable_id", 107], ["taggable_type", "Post"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Update (0.9ms)[0m  [1m[33mUPDATE "posts" SET "title" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["title", "新しいタイトル"], ["updated_at", "2024-12-10 07:25:22.289944"], ["id", 107]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_12@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_12@example.com"], ["crypted_password", "$2a$04$4htAexsmpfm0KcsKKz3dhOwZqOeG7mrMU3/JAbOFI2kb2ABKjcnpG"], ["salt", "CHxMHepyTDsWwuayE3z7"], ["name", "user_12@example.com"], ["created_at", "2024-12-10 07:25:22.314426"], ["updated_at", "2024-12-10 07:25:22.314426"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "photo", "song_id", "song_name", "artist_name", "album_name", "audio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "test_titlo"], ["photo", "test.jpg"], ["song_id", "70YEIxamMR2PW4dnNqkAxu"], ["song_name", nil], ["artist_name", nil], ["album_name", nil], ["audio", nil], ["user_id", 108], ["created_at", "2024-12-10 07:25:22.315987"], ["updated_at", "2024-12-10 07:25:22.315987"]]
+  [1m[36mActsAsTaggableOn::Tagging Load (1.4ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2[0m  [["taggable_id", 108], ["taggable_type", "Post"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 108]]
+  [1m[36mReaction Load (0.4ms)[0m  [1m[34mSELECT "reactions".* FROM "reactions" WHERE "reactions"."post_id" = $1[0m  [["post_id", 108]]
+  [1m[36mActsAsTaggableOn::Tagging Load (0.2ms)[0m  [1m[34mSELECT "taggings".* FROM "taggings" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND "taggings"."context" = $3[0m  [["taggable_id", 108], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mPost Destroy (0.4ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 108]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPost Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Saved a snapshot of [32mENV[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Saved a snapshot of [32mENV[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_2@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Saved a snapshot of [32mENV[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_2@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_4@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Saved a snapshot of [32mENV[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_2@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_3@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_4@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Saved a snapshot of [32mENV[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_2@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_3@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_4@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Saved a snapshot of [32mENV[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_2@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_3@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_4@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Saved a snapshot of [32mENV[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_2@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_3@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_4@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Saved a snapshot of [32mENV[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_2@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_3@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_4@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_5@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "duplicate@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "duplicate@example.com"], ["crypted_password", "$2a$04$BExZ4ms5qPzOdxsLfddnrOlM30poovEr5Bl3DBmlQtEQLt/XNa8Ba"], ["salt", "fVP5B9ZxJ7vWgRV96_zt"], ["name", "test_usew"], ["created_at", "2024-12-10 07:51:28.523095"], ["updated_at", "2024-12-10 07:51:28.523095"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "duplicate@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_6@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "duplicate_token"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_6@example.com"], ["crypted_password", "$2a$04$AnGgxH4n6PNiON6LbDUPVuLvRjSHDy91zbHdZeDnU6Pt/Aqba0J1S"], ["salt", "oKTsD779bbywj1TAv5xS"], ["name", "test_usey"], ["created_at", "2024-12-10 07:51:28.530919"], ["updated_at", "2024-12-10 07:51:28.530919"], ["icon", nil], ["reset_password_token", "duplicate_token"], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_7@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "duplicate_token"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Saved a snapshot of [32mENV[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_2@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_3@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_4@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_5@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "duplicate@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "duplicate@example.com"], ["crypted_password", "$2a$04$Y9iqlgH1WIKe6BYFr5ybB.Uo5EgK4aqCd7p9f25zFYfDcSA.Hx8IK"], ["salt", "kQJzyDKM75_gs5a7H_9-"], ["name", "test_usew"], ["created_at", "2024-12-10 07:51:55.606580"], ["updated_at", "2024-12-10 07:51:55.606580"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "duplicate@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_6@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "duplicate_token"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_6@example.com"], ["crypted_password", "$2a$04$XQy5uV0q8XhrG9V7xcf0Mu6CWtMF.1PiVbf62aCMWnlUkd0kRIaBK"], ["salt", "L5wD2JfpkicmTdjNNom7"], ["name", "test_usey"], ["created_at", "2024-12-10 07:51:55.613785"], ["updated_at", "2024-12-10 07:51:55.613785"], ["icon", nil], ["reset_password_token", "duplicate_token"], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_7@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "duplicate_token"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Saved a snapshot of [32mENV[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_2@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_3@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_4@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_5@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "duplicate@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "duplicate@example.com"], ["crypted_password", "$2a$04$Dg8VcXrHDv7vZalpTBcLT.YMN/Kw4jZhuhsqADH.QoU6WNmxGehfy"], ["salt", "fKvzdVC8iasDRGPyz-ye"], ["name", "test_usew"], ["created_at", "2024-12-10 07:52:39.904605"], ["updated_at", "2024-12-10 07:52:39.904605"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "duplicate@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_6@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "duplicate_token"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_6@example.com"], ["crypted_password", "$2a$04$9bZ5cbXRGULb3ed0QfTHaeouW0fFUV1pr2PUR1Xa77rQ0P7Oa5zrq"], ["salt", "ixD_KqEu3zQnh7-K_K-5"], ["name", "test_usey"], ["created_at", "2024-12-10 07:52:39.911797"], ["updated_at", "2024-12-10 07:52:39.911797"], ["icon", nil], ["reset_password_token", "duplicate_token"], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_7@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "duplicate_token"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+[dotenv] Set [36mSPOTIFY_CLIENT_ID[0m, [36mSPOTIFY_SECRET_ID[0m, [36mGOOGLE_CLIENT_ID[0m, [36mGOOGLE_CLIENT_SECRET[0m, [36mGMAIL_USERNAME[0m, [36mGMAIL_PASSWORD[0m, [36mREDIS_URL[0m, [36mPRODUCT_ENV[0m, and [36mSECRET_KEY_BASE[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Saved a snapshot of [32mENV[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_2@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_3@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_4@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_5@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "test@example.com"], ["crypted_password", "$2a$04$wTSbTcHR8MamuLmuVL/RouU3tdtzY56rR1tKX.J5mbvdZC9zTvGme"], ["salt", "mW3iSA_KxqTeDGPjps8o"], ["name", "test_usew"], ["created_at", "2024-12-10 07:53:12.689769"], ["updated_at", "2024-12-10 07:53:12.689769"], ["icon", nil], ["reset_password_token", nil], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_6@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "duplicate_token"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "name", "created_at", "updated_at", "icon", "reset_password_token", "reset_password_token_expires_at", "reset_password_email_sent_at", "access_count_to_reset_password_page") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "user_6@example.com"], ["crypted_password", "$2a$04$yvViLzsc1Prpp042EyHO/eeSidUl6.7g0EaL8.rFjy5iTRER5j7C6"], ["salt", "tMFaLFXMitS3dS25Hzp-"], ["name", "test_usey"], ["created_at", "2024-12-10 07:53:12.697276"], ["updated_at", "2024-12-10 07:53:12.697276"], ["icon", nil], ["reset_password_token", "duplicate_token"], ["reset_password_token_expires_at", nil], ["reset_password_email_sent_at", nil], ["access_count_to_reset_password_page", 0]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user_7@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "duplicate_token"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
