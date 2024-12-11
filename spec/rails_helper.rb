@@ -20,7 +20,7 @@ require 'rspec/rails'
 #
 # The following line is provided for convenience purposes. It has the downside
 # of increasing the boot-up time by auto-requiring all files in the support
-# directory. Alternatively, in the individual `*_spec.rb` files, manually
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 # require only the support files necessary.
 #
 # Rails.root.glob('spec/support/**/*.rb').sort_by(&:to_s).each { |f| require f }
@@ -68,4 +68,11 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.include FactoryBot::Syntax::Methods
+  config.include LoginMacros
+
+  RSpec.configure do |config|
+    config.before(:each, type: :system) do
+      driven_by :selenium_chrome_headless
+    end
+  end
 end
