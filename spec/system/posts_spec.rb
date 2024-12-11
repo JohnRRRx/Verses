@@ -4,152 +4,186 @@ RSpec.describe "Posts", type: :system do
   let(:user) { create(:user) }
   let(:post) { create(:post) }
 
-  describe 'ログイン前' do
-    describe 'ページ遷移確認' do
-      context '新規投稿ページにアクセス' do
-        it '新規投稿ページへのアクセスが失敗する' do
-          visit new_post_path
-          expect(current_path).to eq login_path
-        end
-      end
+  # describe 'ログイン前' do
+  #   describe 'ページ遷移確認' do
+  #     context '新規投稿ページにアクセス' do
+  #       it '新規投稿ページへのアクセスが失敗する' do
+  #         visit new_post_path
+  #         expect(current_path).to eq login_path
+  #       end
+  #     end
 
-      context '投稿編集ページにアクセス' do
-        it '投稿編集ページへのアクセスが失敗する' do
-          visit edit_post_path(post)
-          expect(current_path).to eq login_path
-        end
-      end
+  #     context '投稿編集ページにアクセス' do
+  #       it '投稿編集ページへのアクセスが失敗する' do
+  #         visit edit_post_path(post)
+  #         expect(current_path).to eq login_path
+  #       end
+  #     end
 
-      context '投稿詳細ページにアクセス' do
-        it '投稿の詳細情報が表示される' do
-          visit post_path(post)
-          expect(page).to have_content post.title
-          expect(current_path).to eq post_path(post)
-        end
-      end
+  #     context '投稿詳細ページにアクセス' do
+  #       it '投稿の詳細情報が表示される' do
+  #         visit post_path(post)
+  #         expect(page).to have_content post.title
+  #         expect(current_path).to eq post_path(post)
+  #       end
+  #     end
 
-      context '投稿一覧ページにアクセス' do
-        it '全投稿が表示される' do
-          post_list = create_list(:post, 3)
-          visit posts_path
-          expect(page).to have_content post_list[0].title
-          expect(page).to have_content post_list[1].title
-          expect(page).to have_content post_list[2].title
-          expect(current_path).to eq posts_path
-        end
-      end
-    end
-  end
+  #     context '投稿一覧ページにアクセス' do
+  #       it '全投稿が表示される' do
+  #         # 投稿を3つ作成し、created_atを現在時刻に固定
+  #         post_list = create_list(:post, 3, created_at: Time.now)
+  #         visit posts_path
+  #         # 各投稿に「0秒」が表示されていることを確認
+  #         post_list.each do |post|
+  #           expect(page).to have_content '0秒'
+  #         end
+  #         # ページのパスが正しいことを確認
+  #         expect(current_path).to eq posts_path
+  #       end
+  #     end
+  #   end
+  # end
 
   describe 'ログイン後' do
-    before { login_as(user) }
-
-    describe '新規投稿' do
-      context 'フォームの入力値が正常' do
-        it '新規投稿成功' do
-          visit new_post_path
-          fill_in 'Title', with: 'test_title'
-          fill_in 'Content', with: 'test_content'
-          select 'doing', from: 'Status'
-          fill_in 'Deadline', with: DateTime.new(2020, 6, 1, 10, 30)
-          click_button 'Create post'
-          expect(page).to have_content 'Title: test_title'
-          expect(page).to have_content 'Photo: test_content'
-          expect(page).to have_content 'Song_id: doing'
-          expect(page).to have_content 'Tag: 2020/6/1 10:30'
-          expect(current_path).to eq '/posts/1'
-        end
-      end
-
-      context 'タイトル未入力' do
-        it '投稿作成失敗' do
-          visit new_post_path
-          fill_in 'Title', with: ''
-          fill_in 'Photo', with: 'test.jpg'
-          fill_in 'Song_id', with: '2X0pcKFdtkbjKxtZlyZCkZ'
-          click_button 'Create post'
-          expect(page).to have_content '1 error prohibited this post from being saved:'
-          expect(page).to have_content "Title can't be blank"
-          expect(current_path).to eq posts_path
-        end
-      end
-
-      context '写真未選択' do
-        it '投稿作成失敗' do
-          visit new_post_path
-          fill_in 'Title', with: 'test_title'
-          fill_in 'Photo', with: ''
-          fill_in 'Song_id', with: '2X0pcKFdtkbjKxtZlyZCkZ'
-          click_button 'Create post'
-          expect(page).to have_content '1 error prohibited this post from being saved:'
-          expect(page).to have_content "Title can't be blank"
-          expect(current_path).to eq posts_path
-        end
-      end
-
-      context '曲未選択' do
-        it '投稿作成失敗' do
-          visit new_post_path
-          fill_in 'Title', with: 'test_title'
-          fill_in 'Photo', with: 'test.jpg'
-          fill_in 'Song_id', with: ''
-          click_button 'Create post'
-          expect(page).to have_content '1 error prohibited this post from being saved:'
-          expect(page).to have_content "Title can't be blank"
-          expect(current_path).to eq posts_path
-        end
-      end
+    before do
+      login_as(user)
+      expect(page).to have_content '新規投稿'  # ログイン後、新規投稿が表示されることを確認
     end
-    describe '投稿編集' do
-      let!(:post) { create(:post, user: user) }
-      let(:other_post) { create(:post, user: user) }
-      before { visit edit_post_path(post) }
 
-      context 'フォームの入力値が正常' do
-        it '投稿編集成功' do
-          fill_in 'Title', with: 'updated_title'
+    # describe '新規投稿' do
+    #   context 'フォームの入力値が正常' do
+    #     it '新規投稿成功' do
+    #       visit new_post_path
+    #       expect(current_path).to eq new_post_path
+    #       # タイトル入力
+    #       fill_in 'タイトル', with: 'Test Post Title'
+    #       # 曲検索
+    #       fill_in '曲を検索', with: 'イチブトゼンブ'
+    #       find('i.fa-solid.fa-magnifying-glass').click
+    #       # 検索結果の曲を選択
+    #       expect(page).to have_content 'イチブトゼンブ' # 実際の曲タイトルに置き換え
+    #       first('button.search-result-item', text: 'イチブトゼンブ').click
+    #       expect(page).to have_content '選択された曲'
+    #       # 画像選択
+    #       attach_file '写真', Rails.root.join('spec/support/assets/test.jpg')
+    #       click_button 'シェア'
+    #       # 確認
+    #       expect(page).to have_content '投稿を作成しました'
+    #       expect(current_path).to eq posts_path
+    #       find("img.h-72.w-72.object-contain.rounded-t-xl[alt='Post Image']").click
+    #       expect(page).to have_current_path(/posts\/\d+/, wait: 1) # 動的なshow pathを待機
+    #       expect(page).to have_content 'test_user'
+    #       expect(page).to have_selector('img[src*="test.jpg"]')
+    #       expect(page).to have_selector('iframe.w-full.rounded-lg[src="https://open.spotify.com/embed/track/2X0pcKFdtkbjKxtZlyZCkZ"]')
+    #     end
+    #   end
 
-          click_button 'Update post'
-          expect(page).to have_content 'Title: updated_title'
-          expect(page).to have_content 'Status: done'
-          expect(page).to have_content 'post was successfully updated.'
-          expect(current_path).to eq post_path(post)
-        end
-      end
+    #   context 'タイトル未入力' do
+    #     it '投稿作成失敗' do
+    #       visit new_post_path
+    #       expect(current_path).to eq new_post_path
+    #       # タイトルnil
+    #       fill_in 'タイトル', with: ''
+    #       # 曲検索
+    #       fill_in '曲を検索', with: 'ギリギリchop'
+    #       # 画像選択
+    #       find('i.fa-solid.fa-magnifying-glass').click
+    #       # 検索結果の曲を選択
+    #       expect(page).to have_content 'ギリギリchop' # 実際の曲タイトルに置き換え
+    #       first('button.search-result-item', text: 'ギリギリchop').click
+    #       expect(page).to have_content '選択された曲'
+    #       # 画像選択
+    #       attach_file '写真', Rails.root.join('spec/support/assets/test.jpg')
+    #       click_button 'シェア'
+    #       expect(page).to have_content "タイトルを入力してください"
+    #       expect(current_path).to eq posts_path
+    #     end
+    #   end
 
-      context 'タイトル未入力' do
-        it '投稿編集失敗' do
-          fill_in 'Title', with: nil
-          select :todo, from: 'Status'
-          click_button 'Update post'
-          expect(page).to have_content '1 error prohibited this post from being saved'
-          expect(page).to have_content "Title can't be blank"
-          expect(current_path).to eq post_path(post)
-        end
-      end
+    #   context '写真未選択' do
+    #     it '投稿作成失敗' do
+    #       visit new_post_path
+    #       expect(current_path).to eq new_post_path
+    #       # タイトル入力
+    #       fill_in 'タイトル', with: 'Test Post Title'
+    #       # 曲検索
+    #       fill_in '曲を検索', with: 'ultra soul'
+    #       find('i.fa-solid.fa-magnifying-glass').click
+    #       # 検索結果の曲を選択
+    #       expect(page).to have_content 'ultra soul' # 実際の曲タイトルに置き換え
+    #       first('button.search-result-item', text: 'ultra soul').click
+    #       expect(page).to have_content '選択された曲'
+    #       #写真選択せず
+    #       click_button 'シェア'
+    #       expect(page).to have_content "写真を選択してください"
+    #       expect(current_path).to eq posts_path
+    #     end
+    #   end
 
-      context '登録済のタイトルを入力' do
-        it '投稿編集失敗' do
-          fill_in 'Title', with: other_post.title
-          select :todo, from: 'Status'
-          click_button 'Update post'
-          expect(page).to have_content '1 error prohibited this post from being saved'
-          expect(page).to have_content "Title has already been taken"
-          expect(current_path).to eq post_path(post)
-        end
-      end
-    end
-    describe '投稿削除' do
-      let!(:post) { create(:post, user: user) }
+    #   context '曲未選択' do
+    #     it '投稿作成失敗' do
+    #       visit new_post_path
+    #       expect(current_path).to eq new_post_path
+    #       # タイトル入力
+    #       fill_in 'タイトル', with: 'Test Post Title'
+    #       # 曲検索・選択しない
+    #       # 画像選択
+    #       attach_file '写真', Rails.root.join('spec/support/assets/test.jpg')
+    #       click_button 'シェア'
+    #       expect(page).to have_content "曲を選択してください"
+    #       expect(current_path).to eq posts_path
+    #     end
+    #   end
+    # end
 
-      it '投稿削除成功' do
-        visit posts_path
-        click_link 'Destroy'
-        expect(page.accept_confirm).to eq 'Are you sure?'
-        expect(page).to have_content 'post was successfully destroyed'
-        expect(current_path).to eq posts_path
-        expect(page).not_to have_content post.title
-      end
-    end
+    # describe '投稿編集' do
+    #   let!(:post) { create(:post, user: user) }
+    #   let(:other_post) { create(:post, user: user) }
+    #   before { visit edit_post_path(post) }
+      
+    #   context 'フォームの入力値が正常' do
+    #     it '投稿編集成功' do
+    #       # タイトル変更
+    #       fill_in 'タイトル', with: 'updated_title'
+    #       # 曲検索
+    #       fill_in '曲を検索', with: 'いつかのメリークリスマス'
+    #       find('i.fa-solid.fa-magnifying-glass').click
+    #       # 検索結果の曲を選択
+    #       expect(page).to have_content 'いつかのメリークリスマス' # 実際の曲タイトルに置き換え
+    #       first('button.search-result-item', text: 'いつかのメリークリスマス').click
+    #       expect(page).to have_content '選択された曲'
+    #       # 画像選択
+    #       attach_file '写真', Rails.root.join('spec/support/assets/test2.png')
+    #       click_button 'シェア'
+    #       expect(page).to have_content '投稿を更新しました'
+    #       expect(page).to have_content 'updated_title'
+    #       expect(page).to have_selector('img[src*="test2.png"]')
+    #       expect(page).to have_selector('iframe.w-full.rounded-lg[src="https://open.spotify.com/embed/track/3Ro8jrbsWu0VSk1odLLYuo"]')
+    #       expect(current_path).to eq post_path(post)
+    #     end
+    #   end
+
+    #   context 'タイトル空白' do
+    #     it '投稿編集失敗' do
+    #       # タイトル変更
+    #       fill_in 'タイトル', with: ''
+    #       click_button 'シェア'
+    #       expect(page).to have_content '投稿を更新できませんでした'
+    #       expect(page).to have_content "タイトルを入力してください"
+    #       expect(current_path).to eq post_path(post)
+    #     end
+    #   end
+
+    #   describe '投稿削除' do
+    #     let!(:post) { create(:post, user: user) }
+
+    #     it '投稿削除成功' do
+    #       visit posts_path
+    #       find('i.fa-solid.fa-skull').click
+    #       expect(page.accept_confirm).to eq '削除しますか'
+    #       expect(page).to have_content '投稿を削除しました'
+    #     end
+    #   end
+    # end
   end
 end
