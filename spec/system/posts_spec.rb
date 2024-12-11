@@ -7,21 +7,21 @@ RSpec.describe "Posts", type: :system do
   # describe 'ログイン前' do
   #   describe 'ページ遷移確認' do
   #     context '新規投稿ページにアクセス' do
-  #       it '新規投稿ページへのアクセスが失敗する' do
+  #       it '新規投稿ページへのアクセス失敗' do
   #         visit new_post_path
   #         expect(current_path).to eq login_path
   #       end
   #     end
 
   #     context '投稿編集ページにアクセス' do
-  #       it '投稿編集ページへのアクセスが失敗する' do
+  #       it '投稿編集ページへのアクセス失敗' do
   #         visit edit_post_path(post)
   #         expect(current_path).to eq login_path
   #       end
   #     end
 
   #     context '投稿詳細ページにアクセス' do
-  #       it '投稿の詳細情報が表示される' do
+  #       it '投稿の詳細情報表示' do
   #         visit post_path(post)
   #         expect(page).to have_content post.title
   #         expect(current_path).to eq post_path(post)
@@ -29,14 +29,12 @@ RSpec.describe "Posts", type: :system do
   #     end
 
   #     context '投稿一覧ページにアクセス' do
-  #       it '全投稿が表示される' do
+  #       it '全投稿表示' do
   #         # 投稿を3つ作成し、created_atを現在時刻に固定
   #         post_list = create_list(:post, 3, created_at: Time.now)
   #         visit posts_path
   #         # 各投稿に「0秒」が表示されていることを確認
-  #         post_list.each do |post|
-  #           expect(page).to have_content '0秒'
-  #         end
+            expect(page).to have_selector('.post', count: 3)
   #         # ページのパスが正しいことを確認
   #         expect(current_path).to eq posts_path
   #       end
@@ -51,7 +49,7 @@ RSpec.describe "Posts", type: :system do
     end
 
     # describe '新規投稿' do
-    #   context 'フォームの入力値が正常' do
+    #   context 'フォームの入力値正常' do
     #     it '新規投稿成功' do
     #       visit new_post_path
     #       expect(current_path).to eq new_post_path
@@ -141,7 +139,7 @@ RSpec.describe "Posts", type: :system do
     #   let(:other_post) { create(:post, user: user) }
     #   before { visit edit_post_path(post) }
       
-    #   context 'フォームの入力値が正常' do
+    #   context 'フォームの入力値正常' do
     #     it '投稿編集成功' do
     #       # タイトル変更
     #       fill_in 'タイトル', with: 'updated_title'
