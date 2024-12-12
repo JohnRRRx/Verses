@@ -7,12 +7,15 @@ module CustomHelpers
     click_button 'ログイン'
   end
 
-  def expect_message(message)
-    expect(page).to have_content(message)
+  def expect_text(text)
+    expect(page).to have_content(text)
   end
 
   def navibar_click
     find('i.fa-solid.fa-bars').click
   end
-  
+
+  def song_search_botton_click
+    find('i.fa-solid.fa-magnifying-glass').click
+  end
 end

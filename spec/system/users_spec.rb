@@ -14,7 +14,7 @@ RSpec.describe 'Users', type: :system do
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
 
-          expect_message("登録完了しました")
+          expect_text("登録完了しました")
           expect(current_path).to eq login_path
         end
       end
@@ -27,8 +27,8 @@ RSpec.describe 'Users', type: :system do
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
-          expect_message("登録に失敗しました")
-          expect_message("ニックネームを入力してください")
+          expect_text("登録に失敗しました")
+          expect_text("ニックネームを入力してください")
           expect(current_path).to eq new_user_path
         end
       end
@@ -41,13 +41,13 @@ RSpec.describe 'Users', type: :system do
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
-          expect_message("登録に失敗しました")
-          expect_message("メールアドレスを入力してください")
+          expect_text("登録に失敗しました")
+          expect_text("メールアドレスを入力してください")
           expect(current_path).to eq new_user_path
         end
       end
 
-      context '登録済メールアドレスを使用' do
+      context '登録済メールアドレス使用' do
         it 'ユーザー新規作成失敗' do
           existed_user = create(:user)
           visit new_user_path
@@ -57,8 +57,8 @@ RSpec.describe 'Users', type: :system do
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
           expect(current_path).to eq new_user_path
-          expect_message("登録に失敗しました")
-          expect_message("メールアドレスはすでに存在します")
+          expect_text("登録に失敗しました")
+          expect_text("メールアドレスはすでに存在します")
           expect(page).to have_field 'メールアドレス', with: existed_user.email
         end
       end
@@ -71,9 +71,9 @@ RSpec.describe 'Users', type: :system do
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: ''
           click_button '登録'
-          expect_message("登録に失敗しました")
-          expect_message("パスワード確認とパスワードの入力が一致しません")
-          expect_message("パスワード確認を入力してください" )       
+          expect_text("登録に失敗しました")
+          expect_text("パスワード確認とパスワードの入力が一致しません")
+          expect_text("パスワード確認を入力してください" )       
           expect(current_path).to eq new_user_path
         end
       end
@@ -128,7 +128,7 @@ RSpec.describe 'Users', type: :system do
   describe 'ログイン後' do
     before do
       login_as(user)
-      expect_message('新規投稿')  # ログイン後、新規投稿が表示されることを確認
+      expect_text('新規投稿')  # ログイン後、新規投稿が表示されることを確認
     end
 
     describe 'プロフィール編集' do
@@ -142,8 +142,8 @@ RSpec.describe 'Users', type: :system do
           fill_in 'メールアドレス', with: 'update@example.com'
           click_button '更新'
           expect(page).to have_content('プロフィールを更新しました')
-          expect_message("update_name")
-          expect_message("update@example.com")
+          expect_text("update_name")
+          expect_text("update@example.com")
           expect(current_path).to eq profile_path
         end
       end
@@ -156,7 +156,7 @@ RSpec.describe 'Users', type: :system do
           fill_in 'ニックネーム', with: ''
           fill_in 'メールアドレス', with: 'update@example.com'
           click_button '更新'
-          expect_message("プロフィールを更新できませんでした")
+          expect_text("プロフィールを更新できませんでした")
           expect(page).to have_content("ニックネームを入力してください")
           expect(current_path).to eq edit_profile_path
         end
@@ -170,7 +170,7 @@ RSpec.describe 'Users', type: :system do
           fill_in 'ニックネーム', with: 'update_name'
           fill_in 'メールアドレス', with: ''
           click_button '更新'
-          expect_message("プロフィールを更新できませんでした")
+          expect_text("プロフィールを更新できませんでした")
           expect(page).to have_content("メールアドレスを入力してください")
           expect(current_path).to eq edit_profile_path
         end
@@ -185,8 +185,8 @@ RSpec.describe 'Users', type: :system do
           fill_in 'ニックネーム', with: 'update_name'
           fill_in 'メールアドレス', with: existed_user.email
           click_button '更新'
-          expect_message("プロフィールを更新できませんでした")
-          expect_message("メールアドレスはすでに存在します")
+          expect_text("プロフィールを更新できませんでした")
+          expect_text("メールアドレスはすでに存在します")
           expect(current_path).to eq edit_profile_path
         end
       end

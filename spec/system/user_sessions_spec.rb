@@ -10,7 +10,7 @@ RSpec.describe 'UserSessions', type: :system do
         fill_in 'メールアドレス', with: user.email
         fill_in 'パスワード', with: 'password'
         click_button 'ログイン'
-        expect_message("ログインしました")
+        expect_text("ログインしました")
         expect(current_path).to eq root_path
       end
     end
@@ -21,7 +21,7 @@ RSpec.describe 'UserSessions', type: :system do
         fill_in 'メールアドレス', with: ''
         fill_in 'パスワード', with: 'password'
         click_button 'ログイン'
-        expect_message("ログインに失敗しました")
+        expect_text("ログインに失敗しました")
         expect(current_path).to eq login_path
       end
     end
@@ -32,7 +32,7 @@ RSpec.describe 'UserSessions', type: :system do
         fill_in 'メールアドレス', with: 'wrong@example.com'
         fill_in 'パスワード', with: 'password'
         click_button 'ログイン'
-        expect_message("ログインに失敗しました")
+        expect_text("ログインに失敗しました")
         expect(current_path).to eq login_path
       end
     end
@@ -44,7 +44,7 @@ RSpec.describe 'UserSessions', type: :system do
         login_as(user)
         navibar_click
         click_link 'ログアウト'
-        expect_message("ログアウトしました")
+        expect_text("ログアウトしました")
         expect(current_path).to eq root_path
       end
     end
