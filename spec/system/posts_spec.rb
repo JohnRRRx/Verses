@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Posts", type: :system do
   let(:user) { create(:user) }
   let(:post) { create(:post) }
+  let(:another_user) { create(:user) }
 
   describe 'ログイン前' do
     describe 'ページ遷移確認' do
@@ -143,6 +144,49 @@ RSpec.describe "Posts", type: :system do
           expect(page.accept_confirm).to eq '削除しますか'
           expect_text("投稿を削除しました")
         end
+      end
+    end
+
+    describe 'いいね一覧' do
+      let!(:post) { create(:post, user: user) }
+      context '1件もいいねしていない場合' do
+        it '1件もない旨のメッセージが表示される' do
+          expect_text('ログインしました')
+          expect(page).to have_css('i.fa-solid.fa-bars')
+          navibar_click
+          click_on 'いいね'
+          expect(page).to have_current_path(likes_posts_path)
+          expect(page).to have_content('いいねした投稿がありません')
+        end
+      end
+
+      context 'いいねしている場合' do
+        it 'いいねした投稿が表示される' do
+          expect(page).to have_css('i.fa-solid.fa-bars')
+          click_on '投稿一覧'
+          find("#like-button-for-post-#{post.id}").click
+          expect(page).to have_css('i.fa-solid.fa-bars')
+          navibar_click
+          click_on 'いいね'
+          expect(page).to have_current_path(likes_posts_path)
+          expect(page).to have_css("#unlike-button-for-post-#{post.id}")
+        end
+      end
+    end
+
+    describe 'マイポスト' do
+      it '自分の投稿が表示される' do
+        click_on('新規投稿')
+        fill_in 'タイトル', with: 'my_post'
+        fill_in '曲を検索', with: 'イチブトゼンブ'
+        song_search_botton_click
+        first('button.search-result-item', text: 'イチブトゼンブ').click
+        attach_file '写真', Rails.root.join('spec/support/assets/test.jpg')
+        click_button 'シェア'
+        navibar_click
+        click_on('マイポスト')
+        expect_text(user.name)
+        expect(page).to have_current_path(mine_posts_path)
       end
     end
   end
