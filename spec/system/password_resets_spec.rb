@@ -12,7 +12,7 @@ RSpec.describe 'Password_reset', type: :system do
     end
 
     describe 'パスワードリセットページ' do
-      it '正しい要素が表示されていること' do
+      it '正しい要素が表示されている' do
         user.generate_reset_password_token!
         visit edit_password_reset_path(user.reset_password_token)
         expect(page).to have_selector('.title', text: 'パスワードリセット')
