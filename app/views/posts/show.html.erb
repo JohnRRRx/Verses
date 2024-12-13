@@ -40,7 +40,7 @@
             <% if @post.tag_list.any? %>
               <div class="flex flex-wrap gap-2 min-h-fit">
                 <% @post.tag_list.each do |tag| %>
-                  <%= link_to tag, posts_path(tag: tag), class: "bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full" %>
+                  <%= link_to tag, posts_path(tag: tag), class: "bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full", id: "tag-#{tag}" %>
                 <% end %>
               </div>
             <% end %>
