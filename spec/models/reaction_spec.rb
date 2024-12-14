@@ -20,7 +20,7 @@ RSpec.describe Reaction, type: :model do
   end
 
   context '同じ投稿に同じ絵文字を複数回つけられない場合' do
-    it '無効であること' do
+    it '無効である' do
       create(:reaction, user: user, post: post, emoji: '👍') # すでに絵文字がついている
       reaction = build(:reaction, user: user, post: post, emoji: '👍') # 同じ投稿に同じ絵文字をつけようとする
       reaction.valid?
