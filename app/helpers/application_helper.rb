@@ -15,14 +15,14 @@ module ApplicationHelper
       charset: 'utf-8',
       description: 'あの瞬間、何の曲を思い出した？',
       keywords: '音楽',
-      canonical: Rails.env.production? ? 'https://verses-take.fly.dev/' : 'http://localhost:3000/',
+      canonical: 'https://verses-take.fly.dev/',
       separator: '|',
       og:{
         site_name: :site,
         title: :title,
         description: :description,
         type: 'website',
-        url: Rails.env.production? ? 'https://verses-take.fly.dev/' : 'http://localhost:3000/',
+        url: 'https://verses-take.fly.dev/',
         image: image_url('ogp.png'),
         local: 'ja-JP'
       },
