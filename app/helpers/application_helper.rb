@@ -26,7 +26,7 @@ module ApplicationHelper
         image: image_url('ogp.png'),
         local: 'ja-JP'
       },
-      twitter: {
+      x: {
         card: 'summary_large_image',
         site: '@JohnRRRxx',
         image: image_url('ogp.png')
