@@ -5,10 +5,10 @@ RSpec.describe 'Like', type: :system do
   let!(:post) { create(:post) }
   let!(:like) { create(:like, user: user) }
 
-  describe '絵文字スタンプ' do
+  describe 'いいねスタンプ' do
     it 'いいね可能' do
       login_as(user)
-      Capybara.assert_current_path("/")
+      Capybara.assert_current_path('/')
       visit posts_path
       find("#like-button-for-post-#{post.id}").click
       expect(current_path).to eq('/posts')
@@ -20,7 +20,7 @@ RSpec.describe 'Like', type: :system do
 
     it 'いいね取消可能' do
       login_as(user)
-      Capybara.assert_current_path("/")
+      Capybara.assert_current_path('/')
       visit posts_path
       find("#unlike-button-for-post-#{like.post.id}").click
       expect(current_path).to eq('/posts')

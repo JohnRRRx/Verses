@@ -31,7 +31,7 @@ RSpec.describe 'Password_reset', type: :system do
       fill_in 'パスワード', with: '123456789'
       fill_in 'パスワード確認', with: '123456789'
       click_button '送信'
-      Capybara.assert_current_path("/login", ignore_query: true)
+      Capybara.assert_current_path('/login', ignore_query: true)
       expect(current_path).to eq(login_path)
       expect_text('パスワードを変更しました')
     end

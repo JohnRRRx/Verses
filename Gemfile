@@ -65,7 +65,10 @@ gem 'kaminari'
 gem 'unicode-emoji'
 gem 'redis'
 gem 'aws-sdk-s3'
-
+gem 'rubocop', '~> 1.65', require: false
+gem 'rubocop-performance', require: false
+gem 'rubocop-rails', require: false
+gem 'rubocop-rspec', require: false
 
 
 group :development do
@@ -85,4 +88,4 @@ end
 
 gem 'tailwindcss-rails', '~> 2.7'
 
-gem "dockerfile-rails", ">= 1.6", :group => :development
+gem 'dockerfile-rails', '>= 1.6', :group => :development

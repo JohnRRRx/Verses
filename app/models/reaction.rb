@@ -5,5 +5,5 @@ class Reaction < ApplicationRecord
   validates :emoji, presence: true
   validates :user_id, uniqueness: { scope: [:post_id, :emoji] }
 
-  broadcasts_to ->(reaction) { [reaction.post, "reactions"] }, inserts_by: :prepend
+  broadcasts_to ->(reaction) { [reaction.post, 'reactions'] }, inserts_by: :prepend
 end

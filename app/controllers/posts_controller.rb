@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).includes(:user, :tags).order(created_at: :desc)
-  
+
     if params[:tag].present?
       @posts = @posts.tagged_with(params[:tag])
     end
@@ -69,7 +69,7 @@ class PostsController < ApplicationController
   def destroy
     post = current_user.posts.find(params[:id])
     post.destroy!
-  
+
     if params[:tag] && request.referer&.include?("tag=#{params[:tag]}")
       redirect_to posts_path(tag: params[:tag]), notice: t('message.deleted'), status: :see_other
     elsif request.referer&.include?(likes_path)

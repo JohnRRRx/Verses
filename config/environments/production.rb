@@ -8,7 +8,7 @@ Rails.application.configure do
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
   config.action_mailer.default_url_options = Settings.default_url_options.to_h
-  config.action_cable.url = "wss://verses-take.fly.dev/cable"
+  config.action_cable.url = 'wss://verses-take.fly.dev/cable'
   config.action_cable.allowed_request_origins = [ 'https://verses-take.fly.dev' ]
 
   config.public_file_server.enabled = true
@@ -38,7 +38,7 @@ Rails.application.configure do
     user_name:            ENV['GMAIL_USERNAME'],
     password:             ENV['GMAIL_PASSWORD'],
     authentication:       'plain',
-    enable_starttls_auto: true 
+    enable_starttls_auto: true
   }
   config.active_support.report_deprecations = false
 

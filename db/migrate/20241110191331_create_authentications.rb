@@ -1,7 +1,7 @@
 class CreateAuthentications < ActiveRecord::Migration[7.2]
   def change
     return if table_exists?(:authentications)
-    
+
     create_table :authentications do |t|
       t.integer :user_id, null: false
       t.string :provider, null: false

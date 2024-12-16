@@ -8,7 +8,7 @@ RSpec.describe 'Profile', type: :system do
     it 'プロフィール詳細が見られる' do
     navibar_click
     click_link 'プロフィール'
-    Capybara.assert_current_path("/profile", ignore_query: true)
+    Capybara.assert_current_path('/profile', ignore_query: true)
     expect(current_path).to eq(profile_path)
     expect_text(user.name)
     expect_text(user.email)
@@ -26,8 +26,8 @@ RSpec.describe 'Profile', type: :system do
         fill_in 'メールアドレス', with: 'update@example.com'
         click_button '更新'
         expect(page).to have_content('プロフィールを更新しました')
-        expect_text("update_name")
-        expect_text("update@example.com")
+        expect_text('update_name')
+        expect_text('update@example.com')
         expect(current_path).to eq profile_path
       end
     end
@@ -40,8 +40,8 @@ RSpec.describe 'Profile', type: :system do
         fill_in 'ニックネーム', with: ''
         fill_in 'メールアドレス', with: 'update@example.com'
         click_button '更新'
-        expect_text("プロフィールを更新できませんでした")
-        expect(page).to have_content("ニックネームを入力してください")
+        expect_text('プロフィールを更新できませんでした')
+        expect(page).to have_content('ニックネームを入力してください')
         expect(current_path).to eq edit_profile_path
       end
     end
@@ -54,8 +54,8 @@ RSpec.describe 'Profile', type: :system do
         fill_in 'ニックネーム', with: 'update_name'
         fill_in 'メールアドレス', with: ''
         click_button '更新'
-        expect_text("プロフィールを更新できませんでした")
-        expect(page).to have_content("メールアドレスを入力してください")
+        expect_text('プロフィールを更新できませんでした')
+        expect(page).to have_content('メールアドレスを入力してください')
         expect(current_path).to eq edit_profile_path
       end
     end
@@ -69,8 +69,8 @@ RSpec.describe 'Profile', type: :system do
         fill_in 'ニックネーム', with: 'update_name'
         fill_in 'メールアドレス', with: existed_user.email
         click_button '更新'
-        expect_text("プロフィールを更新できませんでした")
-        expect_text("メールアドレスはすでに存在します")
+        expect_text('プロフィールを更新できませんでした')
+        expect_text('メールアドレスはすでに存在します')
         expect(current_path).to eq edit_profile_path
       end
     end

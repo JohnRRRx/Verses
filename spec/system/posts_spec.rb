@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Posts", type: :system do
+RSpec.describe 'Posts', type: :system do
   let(:user) { create(:user) }
   let(:post) { create(:post) }
   let(:another_user) { create(:user) }
@@ -43,7 +43,7 @@ RSpec.describe "Posts", type: :system do
   describe 'ログイン後' do
     before do
       login_as(user)
-      expect_text("新規投稿")
+      expect_text('新規投稿')
     end
 
     describe '新規投稿' do
@@ -56,7 +56,7 @@ RSpec.describe "Posts", type: :system do
           first('button.search-result-item', text: 'イチブトゼンブ').click
           attach_file '写真', Rails.root.join('spec/support/assets/test.jpg')
           click_button 'シェア'
-          expect_text("投稿を作成しました")
+          expect_text('投稿を作成しました')
           expect(page).to have_selector('img[src*="test.jpg"]')
           expect(current_path).to eq posts_path
         end
@@ -72,7 +72,7 @@ RSpec.describe "Posts", type: :system do
           first('button.search-result-item', text: 'ギリギリchop').click
           attach_file '写真', Rails.root.join('spec/support/assets/test.jpg')
           click_button 'シェア'
-          expect_text("タイトルを入力してください")
+          expect_text('タイトルを入力してください')
           expect(current_path).to eq posts_path
         end
       end
@@ -86,7 +86,7 @@ RSpec.describe "Posts", type: :system do
           song_search_botton_click
           first('button.search-result-item', text: 'ultra soul').click
           click_button 'シェア'
-          expect_text("写真を選択してください")
+          expect_text('写真を選択してください')
           expect(current_path).to eq posts_path
         end
       end
@@ -98,7 +98,7 @@ RSpec.describe "Posts", type: :system do
           fill_in 'タイトル', with: 'Test Post Title'
           attach_file '写真', Rails.root.join('spec/support/assets/test.jpg')
           click_button 'シェア'
-          expect_text("曲を選択してください")
+          expect_text('曲を選択してください')
           expect(current_path).to eq posts_path
         end
       end
@@ -108,7 +108,7 @@ RSpec.describe "Posts", type: :system do
       let!(:post) { create(:post, user: user) }
       let(:other_post) { create(:post, user: user) }
       before { visit edit_post_path(post) }
-      
+
       context 'フォームの入力値正常' do
         it '投稿編集成功' do
           fill_in 'タイトル', with: 'updated_title'
@@ -117,8 +117,8 @@ RSpec.describe "Posts", type: :system do
           first('button.search-result-item', text: 'いつかのメリークリスマス').click
           attach_file '写真', Rails.root.join('spec/support/assets/test2.png')
           click_button 'シェア'
-          expect_text("投稿を更新しました")
-          expect_text("updated_title")
+          expect_text('投稿を更新しました')
+          expect_text('updated_title')
           expect(page).to have_selector('img[src*="test2.png"]')
           expect(page).to have_selector('iframe.w-full.rounded-lg[src="https://open.spotify.com/embed/track/3Ro8jrbsWu0VSk1odLLYuo"]')
           expect(current_path).to eq post_path(post)
@@ -129,8 +129,8 @@ RSpec.describe "Posts", type: :system do
         it '投稿編集失敗' do
           fill_in 'タイトル', with: ''
           click_button 'シェア'
-          expect_text("投稿を更新できませんでした")
-          expect_text("タイトルを入力してください")
+          expect_text('投稿を更新できませんでした')
+          expect_text('タイトルを入力してください')
           expect(current_path).to eq post_path(post)
         end
       end
@@ -142,7 +142,7 @@ RSpec.describe "Posts", type: :system do
           visit posts_path
           find('i.fa-solid.fa-skull').click
           expect(page.accept_confirm).to eq '削除しますか'
-          expect_text("投稿を削除しました")
+          expect_text('投稿を削除しました')
         end
       end
     end

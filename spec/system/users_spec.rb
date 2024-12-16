@@ -15,7 +15,7 @@ RSpec.describe 'Users', type: :system do
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
-          expect_text("登録完了しました")
+          expect_text('登録完了しました')
           expect(current_path).to eq login_path
         end
       end
@@ -28,8 +28,8 @@ RSpec.describe 'Users', type: :system do
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
-          expect_text("登録に失敗しました")
-          expect_text("ニックネームを入力してください")
+          expect_text('登録に失敗しました')
+          expect_text('ニックネームを入力してください')
           expect(current_path).to eq new_user_path
         end
       end
@@ -42,8 +42,8 @@ RSpec.describe 'Users', type: :system do
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
-          expect_text("登録に失敗しました")
-          expect_text("メールアドレスを入力してください")
+          expect_text('登録に失敗しました')
+          expect_text('メールアドレスを入力してください')
           expect(current_path).to eq new_user_path
         end
       end
@@ -58,8 +58,8 @@ RSpec.describe 'Users', type: :system do
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
           expect(current_path).to eq new_user_path
-          expect_text("登録に失敗しました")
-          expect_text("メールアドレスはすでに存在します")
+          expect_text('登録に失敗しました')
+          expect_text('メールアドレスはすでに存在します')
           expect(page).to have_field 'メールアドレス', with: existed_user.email
         end
       end
@@ -72,9 +72,9 @@ RSpec.describe 'Users', type: :system do
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: ''
           click_button '登録'
-          expect_text("登録に失敗しました")
-          expect_text("パスワード確認とパスワードの入力が一致しません")
-          expect_text("パスワード確認を入力してください" )       
+          expect_text('登録に失敗しました')
+          expect_text('パスワード確認とパスワードの入力が一致しません')
+          expect_text('パスワード確認を入力してください' )
           expect(current_path).to eq new_user_path
         end
       end
@@ -172,7 +172,7 @@ RSpec.describe 'Users', type: :system do
           # 👀がついてる投稿を予め作ったので、👀1の表示を確認
           count_span_id = "post_#{post.id}_emoji_👀_count"
           expect_emoji_count(count_span_id, 1)
-          #👀1をクリックしてもカウントされない
+          # 👀1をクリックしてもカウントされない
           find("##{count_span_id}").click
           expect_emoji_count(count_span_id, 1)
           expect(current_path).to eq post_path(post)
