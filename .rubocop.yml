@@ -71,3 +71,6 @@ RSpec/DescribedClass:
 
 Rails/RootPathnameMethods:
   Enabled: false
+
+Lint/AssignmentInCondition:
+  Enabled: false
