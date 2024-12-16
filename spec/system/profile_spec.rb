@@ -2,16 +2,17 @@ require 'rails_helper'
 
 RSpec.describe 'Profile', type: :system do
   let(:user) { create(:user) }
+
   before { login_as(user) }
 
   describe 'プロフィール' do
     it 'プロフィール詳細が見られる' do
-    navibar_click
-    click_link 'プロフィール'
-    Capybara.assert_current_path('/profile', ignore_query: true)
-    expect(current_path).to eq(profile_path)
-    expect_text(user.name)
-    expect_text(user.email)
+      navibar_click
+      click_link 'プロフィール'
+      Capybara.assert_current_path('/profile', ignore_query: true)
+      expect(current_path).to eq(profile_path)
+      expect_text(user.name)
+      expect_text(user.email)
     end
   end
 

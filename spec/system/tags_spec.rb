@@ -72,6 +72,7 @@ RSpec.describe 'Tags', type: :system do
     let!(:post3) { create(:post, user: user, tag_list: 'UNITE #01, EPIC NIGHT') }
     let!(:post4) { create(:post, user: user, tag_list: 'EPIC DAY, EPIC NIGHT') }
     let!(:post5) { create(:post, user: user, tag_list: 'STARS, EPIC NIGHT') }
+
     before do
       login_as(user)
     end

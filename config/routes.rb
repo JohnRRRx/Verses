@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'privacy_policy', to: 'static_pages#privacy_policy'
   resources :users, only: %i[new create]
   resources :posts, only: %i[index new create show edit update destroy] do
-    resources :reactions, only: [:index, :create, :destroy]
+    resources :reactions, only: %i[index create destroy]
     collection do
       get :search
       get :likes

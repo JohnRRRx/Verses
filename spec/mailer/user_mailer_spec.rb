@@ -4,6 +4,7 @@ RSpec.describe UserMailer, type: :mailer do
   describe 'パスワードリセットメール' do
     let(:user) { create :user }
     let(:mail) { UserMailer.reset_password_email(user) }
+
     before { user.generate_reset_password_token! }
 
     it 'メール内容が正しいこと' do

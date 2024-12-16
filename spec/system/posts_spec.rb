@@ -31,7 +31,7 @@ RSpec.describe 'Posts', type: :system do
 
       context '投稿一覧ページにアクセス' do
         it '全投稿表示' do
-          post_list = create_list(:post, 3)
+          create_list(:post, 3)
           visit posts_path
           expect(Post.count).to eq 3
           expect(current_path).to eq posts_path
@@ -107,6 +107,7 @@ RSpec.describe 'Posts', type: :system do
     describe '投稿編集' do
       let!(:post) { create(:post, user: user) }
       let(:other_post) { create(:post, user: user) }
+
       before { visit edit_post_path(post) }
 
       context 'フォームの入力値正常' do
@@ -149,6 +150,7 @@ RSpec.describe 'Posts', type: :system do
 
     describe 'いいね一覧' do
       let!(:post) { create(:post, user: user) }
+
       context '1件もいいねしていない場合' do
         it '1件もない旨のメッセージが表示される' do
           expect_text('ログインしました')

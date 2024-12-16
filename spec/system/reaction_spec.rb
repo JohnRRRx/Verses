@@ -46,7 +46,7 @@ RSpec.describe 'Reaction', type: :system do
       expect_emoji_count(count_span_id, 2)
     end
 
-  it '同じユーザーは同じ投稿に同じスタンプを1回しか押せない' do
+    it '同じユーザーは同じ投稿に同じスタンプを1回しか押せない' do
       login_as(user)
       open_post_and_select_emoji(post, '🦖')
       count_span_id = "post_#{post.id}_emoji_🦖_count"

@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
   let(:user) { create(:user) }
-  let!(:post) { create(:post) }  # 通常の投稿を作成
-  let!(:reaction) { create(:reaction, post: post, user: user, emoji: '👀') }  # 絵文字付きのリアクションを作成
+  let!(:post) { create(:post) } # 通常の投稿を作成
+  let!(:reaction) { create(:reaction, post: post, user: user, emoji: '👀') } # 絵文字付きのリアクションを作成
 
   describe 'ログイン前' do
     describe 'ユーザー新規登録' do
@@ -74,7 +74,7 @@ RSpec.describe 'Users', type: :system do
           click_button '登録'
           expect_text('登録に失敗しました')
           expect_text('パスワード確認とパスワードの入力が一致しません')
-          expect_text('パスワード確認を入力してください' )
+          expect_text('パスワード確認を入力してください')
           expect(current_path).to eq new_user_path
         end
       end
@@ -101,7 +101,7 @@ RSpec.describe 'Users', type: :system do
     describe 'マイポスト' do
       context 'ログイン前' do
         it 'マイポストページへのアクセス失敗' do
-          visit mine_posts_path	(user)
+          visit mine_posts_path(user)
           expect(current_path).to eq login_path
         end
       end
@@ -191,13 +191,12 @@ RSpec.describe 'Users', type: :system do
         end
       end
     end
-
   end
 
   describe 'ログイン後' do
     before do
       login_as(user)
-      expect_text('新規投稿')  # ログイン後、新規投稿が表示されることを確認
+      expect_text('新規投稿') # ログイン後、新規投稿が表示されることを確認
     end
 
     describe 'マイポスト' do
@@ -214,13 +213,13 @@ RSpec.describe 'Users', type: :system do
       end
     end
 
-  describe '検索欄' do
-    context 'ログイン後' do
-      it '検索欄は表示される' do
-        visit root_path
-        expect(page).to have_css('input#search_form')
+    describe '検索欄' do
+      context 'ログイン後' do
+        it '検索欄は表示される' do
+          visit root_path
+          expect(page).to have_css('input#search_form')
+        end
       end
     end
-  end
   end
 end
