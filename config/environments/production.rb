@@ -11,6 +11,8 @@ Rails.application.configure do
   config.action_cable.url = "wss://verses-take.fly.dev/cable"
   config.action_cable.allowed_request_origins = [ 'https://verses-take.fly.dev' ]
 
+  config.action_controller.default_url_options = { host: 'verses-take.fly.dev' }
+
   config.public_file_server.enabled = true
 
   config.assets.css_compressor = nil

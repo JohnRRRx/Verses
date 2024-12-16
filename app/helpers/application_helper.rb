@@ -23,13 +23,13 @@ module ApplicationHelper
         description: :description,
         type: 'website',
         url: 'https://verses-take.fly.dev/',
-        image: image_url('ogp.png'),
+        image: "#{root_url}images/ogp.png"
         local: 'ja-JP'
       },
       x: {
         card: 'summary_large_image',
         site: '@JohnRRRxx',
-        image: image_url('ogp.png')
+        image: "#{root_url}images/ogp.png"
       }
     }
   end
