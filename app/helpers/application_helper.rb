@@ -15,7 +15,7 @@ module ApplicationHelper
       charset: 'utf-8',
       description: '',
       canonical: 'request.original_url',
-      og:{
+      og: {
         site_name: :site,
         title: :title,
         description: :description,

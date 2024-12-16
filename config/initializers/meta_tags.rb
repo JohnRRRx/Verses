@@ -1,2 +1,2 @@
-MetaTags.configure do |config| 
+MetaTags.configure do |config|
 end

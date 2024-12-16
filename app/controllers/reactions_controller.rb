@@ -1,5 +1,4 @@
 class ReactionsController < ApplicationController
-
   def create
     @post = Post.find(params[:post_id])
     @reaction = @post.reactions.create(reaction_params.merge(user: current_user))

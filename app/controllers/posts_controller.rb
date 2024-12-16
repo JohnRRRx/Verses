@@ -4,14 +4,23 @@ class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).includes(:user, :tags).order(created_at: :desc)
-  
-    if params[:tag].present?
-      @posts = @posts.tagged_with(params[:tag])
-    end
+
+    return if params[:tag].blank?
+
+    @posts = @posts.tagged_with(params[:tag])
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    @emoji_categories = EMOJIS
   end
 
   def new
     @post = Post.new
+  end
+
+  def edit
+    @post = current_user.posts.find(params[:id])
   end
 
   def create
@@ -21,15 +30,6 @@ class PostsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @post = Post.find(params[:id])
-    @emoji_categories = EMOJIS
-  end
-
-  def edit
-    @post = current_user.posts.find(params[:id])
   end
 
   def update
@@ -58,8 +58,8 @@ class PostsController < ApplicationController
 
   def likes
     @like_posts = Post.joins(:likes)
-    .where(likes: { user_id: current_user.id })
-    .order(created_at: :desc)
+                      .where(likes: { user_id: current_user.id })
+                      .order(created_at: :desc)
   end
 
   def mine
@@ -69,7 +69,7 @@ class PostsController < ApplicationController
   def destroy
     post = current_user.posts.find(params[:id])
     post.destroy!
-  
+
     if params[:tag] && request.referer&.include?("tag=#{params[:tag]}")
       redirect_to posts_path(tag: params[:tag]), notice: t('message.deleted'), status: :see_other
     elsif request.referer&.include?(likes_path)

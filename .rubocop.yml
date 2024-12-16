@@ -1,0 +1,76 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
+Rails:
+  Enabled: true
+
+RSpec:
+  Enabled: true
+
+Metrics:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 150
+
+RSpec/ContextWording:
+  Enabled: false
+
+Lint/DuplicateBranch:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+Lint/EmptyBlock:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+Rails/ReversibleMigration:
+  Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+Rails/BulkChangeTable:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
+RSpec/NoExpectationExample:
+  Enabled: false
+
+RSpec/IndexedLet:
+  Enabled: false
+
+RSpec/DescribedClass:
+  Enabled: false
+
+Rails/RootPathnameMethods:
+  Enabled: false
+
+Lint/AssignmentInCondition:
+  Enabled: false

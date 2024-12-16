@@ -16,7 +16,7 @@ module CustomHelpers
 
   def logout
     navibar_click
-    click_on "ログアウト"
+    click_on 'ログアウト'
   end
 
   def expect_text(text)
@@ -30,7 +30,7 @@ module CustomHelpers
   def song_search_botton_click
     find('i.fa-solid.fa-magnifying-glass').click
   end
-  
+
   def edit_botton_click
     find('i.fa-solid.fa-hammer').click
   end
@@ -44,7 +44,7 @@ module CustomHelpers
     visit posts_path
     visit post_path(post)
     find('label[for="emoji-toggle"]').click
-    find('input.emoji-button[value="' + emoji + '"]').click
+    find("input.emoji-button[value=\"#{emoji}\"]").click
   end
 
   def expect_emoji_count(count_span_id, expected_count)

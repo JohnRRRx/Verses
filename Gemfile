@@ -44,29 +44,31 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'rubocop-rails-omakase', require: false
 
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 gem 'active_hash'
 gem 'acts-as-taggable-on'
+gem 'aws-sdk-s3'
 gem 'carrierwave'
 gem 'config'
 gem 'cssbundling-rails'
 gem 'dotenv-rails'
 gem 'fog-aws'
+gem 'kaminari'
 gem 'meta-tags'
 gem 'rails-i18n'
 gem 'ransack'
+gem 'redis'
 gem 'rspotify'
+gem 'rubocop', '~> 1.65', require: false
+gem 'rubocop-performance', require: false
+gem 'rubocop-rails', require: false
+gem 'rubocop-rspec', require: false
 gem 'sassc-rails'
 gem 'sorcery'
-gem 'kaminari'
 gem 'unicode-emoji'
-gem 'redis'
-gem 'aws-sdk-s3'
-
-
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
@@ -85,4 +87,4 @@ end
 
 gem 'tailwindcss-rails', '~> 2.7'
 
-gem "dockerfile-rails", ">= 1.6", :group => :development
+gem 'dockerfile-rails', '>= 1.6', group: :development

@@ -17,7 +17,7 @@ RSpec.describe 'Tags', type: :system do
       first('button.search-result-item', text: 'イチブトゼンブ').click
       attach_file '写真', Rails.root.join('spec/support/assets/test.jpg')
       click_button 'シェア'
-      expect_text("投稿を作成しました")
+      expect_text('投稿を作成しました')
       expect(current_path).to eq posts_path
       find("img.h-72.w-72.object-contain.rounded-t-xl[alt='Post Image']").click
       expect_text('2009年')
@@ -34,7 +34,7 @@ RSpec.describe 'Tags', type: :system do
       first('button.search-result-item', text: 'イチブトゼンブ').click
       attach_file '写真', Rails.root.join('spec/support/assets/test.jpg')
       click_button 'シェア'
-      expect_text("投稿を作成しました")
+      expect_text('投稿を作成しました')
       expect(current_path).to eq posts_path
       find("img.h-72.w-72.object-contain.rounded-t-xl[alt='Post Image']").click
       expect(page).to have_css('#tag-YES', count: 1)
@@ -55,7 +55,7 @@ RSpec.describe 'Tags', type: :system do
       first('button.search-result-item', text: 'イチブトゼンブ').click
       attach_file '写真', Rails.root.join('spec/support/assets/test.jpg')
       click_button 'シェア'
-      expect_text("投稿を作成しました")
+      expect_text('投稿を作成しました')
       expect(current_path).to eq posts_path
       find("img.h-72.w-72.object-contain.rounded-t-xl[alt='Post Image']").click
       expect(page).to have_css('#tag-4\:12')
@@ -72,10 +72,11 @@ RSpec.describe 'Tags', type: :system do
     let!(:post3) { create(:post, user: user, tag_list: 'UNITE #01, EPIC NIGHT') }
     let!(:post4) { create(:post, user: user, tag_list: 'EPIC DAY, EPIC NIGHT') }
     let!(:post5) { create(:post, user: user, tag_list: 'STARS, EPIC NIGHT') }
+
     before do
       login_as(user)
     end
-    
+
     it 'タグを押したら、同じタグがついてる投稿一覧が表示される' do
       click_link '投稿一覧'
       all("img.h-72.w-72.object-contain.rounded-t-xl[alt='Post Image']").first.click
@@ -94,7 +95,7 @@ RSpec.describe 'Tags', type: :system do
     before do
       login_as(user)
     end
-    
+
     it 'タグで検索可能' do
       click_link '新規投稿'
       fill_in 'タイトル', with: 'Tag_test'
@@ -104,7 +105,7 @@ RSpec.describe 'Tags', type: :system do
       first('button.search-result-item', text: 'イチブトゼンブ').click
       attach_file '写真', Rails.root.join('spec/support/assets/test.jpg')
       click_button 'シェア'
-      expect_text("投稿を作成しました")
+      expect_text('投稿を作成しました')
       expect(current_path).to eq posts_path
       find("img.h-72.w-72.object-contain.rounded-t-xl[alt='Post Image']").click
       expect_text('2009年')
