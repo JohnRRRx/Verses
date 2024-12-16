@@ -67,6 +67,7 @@ gem 'redis'
 gem 'aws-sdk-s3'
 
 
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'letter_opener_web'
