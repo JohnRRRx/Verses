@@ -10,26 +10,25 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'Verses',
-      title: '文字、写真、音楽をまとめて投稿できるアプリです',
+      title: 'あの瞬間、何の曲を思い出した？',
       reverse: true,
       charset: 'utf-8',
-      description: 'あの瞬間、何の曲を思い出した？',
+      description: '文字、写真、音楽をまとめて投稿してみませんか',
       keywords: '音楽',
-      canonical: 'https://verses-take.fly.dev/',
+      canonical: 'request.original_url',
       separator: '|',
       og:{
         site_name: :site,
         title: :title,
         description: :description,
         type: 'website',
-        url: 'https://verses-take.fly.dev/',
-        image: "#{root_url}images/ogp.png"
+        url: 'request.original_url',
+        image: image_url('ogp.png'),
         local: 'ja-JP'
       },
       x: {
-        card: 'summary_large_image',
-        site: '@JohnRRRxx',
-        image: "#{root_url}images/ogp.png"
+        card: 'summary_medium_image',
+        image: image_url('ogp.png')
       }
     }
   end
