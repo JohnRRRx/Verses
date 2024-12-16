@@ -69,7 +69,7 @@ RSpec.describe Post, type: :model do
 
     it '投稿削除可能' do
       post = create(:post)
-      expect { post.destroy }.to change { Post.count }.by(-1) # 投稿が1件減少することを確認
+      expect { post.destroy }.to change(Post, :count).by(-1) # 投稿が1件減少することを確認
     end
   end
 end

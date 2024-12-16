@@ -44,7 +44,7 @@ module CustomHelpers
     visit posts_path
     visit post_path(post)
     find('label[for="emoji-toggle"]').click
-    find('input.emoji-button[value="' + emoji + '"]').click
+    find("input.emoji-button[value=\"#{emoji}\"]").click
   end
 
   def expect_emoji_count(count_span_id, expected_count)

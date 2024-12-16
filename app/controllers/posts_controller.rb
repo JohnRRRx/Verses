@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).includes(:user, :tags).order(created_at: :desc)
 
-    return unless params[:tag].present?
+    return if params[:tag].blank?
 
     @posts = @posts.tagged_with(params[:tag])
   end

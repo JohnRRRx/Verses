@@ -62,3 +62,12 @@ Lint/ShadowingOuterLocalVariable:
 
 RSpec/NoExpectationExample:
   Enabled: false
+
+RSpec/IndexedLet:
+  Enabled: false
+
+RSpec/DescribedClass:
+  Enabled: false
+
+Rails/RootPathnameMethods:
+  Enabled: false
