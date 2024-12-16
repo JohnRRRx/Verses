@@ -10,13 +10,11 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'Verses',
-      title: 'あの瞬間、何の曲を思い出した？',
+      title: 'この瞬間、何の曲を思い出しましたか？',
       reverse: true,
       charset: 'utf-8',
-      description: '文字、写真、音楽をまとめて投稿してみませんか',
-      keywords: '音楽',
+      description: '',
       canonical: 'request.original_url',
-      separator: '|',
       og:{
         site_name: :site,
         title: :title,
@@ -27,7 +25,7 @@ module ApplicationHelper
         local: 'ja-JP'
       },
       x: {
-        card: 'summary_medium_image',
+        card: 'summary_large_image',
         image: image_url('ogp.png')
       }
     }
