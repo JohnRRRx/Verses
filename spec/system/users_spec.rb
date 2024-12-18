@@ -206,7 +206,7 @@ RSpec.describe 'Users', type: :system do
           create(:post, title: 'test_title_2', user: user)
           navibar_click
           click_link 'マイポスト'
-          expect(page).to have_content(user.name)
+          expect_text(user.name)
           expect(page).to have_selector('.post', count: 2)
           expect(current_path).to eq mine_posts_path
         end

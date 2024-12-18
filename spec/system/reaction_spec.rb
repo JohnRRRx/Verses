@@ -19,8 +19,8 @@ RSpec.describe 'Reaction', type: :system do
       login_as(other_user)
       Capybara.assert_current_path('/')
       click_on '投稿一覧'
-      # 投稿を選択
-      all("img.h-72.w-72.object-contain.rounded-t-xl[alt='Post Image']").first.click
+      # 投稿詳細へ移動
+      all(post_photo).last.click
       # 🍔がついてる投稿を予め作ったので、🍔1の表示を確認
       count_span_id = "post_#{post.id}_emoji_🍔_count"
       expect_emoji_count(count_span_id, 1)
