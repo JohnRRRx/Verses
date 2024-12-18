@@ -50,4 +50,12 @@ module CustomHelpers
   def expect_emoji_count(count_span_id, expected_count)
     expect(page).to have_css("##{count_span_id}", text: expected_count.to_s)
   end
+
+  def post_photo
+    "img.h-72.w-72.object-contain.rounded-t-xl[alt='Post Image']"
+  end
+
+  def count_search_results(count)
+    expect(page).to have_selector('.post', count: count)
+  end
 end

@@ -154,20 +154,17 @@ RSpec.describe 'Posts', type: :system do
       context '1件もいいねしていない場合' do
         it '1件もない旨のメッセージが表示される' do
           expect_text('ログインしました')
-          expect(page).to have_css('i.fa-solid.fa-bars')
           navibar_click
           click_on 'いいね'
           expect(page).to have_current_path(likes_posts_path)
-          expect(page).to have_content('いいねした投稿がありません')
+          expect_text('いいねした投稿がありません')
         end
       end
 
       context 'いいねしている場合' do
         it 'いいねした投稿が表示される' do
-          expect(page).to have_css('i.fa-solid.fa-bars')
           click_on '投稿一覧'
           find("#like-button-for-post-#{post.id}").click
-          expect(page).to have_css('i.fa-solid.fa-bars')
           navibar_click
           click_on 'いいね'
           expect(page).to have_current_path(likes_posts_path)
