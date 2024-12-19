@@ -1,5 +1,5 @@
-<div class="relative inline-block" data-controller="emoji">
-  <input type="checkbox" id="emoji-toggle" class="hidden peer" data-emoji-target="toggle">
+<div class="relative inline-block">
+  <input type="checkbox" id="emoji-toggle" class="hidden peer">
   <label for="emoji-toggle" class="cursor-pointer inline-block px-2 py-1 text-gray-600 hover:bg-gray-100 rounded-md">
     <i class="fa-regular fa-face-smile"></i>
   </label>
@@ -11,7 +11,7 @@
           <h2 class="font-semibold text-gray-700 text-sm my-2 px-2"><%= category %></h2>
           <div class="emoji-picker px-2">
             <% emojis.each do |emoji| %>
-              <%= form_with(url: post_reactions_path(@post), class: "inline-block", data: { turbo_frame: "reactions_#{@post.id}", controller: "emoji" }) do |f| %>
+              <%= form_with(url: post_reactions_path(@post), class: "inline-block", data: { turbo_frame: "reactions_#{@post.id}" }) do |f| %>
                 <%= f.hidden_field "emoji[emoji]", value: emoji %>
                 <%= f.submit emoji, class: "emoji-button text-2xl p-1 hover:bg-gray-200 rounded-full" %>
               <% end %>
