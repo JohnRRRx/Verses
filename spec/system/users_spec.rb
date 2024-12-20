@@ -213,11 +213,11 @@ RSpec.describe 'Users', type: :system do
       end
     end
 
-    describe '検索欄' do
+    describe '検索' do
       context 'ログイン後' do
-        it '検索欄は表示される' do
+        it '検索アイコンは表示される' do
           visit root_path
-          expect(page).to have_css('input#search_form')
+          expect(page).to have_selector('#search-icon')
         end
       end
     end

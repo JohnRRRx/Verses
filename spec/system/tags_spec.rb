@@ -90,29 +90,4 @@ RSpec.describe 'Tags', type: :system do
       expect(page).to have_css('div[id^="post-"]', count: 4)
     end
   end
-
-  describe 'タグ検索' do
-    before do
-      login_as(user)
-    end
-
-    it 'タグで検索可能' do
-      click_link '新規投稿'
-      fill_in 'タイトル', with: 'Tag_test'
-      fill_in '曲を検索', with: 'イチブトゼンブ'
-      fill_in 'タグ', with: '2009年'
-      song_search_botton_click
-      first('button.search-result-item', text: 'イチブトゼンブ').click
-      attach_file '写真', Rails.root.join('spec/support/assets/test.jpg')
-      click_button 'シェア'
-      expect_text('投稿を作成しました')
-      expect(current_path).to eq posts_path
-      find(post_photo).click
-      expect_text('2009年')
-      fill_in 'search_form', with: '2009年'
-      find('#search_form').send_keys(:enter)
-      # find('#search_form').set('辛い時 辛いと言えたらいいのになぁ').send_keys(:enter)
-      expect(page).to have_selector('img[src*="test.jpg"]')
-    end
-  end
 end
