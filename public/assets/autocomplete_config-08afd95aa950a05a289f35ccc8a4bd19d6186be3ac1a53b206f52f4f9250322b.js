@@ -24,15 +24,14 @@ document.addEventListener("turbo:load", function () {
             const selection = event.detail.selection.value;
             autoCompleteJS.input.value = selection;
   
-            // 検索フォームを送信
+            // フォームを送信
             const form = document.querySelector(".search-form");
             form.submit();
           },
         },
       },
     });
-
-    //Enterキーによる通常検索(ransack)
+    
     document.querySelector("#autoComplete").addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
           const form = document.querySelector(".search-form");

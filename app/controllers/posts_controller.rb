@@ -83,38 +83,38 @@ class PostsController < ApplicationController
 
   def autocomplete
     query = params[:q]
-  
+
     # 各フィールドごとに検索を実行し、結果を収集
     suggestions = []
 
     # title フィールドを検索
     Post.ransack(title_cont: query.presence).result.limit(5).each do |post|
-      suggestions << { value: post.title, label: post.title }
+      suggestions << { value: post.title }
     end
 
     # song_name フィールドを検索
     Post.ransack(song_name_cont: query.presence).result.limit(5).each do |post|
-      suggestions << { value: post.song_name, label: post.song_name }
+      suggestions << { value: post.song_name }
     end
 
     # artist_name フィールドを検索
     Post.ransack(artist_name_cont: query.presence).result.limit(5).each do |post|
-      suggestions << { value: post.artist_name, label: post.artist_name }
+      suggestions << { value: post.artist_name }
     end
 
-  # user_name フィールドを検索（関連付け）
-  Post.ransack(user_name_cont: query.presence).result.limit(5).each do |post|
-    suggestions << { value: post.user.name, label: post.user.name }
-  end
-
-  # tags_name フィールドを検索（acts-as-taggable-on のタグ）
-  Post.ransack(tags_name_cont: query.presence).result.limit(5).each do |post|
-    post.tags.each do |tag|
-      suggestions << { value: tag.name, label: tag.name }
+    # user_name フィールドを検索
+    Post.ransack(user_name_cont: query.presence).result.limit(5).each do |post|
+      suggestions << { value: post.user.name }
     end
-  end
 
-    # 重複を除外しつつ JSON 形式で返す
+    # tags_name フィールドを検索
+    Post.ransack(tags_name_cont: query.presence).result.limit(5).each do |post|
+      post.tags.each do |tag|
+        suggestions << { value: tag.name }
+      end
+    end
+
+    # 重複を排除して返す
     render json: suggestions.uniq
   end
 

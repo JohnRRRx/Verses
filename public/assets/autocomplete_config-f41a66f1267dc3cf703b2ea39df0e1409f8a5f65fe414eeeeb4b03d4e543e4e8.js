@@ -1,5 +1,5 @@
 document.addEventListener("turbo:load", function () {
-    const autoCompleteJS = new autoComplete({
+      const autoCompleteJS = new autoComplete({
       selector: "#autoComplete",
       placeHolder: "検索",
       data: {
@@ -14,9 +14,21 @@ document.addEventListener("turbo:load", function () {
           }
         },
         cache: false,
+    },
+    resultsList: {
+      element: (list, data) => {
+        if (!data.results.length) {
+          allowInput = false;
+          const message = document.createElement("div");
+        //   message.setAttribute("class", "no_result");
+          message.innerHTML = `<span>結果がありません "${data.query}"</span>`;
+          list.prepend(message);
+        }
       },
+      noResults: true,
+    },
       resultItem: {
-        highlight: true,
+        highlight: true, // 通常のハイライト設定
       },
       events: {
         input: {
@@ -31,12 +43,12 @@ document.addEventListener("turbo:load", function () {
         },
       },
     });
-
-    //Enterキーによる通常検索(ransack)
+  
+    // Enterキーで通常検索を実行
     document.querySelector("#autoComplete").addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-          const form = document.querySelector(".search-form");
-          form.submit(); // 通常の検索フォーム送信を実行
-        }
+      if (event.key === "Enter") {
+        const form = document.querySelector(".search-form");
+        form.submit();
+      }
     });
-});
+  });

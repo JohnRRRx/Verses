@@ -32,7 +32,7 @@ document.addEventListener("turbo:load", function () {
       },
     });
 
-    //Enterキーによる通常検索(ransack)
+    //Enterキーによる通常検索
     document.querySelector("#autoComplete").addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
           const form = document.querySelector(".search-form");
