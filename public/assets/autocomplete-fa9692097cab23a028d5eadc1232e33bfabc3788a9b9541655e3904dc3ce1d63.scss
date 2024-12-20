@@ -1,0 +1,28 @@
+/* 入力フィールドのスタイル */
+.autoComplete_wrapper input {
+    font-size: 16px !important; /* iOSのズームを防ぐ */
+    line-height: 1.5;
+    padding: 0.5rem;
+  }
+  
+  /* 検索結果リストのスタイル */
+  .autoComplete_wrapper > ul {
+    font-size: 16px !important;
+  }
+  
+  /* 検索結果の各アイテムのスタイル */
+  .autoComplete_wrapper > ul > li {
+    font-size: 16px !important;
+    padding: 0.5rem;
+  }
+  
+  /* モバイルデバイスでの特別な調整 */
+  @media (max-width: 768px) {
+    .autoComplete_wrapper {
+      width: 100%; /* モバイルでの幅を調整 */
+    }
+    
+    .autoComplete_wrapper input {
+      padding: 0.75rem; /* タップしやすいようにパディングを増やす */
+    }
+  }

@@ -1,0 +1,33 @@
+@charset "UTF-8";
+@screen sm {
+  /* line 2, app/assets/stylesheets/custom_autocomplete.scss */
+  .search-input {
+    width: 60% !important;
+    /* スマホ用の幅 */
+  }
+}
+
+@screen md {
+  /* line 8, app/assets/stylesheets/custom_autocomplete.scss */
+  .search-input {
+    width: 100% !important;
+    /* パソコン用の幅 */
+  }
+}
+
+/* line 13, app/assets/stylesheets/custom_autocomplete.scss */
+#autoComplete_list {
+  position: absolute;
+  z-index: 1000;
+  /* 他の要素の上に表示 */
+  width: 100%;
+  /* 幅を調整 */
+  max-height: 300px;
+  /* 最大高さを設定 */
+}
+
+/* line 20, app/assets/stylesheets/custom_autocomplete.scss */
+.autoComplete_result {
+  padding: 10px;
+  /* パディングを調整 */
+}

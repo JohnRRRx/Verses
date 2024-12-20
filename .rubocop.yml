@@ -74,3 +74,6 @@ Rails/RootPathnameMethods:
 
 Lint/AssignmentInCondition:
   Enabled: false
+
+Style/MapIntoArray:
+  Enabled: false

@@ -55,6 +55,13 @@ module CustomHelpers
     "img.h-72.w-72.object-contain.rounded-t-xl[alt='Post Image']"
   end
 
+  def click_search_icon_and_input(keyword)
+    expect(page).to have_selector('#search-icon')
+    find('#search-icon').click
+    expect(page).to have_selector('#autoComplete')
+    find('#autoComplete').set(keyword).send_keys(:enter)
+  end
+
   def count_search_results(count)
     expect(page).to have_selector('.post', count: count)
   end

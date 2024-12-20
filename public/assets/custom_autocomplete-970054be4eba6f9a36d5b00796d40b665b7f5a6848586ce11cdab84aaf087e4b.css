@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* line 1, app/assets/stylesheets/custom_autocomplete.scss */
+form.search-form .autoComplete_wrapper {
+  width: 60% !important;
+}
+
+/* 入力フィールドも同じ幅に合わせる */
+/* line 6, app/assets/stylesheets/custom_autocomplete.scss */
+form.search-form .autoComplete_wrapper input {
+  width: 40% !important;
+}
+
+/* line 10, app/assets/stylesheets/custom_autocomplete.scss */
+#autoComplete_list {
+  position: absolute;
+  z-index: 1000;
+  /* 他の要素の上に表示 */
+  width: 60%;
+  /* 幅を調整 */
+  max-height: 300px;
+  /* 最大高さを設定 */
+}
+
+/* line 17, app/assets/stylesheets/custom_autocomplete.scss */
+.autoComplete_result {
+  padding: 10px;
+  /* パディングを調整 */
+}

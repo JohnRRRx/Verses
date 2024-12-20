@@ -81,6 +81,43 @@ class PostsController < ApplicationController
     end
   end
 
+  def autocomplete
+    query = params[:q]
+
+    # 各フィールドごとに検索を実行し、結果を収集
+    suggestions = []
+
+    # title フィールドを検索
+    Post.ransack(title_cont: query.presence).result.limit(5).each do |post|
+      suggestions << { value: post.title }
+    end
+
+    # song_name フィールドを検索
+    Post.ransack(song_name_cont: query.presence).result.limit(5).each do |post|
+      suggestions << { value: post.song_name }
+    end
+
+    # artist_name フィールドを検索
+    Post.ransack(artist_name_cont: query.presence).result.limit(5).each do |post|
+      suggestions << { value: post.artist_name }
+    end
+
+    # user_name フィールドを検索
+    Post.ransack(user_name_cont: query.presence).result.limit(5).each do |post|
+      suggestions << { value: post.user.name }
+    end
+
+    # tags_name フィールドを検索
+    Post.ransack(tags_name_cont: query.presence).result.limit(5).each do |post|
+      post.tags.each do |tag|
+        suggestions << { value: tag.name }
+      end
+    end
+
+    # 重複を排除して返す
+    render json: suggestions.uniq
+  end
+
   private
 
   def post_params

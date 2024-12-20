@@ -1,0 +1,14 @@
+.autoComplete_wrapper {
+    width: 60% !important; /* !importantを追加 */
+}
+  
+  #autoComplete_list {
+    position: absolute;
+    z-index: 1000; /* 他の要素の上に表示 */
+    width: 60%; /* 幅を調整 */
+    max-height: 300px; /* 最大高さを設定 */
+  }
+  
+  .autoComplete_result {
+    padding: 10px; /* パディングを調整 */
+  }

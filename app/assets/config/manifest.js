@@ -6,3 +6,4 @@
 //= link back.css
 //= link menu.css
 //= link spotify_search.css
+//= link custom_autocomplete.css
