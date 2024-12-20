@@ -6,12 +6,17 @@
         <span class="self-center text-2xl font-semibold whitespace-nowrap text-white"><%= t('header.title') %></span>
       <% end %>
 
-      <div class=" flex flex-grow justify-center ml-10">
-        <%= render 'shared/search_form' %>
-      </div>
-
       <div class="flex items-center justify-between w-full h-full md:flex md:w-auto" id="navbar-sticky">
         <ul class="flex flex-row items-center space-x-6 md:p-0 font-semibold ml-auto h-full">
+          <details class="relative">
+            <summary class="text-white flex items-center space-x-2 h-full">
+              <img src="<%= asset_path('search.png') %>" class="w-6 h-6 sm:w-5 sm:h-5">
+              <span class="hidden sm:inline ml-2"><%= t('header.search') %></span>
+            </summary>
+            <div class="fixed left-1/2 transform -translate-x-1/2 top-16 mt-1 w-auto min-w-max whitespace-nowrap bg-gray-900 text-white rounded-md shadow-md p-2 z-10 transition-opacity duration-300">
+              <%= render 'shared/search_form' %>
+            </div>
+          </details>
           <li>
             <%= link_to posts_path, class: "nav-link icon-link text-white flex items-center space-x-2 h-full" do %>
               <img src="<%= asset_path('index.png') %>" class="w-6 h-6 sm:w-5 sm:h-5">
