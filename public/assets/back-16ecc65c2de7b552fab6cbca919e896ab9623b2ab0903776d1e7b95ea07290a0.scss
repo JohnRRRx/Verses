@@ -4,7 +4,10 @@
  background-position: center;
  background-repeat: no-repeat;
  width: 100%;
- min-height: 100vh;
+ height: 100vh;
+ display: flex;
+ flex-direction: column; /* 子要素を縦方向に配置 */
+ justify-content: flex-start; /* 子要素を上に配置 */
 }
 
 /* Chrome、Safari */

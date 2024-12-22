@@ -18,13 +18,13 @@
             </div>
           </details>
           <li>
-            <%= link_to posts_path, class: "nav-link icon-link text-white flex items-center space-x-2 h-full" do %>
+            <%= link_to posts_path, class: "text-white flex items-center space-x-2 h-full" do %>
               <img src="<%= asset_path('index.png') %>" class="w-6 h-6 sm:w-5 sm:h-5">
               <span class="hidden sm:inline"><%= t('header.index') %></span>
             <% end %>
           </li>
           <li>
-            <%= link_to new_post_path, class: "nav-link icon-link text-white flex items-center space-x-2 h-full" do %>
+            <%= link_to new_post_path, class: "text-white flex items-center space-x-2 h-full" do %>
             <img src="<%= asset_path('new.png') %>" class="w-6 h-6 sm:w-5 sm:h-5">
             <span class="hidden sm:inline"><%= t('header.new_post') %></span>
             <% end %>
@@ -37,24 +37,24 @@
               <div class="absolute top-full mt-6 right-0 w-auto min-w-full whitespace-nowrap bg-gray-900 text-white rounded-md shadow-md p-2 z-10 transition-opacity duration-300  pr-4">
                 <ul class="flex flex-col">
                   <li>
-                    <%= link_to likes_posts_path, class: "nav-link icon-link text-white mr-6 flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
+                    <%= link_to likes_posts_path, class: "text-white mr-6 flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
                       <img src="<%= asset_path('like.png') %>" class="w-5 h-5" /><span><%= t('header.like_index') %></span>
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to mine_posts_path, class: "nav-link icon-link text-white flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
+                    <%= link_to mine_posts_path, class: "text-white flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
                       <img src="<%= asset_path('mypost.png') %>" class="w-5 h-5" /><span class="ml-6"><%= t('header.my_posts') %></span>
                     <% end %>
                   </li>
 
                   <li>
-                    <%= link_to profile_path, class: "nav-link icon-link text-white mr-5 flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
+                    <%= link_to profile_path, class: "text-white mr-5 flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
                       <img src="<%= asset_path('profile.png') %>" class="w-6 h-6" /><span><%= t('header.profile') %></span>
                     <% end %>
                   </li>
 
                   <li>
-                    <%= link_to logout_path, data: { turbo_method: :delete }, class: "nav-link icon-link text-white mr-6 flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
+                    <%= link_to logout_path, data: { turbo_method: :delete }, class: "text-white mr-6 flex items-center hover:bg-gray-500 space-x-2 my-2 rounded-md w-full" do %>
                       <img src="<%= asset_path('logout.png') %>" class="w-6 h-5" /></i> <span><%= t('header.logout') %></span>
                     <% end %>
                   </li>

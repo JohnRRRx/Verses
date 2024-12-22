@@ -1,0 +1,26 @@
+  <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+    <div class="relative post">
+      <img class="h-72 w-72 object-contain rounded-t-xl" src="<%= asset_path('new_sample.png') %>">
+    </div>
+    <div class="px-2 py-16 w-72 bg-gray-100 rounded-b-xl">
+        <span class="font-medium text-gray-600">
+          ・文字と写真に音楽を添えて投稿する
+        </span>
+    </div>
+  </div>
+
+  <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+    <div class="relative post">
+      <img class="h-72 w-72 object-contain rounded-t-xl" src="<%= asset_path('show_sample.png') %>">
+    </div>
+    <div class="px-4 py-3 w-72 bg-gray-100 rounded-b-xl">
+      <span class="font-medium text-gray-600">
+         ・投稿にいいねを押す<br>
+         ・絵文字でリアクションする<br>
+         ・Xへシェアする<br>
+        <div class="flex justify-center mt-4">
+          <%= link_to t('static_pages.try'), posts_path, class: "text-center w-full py-2 px-10 font-semibold border border-transparent rounded-md shadow-sm text-sm text-white bg-slate-500 hover:bg-slate-700 focus:outline-none" %>
+        </div>
+      </span>
+    </div>
+  </div>
