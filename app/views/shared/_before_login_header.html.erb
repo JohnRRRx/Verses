@@ -8,7 +8,7 @@
       <div class="flex items-center justify-end w-full md:w-auto" id="navbar-sticky">
         <ul class="flex flex-row items-center space-x-6 p-0 font-semibold ml-auto">
           <li>
-            <%= link_to posts_path, class: "nav-link icon-link text-white flex items-center space-x-2 h-16" do %>
+            <%= link_to posts_path, class: "text-white flex items-center space-x-2 h-16" do %>
               <div class="flex items-center h-full">
                 <img src="<%= asset_path('index.png') %>" class="w-6 h-6">
                 <!-- PC用テキスト -->
@@ -17,7 +17,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to login_path, class: "nav-link icon-link text-white flex items-center space-x-2 h-16" do %>
+            <%= link_to login_path, class: "text-white flex items-center space-x-2 h-16" do %>
               <div class="flex items-center h-full">
                 <img src="<%= asset_path('login.png') %>" class="w-6 h-6">
                 <!-- PC用テキスト -->
