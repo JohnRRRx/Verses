@@ -51,7 +51,7 @@ Xでの発信を通じて、ユーザーの皆様がXでシェアしていただ
 |Backend|Ruby 3.3.5, Rails 7.2.1|
 |Infrastructure|fly.io, Upstash|
 |Database|PostgreSQL|
-|CI/CL|GitHubActions|
+|Version Control|GitHub|
 |Web API|SpotifyAPI, GoogleAPI|  
 <br>
 
@@ -80,7 +80,6 @@ Xでの発信を通じて、ユーザーの皆様がXでシェアしていただ
 - プライバシーポリシー・利用規約　　
 - お問い合わせ　　
 - OGP（静的）　　
-- 独自ドメイン　　
 - レスポンシブ対応  　
 - Rspec
 
