@@ -5,9 +5,8 @@
  - [開発背景](#開発背景)
  - [機能紹介](#機能紹介)
  - [使用技術](#使用技術)
- - [ER図](#ER図)
  - [画面遷移図](#画面遷移図)
-
+ - [ER図](#ER図)
 
  ## サービス概要  
 写真を音楽と一緒に投稿するアプリです。  
@@ -30,7 +29,13 @@
 SNSで直接に話しかけるのも、むやみにコメント返すのも嫌われるかもしれないです。  
 文字で伝えてもキリがない時もあるのでコメントではなく、  
 絵文字だけでそっと共感してくれたらいいなと思います。  
-  
+
+ ## 機能紹介
+ | [![Image from Gyazo](https://i.gyazo.com/4aba1661aceba7bc4863ec18f3bb6e5e.png)](https://gyazo.com/4aba1661aceba7bc4863ec18f3bb6e5e) | [![Image from Gyazo](https://i.gyazo.com/e20d8cfa653c56235357263bdedecdae.png)](https://gyazo.com/e20d8cfa653c56235357263bdedecdae)　|
+|:-----------:|:------------:|
+|新規登録機能|Googleアカウントによるログイン機能|
+|[![Image from Gyazo](https://i.gyazo.com/b4f1c0af888aecc55fbdfd38b7b06e45.gif)](https://gyazo.com/b4f1c0af888aecc55fbdfd38b7b06e45)|[![Image from Gyazo](https://i.gyazo.com/3d4a051a737b152a91d4f561a037c270.gif)](https://gyazo.com/3d4a051a737b152a91d4f561a037c270)|
+|曲を検索する機能|投稿に絵文字スタンプを押す機能|
   
  ## 使用技術	
 
