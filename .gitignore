@@ -3,7 +3,7 @@
 !/app/assets/builds/.keep
 /log/development.log
 /node_modules
-/tmp/cache/
+/tmp/*
 .env
 .DS_Store
 app/.DS_Store

@@ -9,21 +9,21 @@
       <div class="flex items-center justify-between w-full h-full md:flex md:w-auto" id="navbar-sticky">
         <ul class="flex flex-row items-center space-x-6 md:p-0 font-semibold ml-auto h-full">
           <details class="relative">
-            <summary class="text-white flex items-center space-x-2 h-full">
+            <summary class="text-white flex items-center space-x-2 h-full  hover:bg-gray-500 rounded-md p-1 cursor-pointer">
               <img src="<%= asset_path('search.png') %>" class="w-6 h-6 sm:w-5 sm:h-5" id="search-icon">
               <span class="hidden sm:inline ml-2"><%= t('header.search') %></span>
             </summary>
-            <div class="fixed left-1/2 transform -translate-x-1/2 top-16 mt-1 w-auto min-w-max whitespace-nowrap bg-gray-900 text-white rounded-md shadow-md p-2 z-10 transition-opacity duration-300">
+            <div class="fixed left-1/2 transform -translate-x-1/2 top-16 mt-1 w-auto min-w-max whitespace-nowrap bg-gray-900 text-white rounded-md shadow-md p-2 z-10 transition-opacity duration-300 ">
               <%= render 'shared/search_form' %>
             </div>
           </details>
-          <li>
+          <li class="hover:bg-gray-500 rounded-md p-1">
             <%= link_to posts_path, class: "text-white flex items-center space-x-2 h-full" do %>
               <img src="<%= asset_path('index.png') %>" class="w-6 h-6 sm:w-5 sm:h-5">
               <span class="hidden sm:inline"><%= t('header.index') %></span>
             <% end %>
           </li>
-          <li>
+          <li class="hover:bg-gray-500 rounded-md p-1">
             <%= link_to new_post_path, class: "text-white flex items-center space-x-2 h-full" do %>
             <img src="<%= asset_path('new.png') %>" class="w-6 h-6 sm:w-5 sm:h-5">
             <span class="hidden sm:inline"><%= t('header.new_post') %></span>
@@ -32,7 +32,7 @@
           <li>
             <details class="relative inline-block">
               <summary class="cursor-pointer flex items-center bg-gray-900 font-semibold text-white rounded-md w-6 h-6">
-              <i class="fa-solid fa-bars text-xl"></i>
+              <i class="fa-solid fa-bars text-xl p-1 hover:bg-gray-500 rounded-md"></i>
               </summary>
               <div class="absolute top-full mt-6 right-0 w-auto min-w-full whitespace-nowrap bg-gray-900 text-white rounded-md shadow-md p-2 z-10 transition-opacity duration-300  pr-4">
                 <ul class="flex flex-col">
