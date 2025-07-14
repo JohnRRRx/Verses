@@ -9,7 +9,7 @@
         <ul class="flex flex-row items-center space-x-6 p-0 font-semibold ml-auto">
           <li>
             <%= link_to posts_path, class: "text-white flex items-center space-x-2 h-12" do %>
-              <div class="flex items-center h-full hover:bg-gray-500 rounded-md p-1 ">
+              <div class="flex items-center h-auto hover:bg-gray-500 rounded-md p-1 ">
                 <img src="<%= asset_path('index.png') %>" class="w-6 h-6">
                 <!-- PC用テキスト -->
                 <span class="hidden sm:inline ml-2"><%= t('header.index') %></span>
@@ -18,7 +18,7 @@
           </li>
           <li>
             <%= link_to login_path, class: "text-white flex items-center space-x-2 h-12" do %>
-              <div class="flex items-center h-full hover:bg-gray-500 rounded-md p-1 ">
+              <div class="flex items-center h-auto hover:bg-gray-500 rounded-md p-1 ">
                 <img src="<%= asset_path('login.png') %>" class="w-6 h-6">
                 <!-- PC用テキスト -->
                 <span class="hidden sm:inline ml-2"><%= t('header.login') %></span>
