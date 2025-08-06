@@ -41,8 +41,8 @@ SNSで直接に話しかけるのも、むやみにコメント返すのも嫌�
 
 |  | 技術 |
 |:-----------:|:------------:|
-|Frontend|JavaScript, Tailwindcss, HTML, CSS|
-|Backend|Ruby 3.3.5, Rails 7.2.1|
+|Frontend|JavaScript, HTML, CSS, Tailwindcss|
+|Backend|Ruby, Rails|
 |Infrastructure|fly.io, Upstash|
 |Database|PostgreSQL|
 |Version Control|GitHub|
